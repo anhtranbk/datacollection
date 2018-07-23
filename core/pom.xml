@@ -6,20 +6,20 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>datacollection-root</artifactId>
-    <groupId>com.vcc.bigdata</groupId>
-    <version>3.1.1</version>
+    <groupId>com.datacollection</groupId>
+    <version>0.1.1</version>
   </parent>
 
   <artifactId>datacollection-core</artifactId>
 
   <dependencies>
     <dependency>
-      <groupId>com.vcc.bigdata</groupId>
+      <groupId>com.datacollection</groupId>
       <artifactId>datacollection-integration</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.vcc.bigdata</groupId>
+      <groupId>com.datacollection</groupId>
       <artifactId>datacollection-graphdb</artifactId>
       <version>${project.version}</version>
     </dependency>

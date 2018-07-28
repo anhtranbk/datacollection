@@ -1,8 +1,8 @@
 package com.vcc.bigdata.service.notification;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Reflects;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Reflects;
 
 import java.io.Closeable;
 import java.io.Flushable;

@@ -1,8 +1,8 @@
 package com.vcc.bigdata.platform.kafka;
 
-import com.vcc.bigdata.common.concurrency.FutureAdapter;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.mb.MsgBrokerWriter;
+import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.mb.MsgBrokerWriter;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;

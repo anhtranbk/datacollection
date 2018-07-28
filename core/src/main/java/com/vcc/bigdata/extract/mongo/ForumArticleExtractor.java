@@ -3,7 +3,7 @@ package com.vcc.bigdata.extract.mongo;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.extract.DataStream;
 import com.vcc.bigdata.extract.model.GenericModel;
 import org.bson.Document;

@@ -1,7 +1,7 @@
 package com.vcc.bigdata.platform.jdbc;
 
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Utils;
 
 /**
  * TODO: Class description here.

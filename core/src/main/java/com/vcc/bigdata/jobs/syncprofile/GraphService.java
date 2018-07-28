@@ -1,7 +1,7 @@
 package com.vcc.bigdata.jobs.syncprofile;
 
 import com.vcc.bigdata.collect.Constants;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.graphdb.Direction;
 import com.vcc.bigdata.graphdb.Edge;
 import com.vcc.bigdata.graphdb.GraphSession;

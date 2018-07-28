@@ -1,7 +1,7 @@
 package com.vcc.bigdata;
 
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.utils.CLIArgumentParser;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.utils.CLIArgumentParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

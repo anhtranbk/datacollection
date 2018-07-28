@@ -1,6 +1,6 @@
 package com.vcc.bigdata.platform.jdbc;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 
 public class JdbcConfig {
 

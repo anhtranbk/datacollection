@@ -2,11 +2,11 @@ package com.vcc.bigdata.collect.transform;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.gson.Gson;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.mb.MsgBrokerFactory;
-import com.vcc.bigdata.common.mb.MsgBrokerReader;
-import com.vcc.bigdata.common.mb.MsgBrokerWriter;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.mb.MsgBrokerFactory;
+import com.datacollection.common.mb.MsgBrokerReader;
+import com.datacollection.common.mb.MsgBrokerWriter;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.util.concurrent.Future;

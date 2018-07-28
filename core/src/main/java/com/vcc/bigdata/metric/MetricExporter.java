@@ -2,7 +2,7 @@ package com.vcc.bigdata.metric;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import com.soundcloud.prometheus.hystrix.HystrixPrometheusMetricsPublisher;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.exporter.MetricsServlet;
 import org.eclipse.jetty.server.Server;

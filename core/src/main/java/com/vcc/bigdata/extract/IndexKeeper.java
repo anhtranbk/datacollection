@@ -1,9 +1,9 @@
 package com.vcc.bigdata.extract;
 
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.io.FileHelper;
-import com.vcc.bigdata.common.utils.DateTimes;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.io.FileHelper;
+import com.datacollection.common.utils.DateTimes;
+import com.datacollection.common.utils.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

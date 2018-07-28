@@ -1,8 +1,8 @@
 package com.vcc.bigdata.platform.hbase;
 
 import com.google.common.util.concurrent.Futures;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.ThreadPool;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.ThreadPool;
 import com.vcc.bigdata.platform.hystrix.SyncCommand;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;

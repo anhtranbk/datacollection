@@ -1,8 +1,8 @@
 package com.vcc.bigdata.platform.thrift;
 
 import com.google.common.net.HostAndPort;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Utils;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFastFramedTransport;

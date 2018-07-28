@@ -1,13 +1,13 @@
 package com.vcc.bigdata.collect;
 
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.lifecycle.AbstractLifeCycle;
-import com.vcc.bigdata.common.mb.MsgBrokerFactory;
-import com.vcc.bigdata.common.mb.MsgHandler;
-import com.vcc.bigdata.common.mb.MsgBrokerReader;
-import com.vcc.bigdata.common.serialize.Deserializer;
-import com.vcc.bigdata.common.serialize.Serialization;
-import com.vcc.bigdata.common.utils.Reflects;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.lifecycle.AbstractLifeCycle;
+import com.datacollection.common.mb.MsgBrokerFactory;
+import com.datacollection.common.mb.MsgHandler;
+import com.datacollection.common.mb.MsgBrokerReader;
+import com.datacollection.common.serialize.Deserializer;
+import com.datacollection.common.serialize.Serialization;
+import com.datacollection.common.utils.Reflects;
 import com.vcc.bigdata.extract.model.GenericModel;
 import com.vcc.bigdata.metric.Counter;
 import com.vcc.bigdata.metric.CounterMetrics;

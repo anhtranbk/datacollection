@@ -1,16 +1,16 @@
 package com.vcc.bigdata.jobs.extractaddress;
 
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.mb.MsgBrokerFactory;
-import com.vcc.bigdata.common.mb.MsgHandler;
-import com.vcc.bigdata.common.mb.MsgBrokerReader;
-import com.vcc.bigdata.common.mb.Record;
-import com.vcc.bigdata.common.mb.Records;
-import com.vcc.bigdata.common.serialize.Deserializer;
-import com.vcc.bigdata.common.serialize.Serialization;
-import com.vcc.bigdata.common.utils.Threads;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.mb.MsgBrokerFactory;
+import com.datacollection.common.mb.MsgHandler;
+import com.datacollection.common.mb.MsgBrokerReader;
+import com.datacollection.common.mb.Record;
+import com.datacollection.common.mb.Records;
+import com.datacollection.common.serialize.Deserializer;
+import com.datacollection.common.serialize.Serialization;
+import com.datacollection.common.utils.Threads;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.platform.kafka.KafkaMsgBrokerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

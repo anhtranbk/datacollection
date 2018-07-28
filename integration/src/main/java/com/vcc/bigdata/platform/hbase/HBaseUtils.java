@@ -1,6 +1,6 @@
 package com.vcc.bigdata.platform.hbase;
 
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.utils.Strings;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.Scan;

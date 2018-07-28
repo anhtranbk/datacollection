@@ -2,11 +2,11 @@ package com.vcc.bigdata.graphdb.hbase;
 
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.vcc.bigdata.common.concurrency.FutureAdapter;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.IterableAdapter;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.IterableAdapter;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.graphdb.Direction;
 import com.vcc.bigdata.graphdb.Edge;
 import com.vcc.bigdata.graphdb.Vertex;

@@ -11,8 +11,8 @@ import com.optimaize.langdetect.text.TextObject;
 import com.optimaize.langdetect.text.TextObjectFactory;
 import com.vcc.bigdata.collect.model.GraphModel;
 import com.vcc.bigdata.collect.model.Profile;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.Utils;
 
 import java.io.IOException;
 import java.util.List;

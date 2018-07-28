@@ -1,7 +1,7 @@
 package com.vcc.bigdata.platform.thrift;
 
 import com.google.common.net.HostAndPort;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.server.TNonblockingServer;
 import org.apache.thrift.server.TServer;

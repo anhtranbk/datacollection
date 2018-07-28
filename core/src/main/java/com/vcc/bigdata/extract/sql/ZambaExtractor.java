@@ -1,7 +1,7 @@
 package com.vcc.bigdata.extract.sql;
 
-import com.vcc.bigdata.common.ParserHelper;
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.ParserHelper;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.extract.DataStream;
 import com.vcc.bigdata.extract.StreamExtractor;
 import com.vcc.bigdata.extract.model.GenericModel;

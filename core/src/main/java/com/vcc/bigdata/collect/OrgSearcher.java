@@ -1,6 +1,6 @@
 package com.vcc.bigdata.collect;
 
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.platform.elastic.ElasticClientProvider;
 import com.vcc.bigdata.platform.elastic.ElasticConfig;
 import org.elasticsearch.ElasticsearchException;

@@ -1,12 +1,12 @@
 package com.vcc.bigdata.jobs.fbavatar;
 
 import com.vcc.bigdata.collect.fbavt.FbAvatarService;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.lifecycle.AbstractLifeCycle;
-import com.vcc.bigdata.common.tasks.TaskManager;
-import com.vcc.bigdata.common.utils.ThreadPool;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.lifecycle.AbstractLifeCycle;
+import com.datacollection.common.tasks.TaskManager;
+import com.datacollection.common.utils.ThreadPool;
+import com.datacollection.common.utils.Threads;
 import com.vcc.bigdata.graphdb.Direction;
 import com.vcc.bigdata.graphdb.GraphDatabase;
 import com.vcc.bigdata.graphdb.GraphSession;

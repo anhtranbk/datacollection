@@ -1,6 +1,6 @@
 package com.vcc.bigdata.collect.idgen;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.platform.thrift.ThriftClient;
 import com.vcc.bigdata.platform.thrift.ThriftClientProvider;
 import com.vcc.bigdata.platform.thrift.ThriftRuntimeException;

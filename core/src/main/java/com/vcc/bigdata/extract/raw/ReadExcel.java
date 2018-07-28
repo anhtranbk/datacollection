@@ -1,6 +1,6 @@
 package com.vcc.bigdata.extract.raw;
 
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;

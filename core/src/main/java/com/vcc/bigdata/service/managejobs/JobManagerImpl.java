@@ -1,9 +1,9 @@
 package com.vcc.bigdata.service.managejobs;
 
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.DateTimes;
-import com.vcc.bigdata.common.utils.Maps;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.DateTimes;
+import com.datacollection.common.utils.Maps;
 import com.vcc.bigdata.platform.elastic.ElasticClientProvider;
 import com.vcc.bigdata.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.get.GetResponse;

@@ -1,6 +1,6 @@
 package com.vcc.bigdata.collect.model;
 
-import com.vcc.bigdata.common.utils.Maps;
+import com.datacollection.common.utils.Maps;
 
 import java.util.Collections;
 import java.util.Map;

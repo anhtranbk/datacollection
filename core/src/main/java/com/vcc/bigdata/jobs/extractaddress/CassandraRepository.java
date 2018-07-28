@@ -3,8 +3,8 @@ package com.vcc.bigdata.jobs.extractaddress;
 import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.IterableAdapter;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.IterableAdapter;
 import com.vcc.bigdata.platform.cassandra.AbstractRepository;
 
 /**

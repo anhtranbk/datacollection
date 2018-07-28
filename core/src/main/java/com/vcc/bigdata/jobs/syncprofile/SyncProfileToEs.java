@@ -1,15 +1,15 @@
 package com.vcc.bigdata.jobs.syncprofile;
 
-import com.vcc.bigdata.common.concurrency.AllInOneFuture;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.io.FileHelper;
-import com.vcc.bigdata.common.lifecycle.LoopableLifeCycle;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.ThreadPool;
-import com.vcc.bigdata.common.utils.Threads;
-import com.vcc.bigdata.common.utils.TimeKey;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.concurrency.AllInOneFuture;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.io.FileHelper;
+import com.datacollection.common.lifecycle.LoopableLifeCycle;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.ThreadPool;
+import com.datacollection.common.utils.Threads;
+import com.datacollection.common.utils.TimeKey;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.graphdb.GraphDatabase;
 import com.vcc.bigdata.metric.MetricExporter;
 import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;

@@ -1,6 +1,6 @@
 package com.vcc.bigdata.service.managejobs;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 
 /**
  * TODO: Class description here.

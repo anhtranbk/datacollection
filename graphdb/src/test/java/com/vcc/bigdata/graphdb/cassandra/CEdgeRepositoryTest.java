@@ -1,7 +1,7 @@
 package com.vcc.bigdata.graphdb.cassandra;
 
 import com.google.common.collect.ImmutableMap;
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.graphdb.Direction;
 import com.vcc.bigdata.graphdb.Edge;
 import com.vcc.bigdata.graphdb.Vertex;

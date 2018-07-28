@@ -1,9 +1,9 @@
 package com.vcc.bigdata.extract;
 
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.ThreadPool;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.ThreadPool;
+import com.datacollection.common.utils.Threads;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.util.concurrent.ExecutorService;

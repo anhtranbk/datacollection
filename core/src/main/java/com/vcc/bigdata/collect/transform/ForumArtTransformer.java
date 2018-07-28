@@ -6,9 +6,9 @@ import com.vcc.bigdata.collect.model.GraphModel;
 import com.vcc.bigdata.collect.model.History;
 import com.vcc.bigdata.collect.model.Profile;
 import com.vcc.bigdata.collect.model.Relationship;
-import com.vcc.bigdata.common.ParserHelper;
-import com.vcc.bigdata.common.ProfileRegexHelper;
-import com.vcc.bigdata.common.utils.Hashings;
+import com.datacollection.common.ParserHelper;
+import com.datacollection.common.ProfileRegexHelper;
+import com.datacollection.common.utils.Hashings;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.util.Map;

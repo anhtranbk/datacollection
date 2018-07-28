@@ -6,7 +6,7 @@ import com.aerospike.client.async.EventPolicy;
 import com.aerospike.client.async.NioEventLoops;
 import com.aerospike.client.policy.ClientPolicy;
 import com.google.common.net.HostAndPort;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 
 import java.util.ArrayList;
 import java.util.Collection;

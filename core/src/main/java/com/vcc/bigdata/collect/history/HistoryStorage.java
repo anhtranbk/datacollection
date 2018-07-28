@@ -2,8 +2,8 @@ package com.vcc.bigdata.collect.history;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.vcc.bigdata.collect.model.History;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Reflects;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Reflects;
 
 import java.io.Closeable;
 

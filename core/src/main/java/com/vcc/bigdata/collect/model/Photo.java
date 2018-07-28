@@ -1,8 +1,8 @@
 package com.vcc.bigdata.collect.model;
 
 import com.vcc.bigdata.collect.Constants;
-import com.vcc.bigdata.common.utils.Hashings;
-import com.vcc.bigdata.common.utils.Maps;
+import com.datacollection.common.utils.Hashings;
+import com.datacollection.common.utils.Maps;
 import com.vcc.bigdata.service.FacebookClient;
 
 import java.io.IOException;

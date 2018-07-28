@@ -5,9 +5,9 @@ import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.ReadPreference;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.Utils;
 
 import java.util.Collection;
 

@@ -1,8 +1,8 @@
 package com.vcc.bigdata.jobs.extractaddress;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
 import com.vcc.bigdata.platform.elastic.ElasticClientProvider;
 import com.vcc.bigdata.platform.elastic.ElasticConfig;

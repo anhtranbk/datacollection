@@ -1,7 +1,7 @@
 package com.vcc.bigdata.service.notification;
 
-import com.vcc.bigdata.common.utils.Hashings;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.utils.Hashings;
+import com.datacollection.common.utils.Strings;
 
 import java.util.HashMap;
 import java.util.Map;

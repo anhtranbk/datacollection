@@ -1,8 +1,8 @@
 package com.vcc.bigdata.service.remoteconfig;
 
 import com.google.common.collect.ImmutableMap;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.platform.elastic.ElasticClientProvider;
 import com.vcc.bigdata.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;

@@ -8,11 +8,11 @@ import com.vcc.bigdata.collect.model.GraphModel;
 import com.vcc.bigdata.collect.model.History;
 import com.vcc.bigdata.collect.model.Profile;
 import com.vcc.bigdata.collect.model.Relationship;
-import com.vcc.bigdata.common.FacebookHelper;
-import com.vcc.bigdata.common.ParserHelper;
-import com.vcc.bigdata.common.ProfileRegexHelper;
-import com.vcc.bigdata.common.utils.Maps;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.FacebookHelper;
+import com.datacollection.common.ParserHelper;
+import com.datacollection.common.ProfileRegexHelper;
+import com.datacollection.common.utils.Maps;
+import com.datacollection.common.utils.Strings;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.util.Map;

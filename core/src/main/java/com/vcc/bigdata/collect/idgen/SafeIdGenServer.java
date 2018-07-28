@@ -1,10 +1,10 @@
 package com.vcc.bigdata.collect.idgen;
 
-import com.vcc.bigdata.common.cache.Cache;
-import com.vcc.bigdata.common.cache.LRUCache;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.cache.Cache;
+import com.datacollection.common.cache.LRUCache;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Strings;
 import com.vcc.bigdata.platform.thrift.ThriftServer;
 import org.apache.thrift.TException;
 import org.apache.thrift.TMultiplexedProcessor;

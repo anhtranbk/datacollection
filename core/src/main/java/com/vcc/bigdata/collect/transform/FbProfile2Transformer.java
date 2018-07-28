@@ -13,8 +13,8 @@ import com.vcc.bigdata.collect.model.History;
 import com.vcc.bigdata.collect.model.Organization;
 import com.vcc.bigdata.collect.model.Profile;
 import com.vcc.bigdata.collect.model.Relationship;
-import com.vcc.bigdata.common.ProfileRegexHelper;
-import com.vcc.bigdata.common.utils.NullProtector;
+import com.datacollection.common.ProfileRegexHelper;
+import com.datacollection.common.utils.NullProtector;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.text.DateFormat;

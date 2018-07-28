@@ -1,11 +1,11 @@
 package com.vcc.bigdata.platform.kafka;
 
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.mb.AbstractMsgBrokerReader;
-import com.vcc.bigdata.common.mb.Record;
-import com.vcc.bigdata.common.mb.Records;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.mb.AbstractMsgBrokerReader;
+import com.datacollection.common.mb.Record;
+import com.datacollection.common.mb.Records;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.Threads;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;

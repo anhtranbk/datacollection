@@ -1,10 +1,10 @@
 package com.vcc.bigdata.collect;
 
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.mb.Record;
-import com.vcc.bigdata.common.mb.Records;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.mb.Record;
+import com.datacollection.common.mb.Records;
+import com.datacollection.common.utils.Threads;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package com.vcc.bigdata.service.remoteconfig;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 
 import java.util.Map;
 

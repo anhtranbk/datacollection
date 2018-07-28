@@ -2,9 +2,9 @@ package com.vcc.bigdata.jobs.fbavatar;
 
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.utils.Hashings;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.utils.Hashings;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.metric.CounterMetrics;
 import com.vcc.bigdata.metric.Counting;
 import com.vcc.bigdata.metric.Sl4jPublisher;

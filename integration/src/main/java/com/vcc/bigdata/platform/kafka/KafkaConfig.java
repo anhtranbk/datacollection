@@ -1,8 +1,8 @@
 package com.vcc.bigdata.platform.kafka;
 
-import com.vcc.bigdata.common.config.ConfigurationException;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.ConfigurationException;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Utils;
 
 import java.io.IOException;
 

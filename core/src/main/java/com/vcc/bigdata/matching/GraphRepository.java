@@ -1,7 +1,7 @@
 package com.vcc.bigdata.matching;
 
 import com.vcc.bigdata.collect.Constants;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.graphdb.Direction;
 import com.vcc.bigdata.graphdb.Edge;
 import com.vcc.bigdata.graphdb.GraphDatabase;

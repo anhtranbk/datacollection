@@ -1,7 +1,7 @@
 package com.vcc.bigdata.platform.elastic;
 
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.Threads;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.ListenableActionFuture;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;

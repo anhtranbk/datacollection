@@ -1,6 +1,6 @@
 package com.vcc.bigdata.collect.fbavt;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.service.FacebookClient;
 
 /**

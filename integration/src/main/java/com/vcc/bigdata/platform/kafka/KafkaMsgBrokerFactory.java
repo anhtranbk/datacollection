@@ -1,8 +1,8 @@
 package com.vcc.bigdata.platform.kafka;
 
-import com.vcc.bigdata.common.mb.MsgBrokerFactory;
-import com.vcc.bigdata.common.mb.MsgBrokerReader;
-import com.vcc.bigdata.common.mb.MsgBrokerWriter;
+import com.datacollection.common.mb.MsgBrokerFactory;
+import com.datacollection.common.mb.MsgBrokerReader;
+import com.datacollection.common.mb.MsgBrokerWriter;
 
 /**
  * TODO: Class description here.

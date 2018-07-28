@@ -2,7 +2,7 @@ package com.vcc.bigdata.collect.filter;
 
 import com.vcc.bigdata.collect.model.GraphModel;
 import com.vcc.bigdata.collect.model.Profile;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.utils.Strings;
 
 import java.util.LinkedList;
 import java.util.List;

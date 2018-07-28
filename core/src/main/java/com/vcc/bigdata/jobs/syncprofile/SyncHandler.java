@@ -1,6 +1,6 @@
 package com.vcc.bigdata.jobs.syncprofile;
 
-import com.vcc.bigdata.common.utils.DateTimes;
+import com.datacollection.common.utils.DateTimes;
 import com.vcc.bigdata.platform.hystrix.SyncCommand;
 import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
 import org.elasticsearch.action.bulk.BulkResponse;

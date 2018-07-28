@@ -1,6 +1,6 @@
 package com.vcc.bigdata.platform.thrift;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import org.apache.thrift.transport.TTransportException;
 
 import java.util.Map;

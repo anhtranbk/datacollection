@@ -2,12 +2,12 @@ package com.vcc.bigdata.jobs.fbavatar;
 
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.io.FileHelper;
-import com.vcc.bigdata.common.lifecycle.AbstractLifeCycle;
-import com.vcc.bigdata.common.utils.ThreadPool;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.io.FileHelper;
+import com.datacollection.common.lifecycle.AbstractLifeCycle;
+import com.datacollection.common.utils.ThreadPool;
+import com.datacollection.common.utils.Threads;
 import com.vcc.bigdata.metric.Counter;
 import com.vcc.bigdata.metric.CounterMetrics;
 import com.vcc.bigdata.platform.cassandra.CassandraClusterProvider;

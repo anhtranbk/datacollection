@@ -1,9 +1,9 @@
 package com.vcc.bigdata.extract;
 
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.utils.Reflects;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.Utils;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.utils.Reflects;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.extract.mongo.FbGroupPostExtractor;
 import com.vcc.bigdata.metric.MetricExporter;
 import org.slf4j.Logger;

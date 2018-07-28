@@ -1,6 +1,6 @@
 package com.vcc.bigdata.graphdb.hbase;
 
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.platform.hbase.AbstractRepository;
 import org.apache.hadoop.hbase.TableName;
 

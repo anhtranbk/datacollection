@@ -8,7 +8,7 @@ import com.vcc.bigdata.collect.model.History;
 import com.vcc.bigdata.collect.model.Organization;
 import com.vcc.bigdata.collect.model.Profile;
 import com.vcc.bigdata.collect.model.Relationship;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.utils.Strings;
 import com.vcc.bigdata.extract.model.GenericModel;
 
 import java.util.List;

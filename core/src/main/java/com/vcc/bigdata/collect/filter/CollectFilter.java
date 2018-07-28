@@ -1,8 +1,8 @@
 package com.vcc.bigdata.collect.filter;
 
 import com.vcc.bigdata.collect.model.GraphModel;
-import com.vcc.bigdata.common.config.Configurable;
-import com.vcc.bigdata.common.config.Properties;
+import com.datacollection.common.config.Configurable;
+import com.datacollection.common.config.Properties;
 
 /**
  * TODO: Class description here.

@@ -1,8 +1,8 @@
 package com.vcc.bigdata.collect.model;
 
 import com.vcc.bigdata.collect.Constants;
-import com.vcc.bigdata.common.utils.Maps;
-import com.vcc.bigdata.common.utils.Strings;
+import com.datacollection.common.utils.Maps;
+import com.datacollection.common.utils.Strings;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,7 +1,7 @@
 package com.vcc.bigdata.extract.mongo;
 
 import com.mongodb.BasicDBObject;
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.extract.model.GenericModel;
 import org.bson.Document;
 

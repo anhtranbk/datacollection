@@ -5,9 +5,9 @@ import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.vcc.bigdata.common.concurrency.FutureAdapter;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.utils.IterableAdapter;
+import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.utils.IterableAdapter;
 import com.vcc.bigdata.platform.cassandra.AbstractRepository;
 
 import java.util.Collection;

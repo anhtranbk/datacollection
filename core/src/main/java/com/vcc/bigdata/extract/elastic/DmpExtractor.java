@@ -1,6 +1,6 @@
 package com.vcc.bigdata.extract.elastic;
 
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.extract.Extractor;
 import com.vcc.bigdata.extract.model.GenericModel;
 import com.vcc.bigdata.platform.elastic.ElasticClientProvider;

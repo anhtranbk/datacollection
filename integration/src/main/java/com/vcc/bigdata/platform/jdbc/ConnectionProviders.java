@@ -1,6 +1,6 @@
 package com.vcc.bigdata.platform.jdbc;
 
-import com.vcc.bigdata.common.utils.Reflects;
+import com.datacollection.common.utils.Reflects;
 
 import java.sql.Connection;
 import java.sql.SQLException;

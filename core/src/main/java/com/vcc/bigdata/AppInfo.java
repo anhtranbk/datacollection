@@ -1,6 +1,6 @@
 package com.vcc.bigdata;
 
-import com.vcc.bigdata.common.config.Configuration;
+import com.datacollection.common.config.Configuration;
 
 /**
  * TODO: Class description here.

@@ -1,7 +1,7 @@
 package com.vcc.bigdata.collect.wal;
 
-import com.vcc.bigdata.common.types.IdGenerator;
-import com.vcc.bigdata.common.types.SequenceIdGenerator;
+import com.datacollection.common.types.IdGenerator;
+import com.datacollection.common.types.SequenceIdGenerator;
 
 /**
  * Identify an WAL (write-ahead-log) file

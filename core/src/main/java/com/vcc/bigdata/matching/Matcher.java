@@ -1,13 +1,13 @@
 package com.vcc.bigdata.matching;
 
 import com.vcc.bigdata.collect.Constants;
-import com.vcc.bigdata.common.config.Configuration;
-import com.vcc.bigdata.common.config.Properties;
-import com.vcc.bigdata.common.lifecycle.LoopableLifeCycle;
-import com.vcc.bigdata.common.tasks.TaskManager;
-import com.vcc.bigdata.common.utils.Strings;
-import com.vcc.bigdata.common.utils.ThreadPool;
-import com.vcc.bigdata.common.utils.Threads;
+import com.datacollection.common.config.Configuration;
+import com.datacollection.common.config.Properties;
+import com.datacollection.common.lifecycle.LoopableLifeCycle;
+import com.datacollection.common.tasks.TaskManager;
+import com.datacollection.common.utils.Strings;
+import com.datacollection.common.utils.ThreadPool;
+import com.datacollection.common.utils.Threads;
 import com.vcc.bigdata.platform.hystrix.SyncCommand;
 import com.vcc.bigdata.matching.algorithms.MatchingAlgorithm;
 import com.vcc.bigdata.matching.algorithms.PhoneEmailMatching;

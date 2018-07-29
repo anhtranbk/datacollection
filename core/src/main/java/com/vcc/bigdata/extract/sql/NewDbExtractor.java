@@ -5,8 +5,8 @@ import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.extract.DataStream;
 import com.vcc.bigdata.extract.StreamExtractor;
 import com.vcc.bigdata.extract.model.GenericModel;
-import com.vcc.bigdata.platform.jdbc.ConnectionProviders;
-import com.vcc.bigdata.platform.jdbc.JdbcConfig;
+import com.datacollection.platform.jdbc.ConnectionProviders;
+import com.datacollection.platform.jdbc.JdbcConfig;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

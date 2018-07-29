@@ -1,8 +1,8 @@
 package com.vcc.bigdata.jobs.syncprofile;
 
 import com.datacollection.common.utils.DateTimes;
-import com.vcc.bigdata.platform.hystrix.SyncCommand;
-import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
+import com.datacollection.platform.hystrix.SyncCommand;
+import com.datacollection.platform.elastic.ElasticBulkInsert;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

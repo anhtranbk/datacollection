@@ -11,7 +11,7 @@ import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
-import com.vcc.bigdata.platform.kafka.KafkaMsgBrokerFactory;
+import com.datacollection.platform.kafka.KafkaMsgBrokerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

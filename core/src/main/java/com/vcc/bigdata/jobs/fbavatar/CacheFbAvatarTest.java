@@ -8,8 +8,8 @@ import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.metric.CounterMetrics;
 import com.vcc.bigdata.metric.Counting;
 import com.vcc.bigdata.metric.Sl4jPublisher;
-import com.vcc.bigdata.platform.cassandra.CassandraClusterProvider;
-import com.vcc.bigdata.platform.cassandra.CassandraConfig;
+import com.datacollection.platform.cassandra.CassandraClusterProvider;
+import com.datacollection.platform.cassandra.CassandraConfig;
 
 import java.util.HashMap;
 import java.util.Map;

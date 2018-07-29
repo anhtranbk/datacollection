@@ -4,8 +4,8 @@ import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.DateTimes;
 import com.datacollection.common.utils.Maps;
-import com.vcc.bigdata.platform.elastic.ElasticClientProvider;
-import com.vcc.bigdata.platform.elastic.ElasticConfig;
+import com.datacollection.platform.elastic.ElasticClientProvider;
+import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.client.Client;
 

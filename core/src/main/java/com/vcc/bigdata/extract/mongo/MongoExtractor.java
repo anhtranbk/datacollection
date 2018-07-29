@@ -7,8 +7,8 @@ import com.mongodb.client.model.Filters;
 import com.datacollection.common.config.Configuration;
 import com.vcc.bigdata.extract.DataStream;
 import com.vcc.bigdata.extract.StreamExtractor;
-import com.vcc.bigdata.platform.mongo.MongoClientProvider;
-import com.vcc.bigdata.platform.mongo.MongoConfig;
+import com.datacollection.platform.mongo.MongoClientProvider;
+import com.datacollection.platform.mongo.MongoConfig;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 

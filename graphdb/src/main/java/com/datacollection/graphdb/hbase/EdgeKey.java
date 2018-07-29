@@ -1,7 +1,7 @@
 package com.datacollection.graphdb.hbase;
 
 import com.datacollection.graphdb.Direction;
-import com.vcc.bigdata.platform.hbase.HBaseUtils;
+import com.datacollection.platform.hbase.HBaseUtils;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.nio.ByteBuffer;

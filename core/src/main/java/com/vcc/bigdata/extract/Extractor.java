@@ -13,7 +13,7 @@ import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
 import com.vcc.bigdata.extract.model.GenericModel;
-import com.vcc.bigdata.platform.hystrix.SyncCommand;
+import com.datacollection.platform.hystrix.SyncCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

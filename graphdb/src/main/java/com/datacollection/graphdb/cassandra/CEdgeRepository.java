@@ -14,7 +14,7 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.IterableAdapter;
 import com.datacollection.common.utils.Maps;
 import com.datacollection.common.utils.Utils;
-import com.vcc.bigdata.platform.cassandra.AbstractRepository;
+import com.datacollection.platform.cassandra.AbstractRepository;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -1,7 +1,7 @@
 package com.datacollection.graphdb.hbase;
 
 import com.datacollection.common.config.Properties;
-import com.vcc.bigdata.platform.hbase.AbstractRepository;
+import com.datacollection.platform.hbase.AbstractRepository;
 import org.apache.hadoop.hbase.TableName;
 
 /**

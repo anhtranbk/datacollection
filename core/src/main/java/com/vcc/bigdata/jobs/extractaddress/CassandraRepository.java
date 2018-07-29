@@ -5,7 +5,7 @@ import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.IterableAdapter;
-import com.vcc.bigdata.platform.cassandra.AbstractRepository;
+import com.datacollection.platform.cassandra.AbstractRepository;
 
 /**
  * TODO: Class description here.

@@ -30,7 +30,7 @@ import com.datacollection.graphdb.GraphDatabase;
 import com.datacollection.graphdb.GraphSession;
 import com.datacollection.graphdb.Versions;
 import com.datacollection.graphdb.Vertex;
-import com.vcc.bigdata.platform.hystrix.SyncCommand;
+import com.datacollection.platform.hystrix.SyncCommand;
 import com.vcc.bigdata.service.notification.Message;
 import com.vcc.bigdata.service.notification.NotificationService;
 import com.vcc.bigdata.service.remoteconfig.RemoteConfiguration;

@@ -5,7 +5,7 @@ import com.datacollection.common.cache.LRUCache;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.Strings;
-import com.vcc.bigdata.platform.thrift.ThriftServer;
+import com.datacollection.platform.thrift.ThriftServer;
 import org.apache.thrift.TException;
 import org.apache.thrift.TMultiplexedProcessor;
 import org.apache.thrift.TProcessor;

@@ -8,7 +8,7 @@ import com.datacollection.common.tasks.TaskManager;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
-import com.vcc.bigdata.platform.hystrix.SyncCommand;
+import com.datacollection.platform.hystrix.SyncCommand;
 import com.vcc.bigdata.matching.algorithms.MatchingAlgorithm;
 import com.vcc.bigdata.matching.algorithms.PhoneEmailMatching;
 import com.vcc.bigdata.service.notification.Message;

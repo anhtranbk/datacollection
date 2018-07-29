@@ -1,9 +1,9 @@
 package com.vcc.bigdata.collect.fbavt;
 
 import com.datacollection.common.config.Properties;
-import com.vcc.bigdata.platform.thrift.ThriftClient;
-import com.vcc.bigdata.platform.thrift.ThriftClientProvider;
-import com.vcc.bigdata.platform.thrift.ThriftRuntimeException;
+import com.datacollection.platform.thrift.ThriftClient;
+import com.datacollection.platform.thrift.ThriftClientProvider;
+import com.datacollection.platform.thrift.ThriftRuntimeException;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
 import thriftgen.FbAvatarService;

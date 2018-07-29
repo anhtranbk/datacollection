@@ -15,10 +15,10 @@ import com.datacollection.common.utils.Threads;
 import com.vcc.bigdata.metric.Counter;
 import com.vcc.bigdata.metric.CounterMetrics;
 import com.vcc.bigdata.metric.Sl4jPublisher;
-import com.vcc.bigdata.platform.aerospike.AerospikeClientProvider;
-import com.vcc.bigdata.platform.aerospike.AerospikeConfig;
-import com.vcc.bigdata.platform.cassandra.CassandraClusterProvider;
-import com.vcc.bigdata.platform.cassandra.CassandraConfig;
+import com.datacollection.platform.aerospike.AerospikeClientProvider;
+import com.datacollection.platform.aerospike.AerospikeConfig;
+import com.datacollection.platform.cassandra.CassandraClusterProvider;
+import com.datacollection.platform.cassandra.CassandraConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

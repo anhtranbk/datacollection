@@ -6,9 +6,9 @@ import com.aerospike.client.Record;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.Strings;
-import com.vcc.bigdata.platform.hystrix.SyncCommand;
-import com.vcc.bigdata.platform.aerospike.AerospikeClientProvider;
-import com.vcc.bigdata.platform.aerospike.AerospikeConfig;
+import com.datacollection.platform.hystrix.SyncCommand;
+import com.datacollection.platform.aerospike.AerospikeClientProvider;
+import com.datacollection.platform.aerospike.AerospikeConfig;
 
 import java.io.Closeable;
 

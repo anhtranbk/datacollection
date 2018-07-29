@@ -15,7 +15,7 @@ import com.datacollection.common.utils.Maps;
 import com.datacollection.common.utils.Utils;
 import com.datacollection.graphdb.Vertex;
 import com.datacollection.graphdb.repository.VertexRepository;
-import com.vcc.bigdata.platform.cassandra.AbstractRepository;
+import com.datacollection.platform.cassandra.AbstractRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;

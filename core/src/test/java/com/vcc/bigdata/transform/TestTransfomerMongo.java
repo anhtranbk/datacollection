@@ -10,9 +10,9 @@ import com.vcc.bigdata.collect.transform.OrgTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.vcc.bigdata.extract.model.GenericModel;
-import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
-import com.vcc.bigdata.platform.mongo.MongoClientProvider;
-import com.vcc.bigdata.platform.mongo.MongoConfig;
+import com.datacollection.platform.elastic.ElasticBulkInsert;
+import com.datacollection.platform.mongo.MongoClientProvider;
+import com.datacollection.platform.mongo.MongoConfig;
 import org.bson.Document;
 import org.elasticsearch.action.bulk.BulkResponse;
 

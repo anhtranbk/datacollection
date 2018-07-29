@@ -4,7 +4,7 @@ import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.utils.Strings;
 import com.vcc.bigdata.extract.raw.xlsx.model.KeyValueModel;
-import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
+import com.datacollection.platform.elastic.ElasticBulkInsert;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.elasticsearch.action.bulk.BulkResponse;

@@ -12,7 +12,7 @@ import com.datacollection.common.utils.TimeKey;
 import com.datacollection.common.utils.Utils;
 import com.datacollection.graphdb.GraphDatabase;
 import com.vcc.bigdata.metric.MetricExporter;
-import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
+import com.datacollection.platform.elastic.ElasticBulkInsert;
 import com.vcc.bigdata.service.managejobs.JobDetail;
 import com.vcc.bigdata.service.managejobs.JobManager;
 import com.vcc.bigdata.service.notification.Message;

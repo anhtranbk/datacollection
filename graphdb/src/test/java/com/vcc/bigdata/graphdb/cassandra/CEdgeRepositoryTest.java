@@ -1,10 +1,11 @@
 package com.vcc.bigdata.graphdb.cassandra;
 
+import com.datacollection.graphdb.cassandra.CEdgeRepository;
 import com.google.common.collect.ImmutableMap;
 import com.datacollection.common.config.Configuration;
-import com.vcc.bigdata.graphdb.Direction;
-import com.vcc.bigdata.graphdb.Edge;
-import com.vcc.bigdata.graphdb.Vertex;
+import com.datacollection.graphdb.Direction;
+import com.datacollection.graphdb.Edge;
+import com.datacollection.graphdb.Vertex;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -2,12 +2,12 @@ package com.vcc.bigdata.matching;
 
 import com.vcc.bigdata.collect.Constants;
 import com.datacollection.common.config.Properties;
-import com.vcc.bigdata.graphdb.Direction;
-import com.vcc.bigdata.graphdb.Edge;
-import com.vcc.bigdata.graphdb.GraphDatabase;
-import com.vcc.bigdata.graphdb.GraphSession;
-import com.vcc.bigdata.graphdb.TagManager;
-import com.vcc.bigdata.graphdb.Vertex;
+import com.datacollection.graphdb.Direction;
+import com.datacollection.graphdb.Edge;
+import com.datacollection.graphdb.GraphDatabase;
+import com.datacollection.graphdb.GraphSession;
+import com.datacollection.graphdb.TagManager;
+import com.datacollection.graphdb.Vertex;
 
 import java.util.Collection;
 import java.util.Collections;

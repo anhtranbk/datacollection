@@ -1,13 +1,12 @@
 package com.vcc.bigdata.jobs.fbavatar;
 
-import com.vcc.bigdata.collect.fbavt.FbAvatarService;
 import com.vcc.bigdata.collect.model.Photo;
-import com.vcc.bigdata.graphdb.Direction;
-import com.vcc.bigdata.graphdb.Edge;
-import com.vcc.bigdata.graphdb.GraphSession;
-import com.vcc.bigdata.graphdb.Versions;
-import com.vcc.bigdata.graphdb.Vertex;
-import com.vcc.bigdata.graphdb.VertexSet;
+import com.datacollection.graphdb.Direction;
+import com.datacollection.graphdb.Edge;
+import com.datacollection.graphdb.GraphSession;
+import com.datacollection.graphdb.Versions;
+import com.datacollection.graphdb.Vertex;
+import com.datacollection.graphdb.VertexSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

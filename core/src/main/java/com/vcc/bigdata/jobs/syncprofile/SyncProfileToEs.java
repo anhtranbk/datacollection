@@ -10,7 +10,7 @@ import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.TimeKey;
 import com.datacollection.common.utils.Utils;
-import com.vcc.bigdata.graphdb.GraphDatabase;
+import com.datacollection.graphdb.GraphDatabase;
 import com.vcc.bigdata.metric.MetricExporter;
 import com.vcc.bigdata.platform.elastic.ElasticBulkInsert;
 import com.vcc.bigdata.service.managejobs.JobDetail;

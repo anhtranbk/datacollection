@@ -2,13 +2,13 @@ package com.vcc.bigdata.jobs.syncprofile;
 
 import com.vcc.bigdata.collect.Constants;
 import com.datacollection.common.utils.Utils;
-import com.vcc.bigdata.graphdb.Direction;
-import com.vcc.bigdata.graphdb.Edge;
-import com.vcc.bigdata.graphdb.GraphSession;
-import com.vcc.bigdata.graphdb.Versions;
-import com.vcc.bigdata.graphdb.Vertex;
-import com.vcc.bigdata.graphdb.traversal.Step;
-import com.vcc.bigdata.graphdb.traversal.Traversal;
+import com.datacollection.graphdb.Direction;
+import com.datacollection.graphdb.Edge;
+import com.datacollection.graphdb.GraphSession;
+import com.datacollection.graphdb.Versions;
+import com.datacollection.graphdb.Vertex;
+import com.datacollection.graphdb.traversal.Step;
+import com.datacollection.graphdb.traversal.Traversal;
 
 import java.util.HashMap;
 import java.util.HashSet;

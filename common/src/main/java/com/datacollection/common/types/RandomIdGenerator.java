@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RandomIdGenerator implements IdGenerator {
 
     private static final long EPOCH = 1483289999000L;
-    private static final long WORKER_ID = createWorkerIdentifier();
+    private static final long WORKER_ID = IdGenerator.createWorkerIdentifier();
     private static final AtomicInteger COUNTER = new AtomicInteger(new SecureRandom().nextInt());
 
     private static final int WORKER_BITS = 10;

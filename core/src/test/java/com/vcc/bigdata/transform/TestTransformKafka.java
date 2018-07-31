@@ -1,12 +1,12 @@
 package com.vcc.bigdata.transform;
 
 import com.google.gson.Gson;
-import com.vcc.bigdata.collect.model.GraphModel;
-import com.vcc.bigdata.collect.transform.ZambaTransformer;
+import com.datacollection.collect.model.GraphModel;
+import com.datacollection.collect.transform.ZambaTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
-import com.vcc.bigdata.extract.model.GenericModel;
+import com.datacollection.extract.model.GenericModel;
 import com.datacollection.platform.elastic.ElasticBulkInsert;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;

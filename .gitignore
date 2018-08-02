@@ -1,5 +1,6 @@
-/target
-/out
+target/
+out/
+*.class
 
 *.iml
 .idea/
@@ -14,7 +15,15 @@ build/
 
 run/
 index/
-src/test/java/test/
+playground/
 
 env/
+venv/
 .vscode
+/data/
+
+logs/
+log/
+*.log
+
+.DS_Store

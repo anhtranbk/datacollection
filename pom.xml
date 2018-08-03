@@ -11,10 +11,10 @@
   <version>0.1.1</version>
 
   <modules>
-    <module>core</module>
     <module>common</module>
-    <module>graphdb</module>
+    <module>core</module>
     <module>integration</module>
+    <module>example-app/graphdb</module>
   </modules>
 
   <properties>

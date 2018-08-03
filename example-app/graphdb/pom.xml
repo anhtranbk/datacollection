@@ -6,12 +6,11 @@
     <artifactId>datacollection-root</artifactId>
     <groupId>com.datacollection</groupId>
     <version>0.1.1</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
 
   <artifactId>datacollection-graphdb</artifactId>
-
-  <name>datacollection-graphdb</name>
-  <url>http://maven.apache.org</url>
+  <name>Data Collection simple graph database</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

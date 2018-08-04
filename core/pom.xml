@@ -8,9 +8,11 @@
     <artifactId>datacollection-root</artifactId>
     <groupId>com.datacollection</groupId>
     <version>0.1.1</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>datacollection-core</artifactId>
+  <name>Data Collection core functionalities</name>
 
   <dependencies>
     <dependency>

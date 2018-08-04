@@ -8,9 +8,7 @@
   </parent>
 
   <artifactId>datacollection-integration</artifactId>
-
-  <name>datacollection-integration</name>
-  <url>http://maven.apache.org</url>
+  <name>Data Collection integration platform</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

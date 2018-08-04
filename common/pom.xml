@@ -7,12 +7,11 @@
     <artifactId>datacollection-root</artifactId>
     <groupId>com.datacollection</groupId>
     <version>0.1.1</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>datacollection-common</artifactId>
-
-  <name>datacollection-common</name>
-  <url>http://maven.apache.org</url>
+  <name>Data Collection common utilities</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

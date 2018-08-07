@@ -8,10 +8,11 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>datacollection-hbase</artifactId>
+  <artifactId>datacollection-hystrix</artifactId>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hystrix.version>1.5.12</hystrix.version>
   </properties>
 
   <dependencies>
@@ -20,22 +21,17 @@
       <artifactId>datacollection-common</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <dependency>
-      <groupId>com.datacollection</groupId>
-      <artifactId>datacollection-hystrix</artifactId>
-      <version>${project.version}</version>
-    </dependency>
 
+    <!-- hystrix -->
     <dependency>
-      <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase-client</artifactId>
-      <version>1.3.1</version>
-      <exclusions>
-        <exclusion>
-          <groupId>io.netty</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>com.netflix.hystrix</groupId>
+      <artifactId>hystrix-core</artifactId>
+      <version>${hystrix.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.netflix.hystrix</groupId>
+      <artifactId>hystrix-metrics-event-stream</artifactId>
+      <version>${hystrix.version}</version>
     </dependency>
   </dependencies>
 </project>

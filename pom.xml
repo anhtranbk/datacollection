@@ -16,6 +16,7 @@
     <module>integration</module>
     <module>example-app/graphdb</module>
     <module>integration/cassandra</module>
+    <module>integration/hbase</module>
   </modules>
 
   <properties>

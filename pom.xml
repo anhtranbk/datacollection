@@ -19,6 +19,7 @@
     <module>integration/hbase</module>
     <module>integration/hystrix</module>
     <module>integration/mongodb</module>
+    <module>integration/jdbc</module>
   </modules>
 
   <properties>

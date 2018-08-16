@@ -20,6 +20,7 @@
     <module>integration/hystrix</module>
     <module>integration/mongodb</module>
     <module>integration/jdbc</module>
+    <module>integration/kafka</module>
   </modules>
 
   <properties>

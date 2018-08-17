@@ -21,6 +21,7 @@
     <module>integration/mongodb</module>
     <module>integration/jdbc</module>
     <module>integration/kafka</module>
+    <module>integration/elasticsearch</module>
   </modules>
 
   <properties>

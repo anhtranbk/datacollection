@@ -4,11 +4,6 @@ import com.datacollection.common.broker.BrokerFactory;
 import com.datacollection.common.broker.BrokerReader;
 import com.datacollection.common.broker.BrokerWriter;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class KafkaBrokerFactory implements BrokerFactory {
 
     @Override

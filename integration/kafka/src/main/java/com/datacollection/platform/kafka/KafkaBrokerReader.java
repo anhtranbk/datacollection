@@ -18,11 +18,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class KafkaBrokerReader extends AbstractBrokerReader {
 
     static final String KEY_MIN_RECORDS = "kafka.min.records";
@@ -32,7 +27,8 @@ public class KafkaBrokerReader extends AbstractBrokerReader {
     private static final Logger logger = LoggerFactory.getLogger(KafkaBrokerReader.class);
     private Collection<String> topics;
     private int numConsumers;
-    private int minRecords; // min number record to try retrieve before sent to handlers
+    // min number records to be retrieved before sending to handlers
+    private int minRecords;
     private ExecutorService executor;
     private Properties consumerProps;
 
@@ -60,7 +56,7 @@ public class KafkaBrokerReader extends AbstractBrokerReader {
         this.minRecords = props.getIntProperty(KEY_MIN_RECORDS, 100);
 
         this.numConsumers = props.getIntProperty(KEY_NUM_CONSUMERS, Runtime.getRuntime().availableProcessors());
-        // number executor threads equals number consumer
+        // number executor threads same as number consumers
         this.executor = Executors.newFixedThreadPool(numConsumers);
     }
 

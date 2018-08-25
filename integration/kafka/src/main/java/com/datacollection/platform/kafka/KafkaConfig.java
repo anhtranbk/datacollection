@@ -6,11 +6,6 @@ import com.datacollection.common.utils.Utils;
 
 import java.io.IOException;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class KafkaConfig {
 
     public static final String PRODUCER_ENV_KEY = "kafka.producer.conf";

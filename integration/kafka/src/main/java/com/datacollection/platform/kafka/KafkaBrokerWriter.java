@@ -11,11 +11,6 @@ import org.apache.log4j.Level;
 
 import java.util.concurrent.Future;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class KafkaBrokerWriter implements BrokerWriter {
 
     static final String KEY_KAFKA_TOPIC = "kafka.producer.topic";

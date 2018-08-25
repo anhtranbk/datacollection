@@ -2,8 +2,8 @@ package com.datacollection.collect;
 
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.mb.Record;
-import com.datacollection.common.mb.Records;
+import com.datacollection.common.broker.Record;
+import com.datacollection.common.broker.Records;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.extract.model.GenericModel;
 

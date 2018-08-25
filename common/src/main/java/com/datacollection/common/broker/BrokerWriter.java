@@ -1,4 +1,4 @@
-package com.datacollection.common.mb;
+package com.datacollection.common.broker;
 
 import com.datacollection.common.config.Configurable;
 
@@ -6,12 +6,7 @@ import java.io.Closeable;
 import java.io.Flushable;
 import java.util.concurrent.Future;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
-public interface MsgBrokerWriter extends Configurable, Closeable, Flushable {
+public interface BrokerWriter extends Configurable, Closeable, AutoCloseable, Flushable {
 
     Future<Long> write(byte[] b);
 

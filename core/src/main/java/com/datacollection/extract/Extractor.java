@@ -4,8 +4,8 @@ import com.google.common.base.Preconditions;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.LoopableLifeCycle;
-import com.datacollection.common.mb.MsgBrokerFactory;
-import com.datacollection.common.mb.MsgBrokerWriter;
+import com.datacollection.common.broker.BrokerFactory;
+import com.datacollection.common.broker.BrokerWriter;
 import com.datacollection.common.serialize.Serialization;
 import com.datacollection.common.serialize.Serializer;
 import com.datacollection.common.utils.Reflects;
@@ -40,7 +40,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
     private ExecutorService eventLoopExecutor;
     private IndexKeeper indexKeeper;
-    private MsgBrokerWriter msgBrokerWriter;
+    private BrokerWriter brokerWriter;
     private Serializer<GenericModel> serializer;
 
     public Extractor(String group, Configuration config) {
@@ -72,8 +72,8 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         Threads.stopThreadPool(eventLoopExecutor);
         logger.info("Worker event loop stopped");
 
-        msgBrokerWriter.flush();
-        msgBrokerWriter.close();
+        brokerWriter.flush();
+        brokerWriter.close();
     }
 
     @Override
@@ -82,14 +82,14 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     }
 
     private void initMessageBroker() {
-        MsgBrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
+        BrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
         logger.info("MessageBrokerFactory class: " + factory.getClass().getName());
         this.setMsgBrokerFactory(factory);
     }
 
-    public final void setMsgBrokerFactory(MsgBrokerFactory factory) {
-        this.msgBrokerWriter = factory.createWriter();
-        this.msgBrokerWriter.configure(this.props);
+    public final void setMsgBrokerFactory(BrokerFactory factory) {
+        this.brokerWriter = factory.getWriter();
+        this.brokerWriter.configure(this.props);
     }
 
     protected final void store(GenericModel model) {
@@ -107,7 +107,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         try {
             Preconditions.checkNotNull(model);
             byte[] b = serializer.serialize(model);
-            Future<Long> fut = msgBrokerWriter.write(b);
+            Future<Long> fut = brokerWriter.write(b);
             eventLoopExecutor.submit(() -> {
                 try {
                     long queueOrder = fut.get();

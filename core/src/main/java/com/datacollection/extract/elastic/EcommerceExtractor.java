@@ -1,7 +1,7 @@
 package com.datacollection.extract.elastic;
 
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.mb.MockMsgBrokerFactory;
+import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.extract.Extractor;
 import com.datacollection.extract.model.GenericModel;
@@ -105,7 +105,7 @@ public class EcommerceExtractor extends Extractor {
     public static void main(String[] args) {
         Configuration conf = new Configuration();
         Extractor extractor = new EcommerceExtractor(conf);
-        extractor.setMsgBrokerFactory(new MockMsgBrokerFactory());
+        extractor.setMsgBrokerFactory(new MockBrokerFactory());
         extractor.start();
     }
 }

@@ -1,10 +1,5 @@
-package com.datacollection.common.mb;
+package com.datacollection.common.broker;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public final class Record {
 
     private final byte[] data;

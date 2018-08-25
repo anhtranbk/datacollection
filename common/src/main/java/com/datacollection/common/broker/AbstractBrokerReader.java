@@ -1,4 +1,4 @@
-package com.datacollection.common.mb;
+package com.datacollection.common.broker;
 
 import com.datacollection.common.config.Properties;
 
@@ -6,20 +6,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
-public abstract class AbstractMsgBrokerReader implements MsgBrokerReader {
+public abstract class AbstractBrokerReader implements BrokerReader {
 
     private Properties props;
-    private final List<MsgHandler> handlers = new LinkedList<>();
+    private final List<BrokerRecordHandler> handlers = new LinkedList<>();
     private final AtomicBoolean running = new AtomicBoolean(false);
 
     @Override
     public void configure(Properties props) {
-        if (running()) throw new IllegalStateException("Cannot configure a consumer after it started");
+        if (isRunning()) throw new IllegalStateException("Cannot configure a consumer after it started");
         this.props = props;
     }
 
@@ -36,11 +31,11 @@ public abstract class AbstractMsgBrokerReader implements MsgBrokerReader {
     }
 
     @Override
-    public boolean running() {
+    public boolean isRunning() {
         return this.running.get();
     }
 
-    public final void addHandler(MsgHandler handler) {
+    public final void addHandler(BrokerRecordHandler handler) {
         handlers.add(handler);
     }
 
@@ -48,7 +43,7 @@ public abstract class AbstractMsgBrokerReader implements MsgBrokerReader {
         return this.props;
     }
 
-    public List<MsgHandler> handlers() {
+    public List<BrokerRecordHandler> handlers() {
         return this.handlers;
     }
 
@@ -57,7 +52,7 @@ public abstract class AbstractMsgBrokerReader implements MsgBrokerReader {
     protected abstract void doStop();
 
     protected void invokeHandlers(Records records) {
-        for (MsgHandler handler : handlers()) {
+        for (BrokerRecordHandler handler : handlers()) {
             handler.handle(records);
         }
     }

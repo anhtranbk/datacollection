@@ -2,7 +2,7 @@ package com.datacollection.platform.kafka;
 
 import com.datacollection.common.concurrency.FutureAdapter;
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.mb.MsgBrokerWriter;
+import com.datacollection.common.broker.BrokerWriter;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -16,18 +16,18 @@ import java.util.concurrent.Future;
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
-public class KafkaMsgBrokerWriter implements MsgBrokerWriter {
+public class KafkaBrokerWriter implements BrokerWriter {
 
     static final String KEY_KAFKA_TOPIC = "kafka.producer.topic";
 
     private String topic;
     private Producer<String, byte[]> producer;
 
-    public KafkaMsgBrokerWriter(Properties props) {
+    public KafkaBrokerWriter(Properties props) {
         this.configure(props);
     }
 
-    public KafkaMsgBrokerWriter() {
+    public KafkaBrokerWriter() {
     }
 
     @Override

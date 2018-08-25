@@ -4,7 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.mb.MockMsgBrokerFactory;
+import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.Extractor;
 import com.datacollection.extract.model.GenericModel;
@@ -68,7 +68,7 @@ public class OrgProfileExtractor extends MongoExtractor {
 
     public static void main(String[] args) {
         Extractor extractor = new OrgProfileExtractor(new Configuration());
-        extractor.setMsgBrokerFactory(new MockMsgBrokerFactory());
+        extractor.setMsgBrokerFactory(new MockBrokerFactory());
         extractor.start();
     }
 }

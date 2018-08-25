@@ -3,9 +3,9 @@ package com.datacollection.collect.transform;
 import com.google.common.util.concurrent.Futures;
 import com.google.gson.Gson;
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.mb.MsgBrokerFactory;
-import com.datacollection.common.mb.MsgBrokerReader;
-import com.datacollection.common.mb.MsgBrokerWriter;
+import com.datacollection.common.broker.BrokerFactory;
+import com.datacollection.common.broker.BrokerReader;
+import com.datacollection.common.broker.BrokerWriter;
 import com.datacollection.common.utils.Utils;
 import com.datacollection.extract.model.GenericModel;
 
@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
-public class TransformTester implements MsgBrokerFactory {
+public class TransformTester implements BrokerFactory {
 
     private final Gson gson = new Gson();
     private final DataTransformer transformer;
@@ -26,13 +26,13 @@ public class TransformTester implements MsgBrokerFactory {
     }
 
     @Override
-    public MsgBrokerReader createReader() {
+    public BrokerReader getReader() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public MsgBrokerWriter createWriter() {
-        return new MsgBrokerWriter() {
+    public BrokerWriter getWriter() {
+        return new BrokerWriter() {
             @Override
             public Future<Long> write(byte[] b) {
                 try {

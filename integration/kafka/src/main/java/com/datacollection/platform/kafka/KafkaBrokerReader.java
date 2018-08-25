@@ -1,9 +1,9 @@
 package com.datacollection.platform.kafka;
 
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.mb.AbstractMsgBrokerReader;
-import com.datacollection.common.mb.Record;
-import com.datacollection.common.mb.Records;
+import com.datacollection.common.broker.AbstractBrokerReader;
+import com.datacollection.common.broker.Record;
+import com.datacollection.common.broker.Records;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.Threads;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -23,25 +23,25 @@ import java.util.concurrent.TimeUnit;
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
-public class KafkaMsgBrokerReader extends AbstractMsgBrokerReader {
+public class KafkaBrokerReader extends AbstractBrokerReader {
 
     static final String KEY_MIN_RECORDS = "kafka.min.records";
     static final String KEY_TOPICS = "kafka.consumer.topics";
     static final String KEY_NUM_CONSUMERS = "kafka.num.consumers";
 
-    private static final Logger logger = LoggerFactory.getLogger(KafkaMsgBrokerReader.class);
+    private static final Logger logger = LoggerFactory.getLogger(KafkaBrokerReader.class);
     private Collection<String> topics;
     private int numConsumers;
     private int minRecords; // min number record to try retrieve before sent to handlers
     private ExecutorService executor;
     private Properties consumerProps;
 
-    public KafkaMsgBrokerReader(Properties p) {
+    public KafkaBrokerReader(Properties p) {
         this.configure(p);
     }
 
-    public KafkaMsgBrokerReader(Collection<String> topics, int numConsumers, int minRecords,
-                                ExecutorService executor, Properties consumerProps) {
+    public KafkaBrokerReader(Collection<String> topics, int numConsumers, int minRecords,
+                             ExecutorService executor, Properties consumerProps) {
         this.topics = topics;
         this.numConsumers = numConsumers;
         this.minRecords = minRecords;
@@ -49,7 +49,7 @@ public class KafkaMsgBrokerReader extends AbstractMsgBrokerReader {
         this.consumerProps = consumerProps;
     }
 
-    public KafkaMsgBrokerReader() {
+    public KafkaBrokerReader() {
     }
 
     @Override
@@ -78,14 +78,14 @@ public class KafkaMsgBrokerReader extends AbstractMsgBrokerReader {
     }
 
     protected void startKafkaConsumer(Collection<String> topics) {
-        while (running()) {
+        while (isRunning()) {
             try (KafkaConsumer<String, byte[]> consumer = new KafkaConsumer<>(consumerProps)) {
                 consumer.subscribe(topics);
                 logger.info(Thread.currentThread().getName() + " start subscribe topic: "
                         + Strings.join(topics, ","));
 
                 Records queueRecords = new Records();
-                while (running()) {
+                while (isRunning()) {
                     ConsumerRecords<String, byte[]> records = consumer.poll(100);
                     for (ConsumerRecord<String, byte[]> record : records) {
                         queueRecords.add(new Record(record.value(), record.timestamp()));

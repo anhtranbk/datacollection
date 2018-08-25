@@ -4,7 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.mb.MockMsgBrokerFactory;
+import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.model.GenericModel;
 import org.bson.Document;
@@ -64,7 +64,7 @@ public class LinkedInExtractor extends MongoExtractor {
 
     public static void main (String [] args){
         LinkedInExtractor linkedInExtractor = new LinkedInExtractor(new Configuration());
-        linkedInExtractor.setMsgBrokerFactory(new MockMsgBrokerFactory());
+        linkedInExtractor.setMsgBrokerFactory(new MockBrokerFactory());
         linkedInExtractor.start();
     }
 

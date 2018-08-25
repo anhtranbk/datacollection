@@ -1,4 +1,4 @@
-package com.datacollection.common.mb;
+package com.datacollection.common.broker;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -6,11 +6,6 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public final class Records implements Iterable<Record> {
 
     private final List<Record> records;

@@ -1,10 +1,10 @@
 package com.datacollection.collect;
 
+import com.datacollection.common.broker.BrokerFactory;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.AbstractLifeCycle;
-import com.datacollection.common.mb.MsgBrokerFactory;
-import com.datacollection.common.mb.MsgHandler;
-import com.datacollection.common.mb.MsgBrokerReader;
+import com.datacollection.common.broker.BrokerRecordHandler;
+import com.datacollection.common.broker.BrokerReader;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
 import com.datacollection.common.utils.Reflects;
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
-public abstract class Collector extends AbstractLifeCycle implements MsgHandler {
+public abstract class Collector extends AbstractLifeCycle implements BrokerRecordHandler {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected final Properties props;
@@ -31,7 +31,7 @@ public abstract class Collector extends AbstractLifeCycle implements MsgHandler 
 
     private Deserializer<GenericModel> deserializer;
     private CollectService service;
-    private MsgBrokerReader msgBrokerReader;
+    private BrokerReader brokerReader;
 
     public Collector(Properties props) {
         this.props = props;
@@ -40,8 +40,8 @@ public abstract class Collector extends AbstractLifeCycle implements MsgHandler 
     @Override
     protected void onInitialize() {
         // init message queue
-        msgBrokerReader = createMsgBrokerReader(props);
-        msgBrokerReader.addHandler(this);
+        brokerReader = createMsgBrokerReader(props);
+        brokerReader.addHandler(this);
         deserializer = Serialization.create(props.getProperty("mb.deserializer"),
                 GenericModel.class).deserializer();
 
@@ -56,24 +56,24 @@ public abstract class Collector extends AbstractLifeCycle implements MsgHandler 
 
     @Override
     public void onStart() {
-        msgBrokerReader.start();
+        brokerReader.start();
         counterMetrics.start();
         metricExporter.start();
     }
 
     @Override
     public void onStop() {
-        msgBrokerReader.stop();
+        brokerReader.stop();
         counterMetrics.stop();
         metricExporter.stop();
 //        service.close();
     }
 
-    protected MsgBrokerReader createMsgBrokerReader(Properties props) {
-        MsgBrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
+    protected BrokerReader createMsgBrokerReader(Properties props) {
+        BrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
         logger.info("MsgBrokerFactory class: " + factory.getClass().getName());
 
-        MsgBrokerReader reader = factory.createReader();
+        BrokerReader reader = factory.getReader();
         reader.configure(props);
         return reader;
     }
@@ -98,7 +98,7 @@ public abstract class Collector extends AbstractLifeCycle implements MsgHandler 
         return service;
     }
 
-    public MsgBrokerReader getMsgBrokerReader() {
-        return msgBrokerReader;
+    public BrokerReader getMsgBrokerReader() {
+        return brokerReader;
     }
 }

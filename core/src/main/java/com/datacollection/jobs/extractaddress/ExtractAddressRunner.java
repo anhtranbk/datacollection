@@ -2,16 +2,16 @@ package com.datacollection.jobs.extractaddress;
 
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.mb.MsgBrokerFactory;
-import com.datacollection.common.mb.MsgHandler;
-import com.datacollection.common.mb.MsgBrokerReader;
-import com.datacollection.common.mb.Record;
-import com.datacollection.common.mb.Records;
+import com.datacollection.common.broker.BrokerFactory;
+import com.datacollection.common.broker.BrokerRecordHandler;
+import com.datacollection.common.broker.BrokerReader;
+import com.datacollection.common.broker.Record;
+import com.datacollection.common.broker.Records;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.platform.kafka.KafkaMsgBrokerFactory;
+import com.datacollection.platform.kafka.KafkaBrokerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,12 +25,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by kumin on 01/09/2017.
  * Updated by tjeubaoit on 28/09/2017
  */
-public class ExtractAddressRunner implements MsgHandler {
+public class ExtractAddressRunner implements BrokerRecordHandler {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final List<Province> provinces;
-    private final MsgBrokerReader msgBrokerReader;
+    private final BrokerReader brokerReader;
     private final Deserializer<Profile> deserializer;
     private final ExtractAddressRepository repository;
     private final AtomicBoolean flagStop = new AtomicBoolean(false);
@@ -38,8 +38,8 @@ public class ExtractAddressRunner implements MsgHandler {
     public ExtractAddressRunner() {
         Properties props = new Configuration().toSubProperties("extract_address");
 
-        this.msgBrokerReader = this.createBrokerReader(props);
-        this.msgBrokerReader.addHandler(this);
+        this.brokerReader = this.createBrokerReader(props);
+        this.brokerReader.addHandler(this);
         this.deserializer = Serialization.create(props.getProperty("mb.deserializer"), Profile.class).deserializer();
 
         try {
@@ -58,11 +58,11 @@ public class ExtractAddressRunner implements MsgHandler {
         repository.close();
     }
 
-    private MsgBrokerReader createBrokerReader(Properties props) {
-        MsgBrokerFactory factory = new KafkaMsgBrokerFactory();
+    private BrokerReader createBrokerReader(Properties props) {
+        BrokerFactory factory = new KafkaBrokerFactory();
         logger.info("MessageBrokerFactory class: " + factory.getClass().getName());
 
-        MsgBrokerReader reader = factory.createReader();
+        BrokerReader reader = factory.getReader();
         reader.configure(props);
         return reader;
     }
@@ -104,6 +104,6 @@ public class ExtractAddressRunner implements MsgHandler {
 
     public static void main(String[] args) {
         ExtractAddressRunner aet = new ExtractAddressRunner();
-        aet.msgBrokerReader.start();
+        aet.brokerReader.start();
     }
 }

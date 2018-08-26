@@ -7,8 +7,8 @@
     <version>0.1.1</version>
   </parent>
 
-  <artifactId>datacollection-integration</artifactId>
-  <name>Data Collection integration platform</name>
+  <artifactId>datacollection-plugins</artifactId>
+  <name>Data Collection plugins</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

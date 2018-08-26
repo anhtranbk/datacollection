@@ -13,15 +13,15 @@
   <modules>
     <module>common</module>
     <module>core</module>
-    <module>integration</module>
+    <module>plugins</module>
     <module>example-app/graphdb</module>
-    <module>integration/cassandra</module>
-    <module>integration/hbase</module>
-    <module>integration/hystrix</module>
-    <module>integration/mongodb</module>
-    <module>integration/jdbc</module>
-    <module>integration/kafka</module>
-    <module>integration/elasticsearch</module>
+    <module>plugins/cassandra</module>
+    <module>plugins/hbase</module>
+    <module>plugins/hystrix</module>
+    <module>plugins/mongodb</module>
+    <module>plugins/jdbc</module>
+    <module>plugins/kafka</module>
+    <module>plugins/elasticsearch</module>
   </modules>
 
   <properties>

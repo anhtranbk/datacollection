@@ -17,7 +17,7 @@
   <dependencies>
     <dependency>
       <groupId>com.datacollection</groupId>
-      <artifactId>datacollection-integration</artifactId>
+      <artifactId>datacollection-plugins</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

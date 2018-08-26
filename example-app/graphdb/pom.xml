@@ -21,12 +21,17 @@
     <dependency>
       <groupId>com.datacollection</groupId>
       <artifactId>datacollection-common</artifactId>
-      <version>0.1.1</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.datacollection</groupId>
-      <artifactId>datacollection-integration</artifactId>
-      <version>0.1.1</version>
+      <artifactId>datacollection-cassandra</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.datacollection</groupId>
+      <artifactId>datacollection-hbase</artifactId>
+      <version>${project.version}</version>
     </dependency>
 
     <dependency>

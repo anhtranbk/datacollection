@@ -13,10 +13,11 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GenericModel extends Item {
     private MetaData metadata = new MetaData();
-    private final Map<String, Object> properties = new LinkedHashMap<>();
+    private Map<String, Object> properties;
 
     public GenericModel() {
         super();
+        this.properties = new LinkedHashMap<>();
     }
 
     public GenericModel(String id, String type, AbstractPost post) {
@@ -25,7 +26,7 @@ public class GenericModel extends Item {
 
     public GenericModel(String id, String type, Map<String, Object> properties) {
         super(id, type);
-        this.properties.putAll(properties);
+        this.properties = properties;
     }
 
     public Map<String, Object> getProperties() {
@@ -33,11 +34,20 @@ public class GenericModel extends Item {
     }
 
     public GenericModel setProperties(Map<String, Object> properties) {
-        this.properties.putAll(properties);
+        this.properties = properties;
         return this;
     }
 
-    public GenericModel putProperties(String key, Object value) {
+    public GenericModel putProperties(Map<String, Object> properties) {
+        this.properties.putAll(properties);
+        return this;
+    }
+    
+    public Object getProperty(String name) {
+        return properties.get(name);
+    }
+
+    public GenericModel setProperty(String key, Object value) {
         this.properties.put(key, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package com.datacollection.extract.elastic;
 
 import com.datacollection.common.config.Configuration;
+import com.datacollection.extract.EventType;
 import com.datacollection.extract.Extractor;
 import com.datacollection.extract.model.GenericModel;
 import com.datacollection.platform.elastic.ElasticClientProvider;
@@ -11,7 +12,6 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -61,13 +61,13 @@ public class DmpExtractor extends Extractor {
         Map<String, Object> post = new LinkedHashMap<>();
         post.put("domain", "dmp");
         if (source.get("phones") != null) {
-            post.put("phones", (Collection<String>) source.get("phones"));
+            post.put("phones", source.get("phones"));
         }
         if (source.get("emails") != null) {
-            post.put("emails", (Collection<String>) source.get("emails"));
+            post.put("emails", source.get("emails"));
         }
         if (source.get("idSrc") != null) {
-            post.put("viet_id", (Collection<String>) source.get("idSrc"));
+            post.put("viet_id", source.get("idSrc"));
         }
 
         String guid = source.get("id").toString();
@@ -80,13 +80,13 @@ public class DmpExtractor extends Extractor {
         if (sr.getHits().totalHits() > 0) {
             SearchHit dgHit = sr.getHits().getAt(0);
             if (dgHit.getSource().get("gender") != null) {
-                post.put("gender", this.getGender(Integer.valueOf(dgHit.getSource().get("gender").toString())));
+                post.put("gender", this.getGender(Integer.parseInt(dgHit.getSource().get("gender").toString())));
             }
             if (dgHit.getSource().get("age") != null) {
-                post.put("age", this.getAge(Integer.valueOf(dgHit.getSource().get("age").toString())));
+                post.put("age", this.getAge(Integer.parseInt(dgHit.getSource().get("age").toString())));
             }
         }
-        return new GenericModel(guid, GenericModel.TYPE_DMP, post);
+        return new GenericModel(guid, EventType.TYPE_DMP, post);
     }
 
 
@@ -119,5 +119,4 @@ public class DmpExtractor extends Extractor {
     public String getInterest(int no) {
         return null;
     }
-
 }

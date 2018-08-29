@@ -1,5 +1,6 @@
 package com.datacollection.extract.mongo;
 
+import com.datacollection.extract.EventType;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -26,7 +27,7 @@ public class OrgProfileExtractor extends MongoExtractor {
     @Override
     protected GenericModel extractData(Document document) {
         String id = document.getString("_id");
-        String type = GenericModel.TYPE_ORG;
+        String type = EventType.TYPE_ORG;
 
         document.put("_id", id);
         return new GenericModel(id, type, document);

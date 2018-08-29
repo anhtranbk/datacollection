@@ -3,6 +3,7 @@ package com.datacollection.extract.elastic;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.common.utils.Threads;
+import com.datacollection.extract.EventType;
 import com.datacollection.extract.Extractor;
 import com.datacollection.extract.model.GenericModel;
 import com.datacollection.platform.elastic.ElasticClientProvider;
@@ -16,11 +17,6 @@ import org.elasticsearch.search.SearchHit;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class EcommerceExtractor extends Extractor {
 
     private Client client;
@@ -95,7 +91,7 @@ public class EcommerceExtractor extends Extractor {
         String id = hit.getId();
 
         GenericModel model = new GenericModel();
-        model.setType(GenericModel.TYPE_ECOMMERCE);
+        model.setType(EventType.TYPE_ECOMMERCE);
         model.getPost().put("url", "es://ecommerce/profile/" + id);
         model.getPost().putAll(source);
 

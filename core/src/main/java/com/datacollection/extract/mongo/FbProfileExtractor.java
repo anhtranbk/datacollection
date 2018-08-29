@@ -1,6 +1,7 @@
 package com.datacollection.extract.mongo;
 
 import com.datacollection.common.config.Configuration;
+import com.datacollection.extract.EventType;
 import com.datacollection.extract.model.GenericModel;
 import org.bson.Document;
 
@@ -16,7 +17,7 @@ public class FbProfileExtractor extends MongoExtractor {
     @Override
     protected GenericModel extractData(Document document) {
         String id = document.getObjectId("_id").toHexString();
-        String type = GenericModel.TYPE_FB_PROFILE;
+        String type = EventType.TYPE_FB_PROFILE;
 
         document.put("_id", id);
 

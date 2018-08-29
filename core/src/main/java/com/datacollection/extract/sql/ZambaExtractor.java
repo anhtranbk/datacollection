@@ -3,6 +3,7 @@ package com.datacollection.extract.sql;
 import com.datacollection.common.ParserHelper;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.DataStream;
+import com.datacollection.extract.EventType;
 import com.datacollection.extract.StreamExtractor;
 import com.datacollection.extract.model.GenericModel;
 import com.datacollection.extract.model.ZambaPost;
@@ -95,7 +96,7 @@ public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
             post.putAll(zamba.toMap());
 
             String id = String.valueOf(rs.getInt("id"));
-            String type = GenericModel.TYPE_ZAMBA;
+            String type = EventType.TYPE_ZAMBA;
 
             return new GenericModel(id, type, post);
         } catch (Exception e) {

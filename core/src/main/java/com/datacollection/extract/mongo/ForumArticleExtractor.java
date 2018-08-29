@@ -1,5 +1,6 @@
 package com.datacollection.extract.mongo;
 
+import com.datacollection.extract.EventType;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -12,11 +13,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class ForumArticleExtractor extends MongoExtractor {
 
     static final long MIN_EPOCH = 1262278800000L;
@@ -29,7 +25,7 @@ public class ForumArticleExtractor extends MongoExtractor {
     @Override
     protected GenericModel extractData(Document document) {
         String id = document.getString("_id");
-        String type = GenericModel.TYPE_FORUM_ARTICLE;
+        String type = EventType.TYPE_FORUM_ARTICLE;
 
         return new GenericModel(id, type, document);
     }

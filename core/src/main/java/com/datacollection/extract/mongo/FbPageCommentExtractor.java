@@ -1,16 +1,12 @@
 package com.datacollection.extract.mongo;
 
+import com.datacollection.extract.EventType;
 import com.mongodb.BasicDBObject;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.model.GenericModel;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class FbPageCommentExtractor extends MongoExtractor {
 
     public FbPageCommentExtractor(Configuration config) {
@@ -20,7 +16,7 @@ public class FbPageCommentExtractor extends MongoExtractor {
     @Override
     protected GenericModel extractData(Document document) {
         String id = document.getObjectId("_id").toHexString();
-        String type = GenericModel.TYPE_FB_FANPAGE_COMMENT;
+        String type = EventType.TYPE_FB_FANPAGE_COMMENT;
 
         String postFbId = document.getString("PostFbId");
         if (postFbId == null) {

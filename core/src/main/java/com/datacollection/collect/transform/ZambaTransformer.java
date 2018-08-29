@@ -34,7 +34,7 @@ public class ZambaTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
 
         String domain = post.get("domain").toString();
         String userId = NullProtector.getOrNull(post, "user_id");
@@ -131,7 +131,7 @@ public class ZambaTransformer implements DataTransformer {
     }
 
     private History getHistory(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
         if (post.get("url") == null) return null;
 
         Map<String, Object> props = new HashMap<>();

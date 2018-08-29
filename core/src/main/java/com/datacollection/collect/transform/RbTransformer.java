@@ -20,7 +20,7 @@ public class RbTransformer implements DataTransformer {
     @Override
     public GraphModel transform(GenericModel generic) {
         GraphModel graphModel = new GraphModel();
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
         if (post != null) {
             History history = new History(generic.getType(), "rongbay.com", post.get("ad_id").toString());
             Profile profile = new Profile(Profile.TYPE_PERSON);

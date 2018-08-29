@@ -28,7 +28,7 @@ public class FbPagePostTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
         String content = post.get("Content").toString();
 
         String pageId = ParserHelper.parsePageId(post.get("PostFbId").toString());

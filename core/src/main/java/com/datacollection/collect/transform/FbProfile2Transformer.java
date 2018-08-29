@@ -46,7 +46,7 @@ public class FbProfile2Transformer implements DataTransformer {
     public GraphModel transform(GenericModel generic) {
         GraphModel graphModel = new GraphModel();
         try {
-            Map<String, Object> post = generic.getPost();
+            Map<String, Object> post = generic.getProperties();
             History history = new History(generic.getType(), Constants.FACEBOOK, post.get("baseUrl").toString());
 
             Profile userProfile = new Profile(Profile.TYPE_PERSON);

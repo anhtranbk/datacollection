@@ -28,7 +28,7 @@ public class FbGroupPostTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
         String content = post.get("Content").toString();
 
         Set<String> emails = regexHelper.extractEmails(content);

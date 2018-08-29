@@ -92,8 +92,8 @@ public class EcommerceExtractor extends Extractor {
 
         GenericModel model = new GenericModel();
         model.setType(EventType.TYPE_ECOMMERCE);
-        model.getPost().put("url", "es://ecommerce/profile/" + id);
-        model.getPost().putAll(source);
+        model.getProperties().put("url", "es://ecommerce/profile/" + id);
+        model.getProperties().putAll(source);
 
         return model;
     }

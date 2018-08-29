@@ -27,7 +27,7 @@ public class OrgTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
         GraphModel graphModel = new GraphModel();
         String title = post.get("Title").toString().toLowerCase();
         Profile orgProfile = new Profile(this.getTypeFromTitle(title), title);

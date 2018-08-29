@@ -28,7 +28,7 @@ public class DmpTransformer implements DataTransformer {
     @Override
     public GraphModel transform(GenericModel generic) {
         if (generic.getId().equals("-1")) return null;
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
 
         GraphModel graphModel = new GraphModel();
 

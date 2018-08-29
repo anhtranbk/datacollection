@@ -25,7 +25,7 @@ public class ForumArtTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
 
         String author = post.getOrDefault("Author", "").toString();
         String url = post.get("Url").toString();

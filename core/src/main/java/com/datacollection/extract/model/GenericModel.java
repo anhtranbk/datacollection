@@ -5,6 +5,7 @@ import com.datacollection.entity.MetaData;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GenericModel extends Item {
     private MetaData metadata = new MetaData();
-    private Map<String, Object> post = new LinkedHashMap<>();
+    private final Map<String, Object> properties = new LinkedHashMap<>();
 
     public GenericModel() {
         super();
@@ -22,17 +23,22 @@ public class GenericModel extends Item {
         this(id, type, post.toMap());
     }
 
-    public GenericModel(String id, String type, Map<String, Object> postMap) {
+    public GenericModel(String id, String type, Map<String, Object> properties) {
         super(id, type);
-        this.post.putAll(postMap);
+        this.properties.putAll(properties);
     }
 
-    public Map<String, Object> getPost() {
-        return post;
+    public Map<String, Object> getProperties() {
+        return Collections.unmodifiableMap(properties);
     }
 
-    public GenericModel setPost(Map<String, Object> post) {
-        this.post = post;
+    public GenericModel setProperties(Map<String, Object> properties) {
+        this.properties.putAll(properties);
+        return this;
+    }
+
+    public GenericModel putProperties(String key, Object value) {
+        this.properties.put(key, value);
         return this;
     }
 

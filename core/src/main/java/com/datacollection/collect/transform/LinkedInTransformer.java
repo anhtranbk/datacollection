@@ -24,7 +24,7 @@ public class LinkedInTransformer implements DataTransformer {
     @Override
     public GraphModel transform(GenericModel generic) {
         GraphModel graphModel = new GraphModel();
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
 
         Profile person = new Profile(Profile.TYPE_PERSON);
         History history = new History(generic.getType(), "linkedin", post.get("Url").toString());

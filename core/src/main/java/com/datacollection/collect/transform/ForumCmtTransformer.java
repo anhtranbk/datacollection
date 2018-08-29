@@ -25,7 +25,7 @@ public class ForumCmtTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
 
         String author = post.getOrDefault("UserPost", "").toString();
         String url = post.get("UrlPage").toString();

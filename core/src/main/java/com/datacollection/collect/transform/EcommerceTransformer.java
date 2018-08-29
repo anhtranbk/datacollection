@@ -27,7 +27,7 @@ public class EcommerceTransformer implements DataTransformer {
 
     @Override
     public GraphModel transform(GenericModel generic) {
-        Map<String, Object> post = generic.getPost();
+        Map<String, Object> post = generic.getProperties();
         Preconditions.checkNotNull(post);
 
         String source = convertSource(post.get("source_name").toString());

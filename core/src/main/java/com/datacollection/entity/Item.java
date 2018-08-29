@@ -21,6 +21,7 @@ public class Item {
     public Item(String id, String type, String scope) {
         this.id = id;
         this.type = type;
+        this.scope = scope;
     }
 
     @Override
@@ -54,7 +55,8 @@ public class Item {
         return scope;
     }
 
-    public void setScope(String scope) {
+    public Item setScope(String scope) {
         this.scope = scope;
+        return this;
     }
 }

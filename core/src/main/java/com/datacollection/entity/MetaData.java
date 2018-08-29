@@ -16,55 +16,62 @@ public class MetaData extends Item {
         return name;
     }
 
-    public void setName(String name) {
+    public MetaData setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public MetaData setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public MetaData setTags(List<String> tags) {
         this.tags = tags;
+        return this;
     }
 
     public List<String> getSystemTags() {
         return systemTags;
     }
 
-    public void setSystemTags(List<String> systemTags) {
+    public MetaData setSystemTags(List<String> systemTags) {
         this.systemTags = systemTags;
+        return this;
     }
 
     public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public MetaData setEnabled(boolean enabled) {
         this.enabled = enabled;
+        return this;
     }
 
     public boolean isHidden() {
         return hidden;
     }
 
-    public void setHidden(boolean hidden) {
+    public MetaData setHidden(boolean hidden) {
         this.hidden = hidden;
+        return this;
     }
 
     public boolean isReadOnly() {
         return readOnly;
     }
 
-    public void setReadOnly(boolean readOnly) {
+    public MetaData setReadOnly(boolean readOnly) {
         this.readOnly = readOnly;
+        return this;
     }
 }

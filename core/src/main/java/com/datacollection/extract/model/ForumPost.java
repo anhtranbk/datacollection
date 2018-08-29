@@ -7,11 +7,6 @@ import org.apache.avro.reflect.Nullable;
 
 import java.io.Serializable;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ForumPost extends AbstractPost implements Serializable {

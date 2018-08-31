@@ -42,7 +42,7 @@ public class GenericModel extends Item {
         this.properties.putAll(properties);
         return this;
     }
-    
+
     public Object getProperty(String name) {
         return properties.get(name);
     }

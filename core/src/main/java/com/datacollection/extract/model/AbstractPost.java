@@ -1,19 +1,11 @@
 package com.datacollection.extract.model;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.datacollection.common.utils.JsonUtils;
 import org.apache.avro.reflect.Nullable;
 
-import java.io.IOException;
 import java.util.Map;
 
 public abstract class AbstractPost {
-
-    private static final ObjectMapper om;
-    static {
-        om = new ObjectMapper();
-        om.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-    }
 
     public static AbstractPost empty() {
         return new AbstractPost() {};
@@ -23,15 +15,10 @@ public abstract class AbstractPost {
     public String content;
 
     public String toJson() {
-        try {
-            return om.writeValueAsString(this);
-        } catch (IOException e) {
-            return toString();
-        }
+        return JsonUtils.toJson(this);
     }
 
-    @SuppressWarnings("unchecked")
     public Map<String, Object> toMap() {
-        return om.convertValue(this, Map.class);
+        return JsonUtils.toMap(this);
     }
 }

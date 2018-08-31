@@ -1,8 +1,6 @@
 package com.datacollection.common.utils;
 
 import com.datacollection.common.config.Properties;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,34 +21,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class Utils {
-
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
-    public static String toJson(Object object) {
-        try {
-            return OBJECT_MAPPER.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            return "{}";
-        }
-    }
-
-    public static <T> T fromJson(String input, Class<T> tClass) throws IOException {
-        return OBJECT_MAPPER.readValue(input, tClass);
-    }
-
-    public static <T> T fromJson(String input, Class<T> tClass, T defVal) {
-        try {
-            return OBJECT_MAPPER.readValue(input, tClass);
-        } catch (IOException e) {
-            return defVal;
-        }
-    }
 
     @SuppressWarnings("unchecked")
     public static <T> int compare(Comparable<T> c1, Comparable<T> c2) {

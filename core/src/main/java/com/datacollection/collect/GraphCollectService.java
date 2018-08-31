@@ -1,5 +1,6 @@
 package com.datacollection.collect;
 
+import com.datacollection.common.utils.JsonUtils;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.datacollection.collect.fbavt.FbAvatarService;
@@ -22,7 +23,6 @@ import com.datacollection.common.types.IdGenerator;
 import com.datacollection.common.types.RandomIdGenerator;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.TimeKey;
-import com.datacollection.common.utils.Utils;
 import com.datacollection.extract.model.GenericModel;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;
@@ -46,11 +46,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class GraphCollectService implements CollectService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -280,9 +275,9 @@ public class GraphCollectService implements CollectService {
             DataTransformer transformer = DataTransformer.create(generic.getType());
             return transformer.transform(generic);
         } catch (TransformException e) {
-//            logger.info("Record ignored, message [" + e.getMessage() + "] " + generic);
+            logger.debug("Record ignored, message [" + e.getMessage() + "] " + generic);
         } catch (RuntimeException e) {
-            logger.warn("Transform failed: " + Utils.toJson(generic), e);
+            logger.warn("Transform failed: " + JsonUtils.toJson(generic), e);
         }
         return null;
     }

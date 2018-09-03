@@ -20,10 +20,6 @@ public class GenericModel extends Item {
         this.properties = new LinkedHashMap<>();
     }
 
-    public GenericModel(String id, String type, AbstractPost post) {
-        this(id, type, post.toMap());
-    }
-
     public GenericModel(String id, String type, Map<String, Object> properties) {
         super(id, type);
         this.properties = properties;

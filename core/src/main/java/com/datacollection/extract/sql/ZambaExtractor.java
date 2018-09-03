@@ -2,6 +2,7 @@ package com.datacollection.extract.sql;
 
 import com.datacollection.common.ParserHelper;
 import com.datacollection.common.config.Configuration;
+import com.datacollection.common.utils.JsonUtils;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.StreamExtractor;
@@ -93,7 +94,7 @@ public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
             post.put("phone", rs.getString("phone"));
             post.put("profile_url", rs.getString("UrlContainContact"));
 
-            post.putAll(zamba.toMap());
+            post.putAll(JsonUtils.toMap(zamba));
 
             String id = String.valueOf(rs.getInt("id"));
             String type = EventType.TYPE_ZAMBA;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class EcommercePost extends AbstractPost {
+public class EcommercePost extends Post {
 
     public String full_name;
     public String user_name;

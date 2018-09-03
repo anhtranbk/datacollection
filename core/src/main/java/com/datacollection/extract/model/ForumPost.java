@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class ForumPost extends AbstractPost implements Serializable {
+public class ForumPost extends Post implements Serializable {
 
     @JsonProperty("user_name")
     @Nullable

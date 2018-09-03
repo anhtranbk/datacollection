@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class FacebookPost extends AbstractPost implements Serializable {
+public class FacebookPost extends Post implements Serializable {
 
     @JsonProperty("user_name")
     @Nullable

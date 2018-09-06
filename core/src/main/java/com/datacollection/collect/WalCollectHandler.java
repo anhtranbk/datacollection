@@ -11,7 +11,7 @@ import com.datacollection.common.io.FileHelper;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.metric.Counter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

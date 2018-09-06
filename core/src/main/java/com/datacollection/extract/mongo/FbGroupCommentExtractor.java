@@ -3,7 +3,7 @@ package com.datacollection.extract.mongo;
 import com.datacollection.extract.EventType;
 import com.mongodb.BasicDBObject;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 

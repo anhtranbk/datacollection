@@ -5,7 +5,7 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.broker.Record;
 import com.datacollection.common.broker.Records;
 import com.datacollection.common.utils.Threads;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

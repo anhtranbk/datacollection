@@ -8,7 +8,7 @@ import com.datacollection.common.config.Configuration;
 import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.Extractor;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import org.bson.Document;
 
 import java.text.DateFormat;

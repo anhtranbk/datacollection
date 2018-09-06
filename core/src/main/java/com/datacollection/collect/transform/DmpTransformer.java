@@ -6,7 +6,7 @@ import com.datacollection.collect.model.History;
 import com.datacollection.collect.model.Profile;
 import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.ProfileRegexHelper;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.util.Arrays;
 import java.util.Collection;

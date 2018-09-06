@@ -3,7 +3,7 @@ package com.datacollection.extract.elastic;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.Extractor;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.platform.elastic.ElasticClientProvider;
 import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.search.SearchResponse;

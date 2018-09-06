@@ -12,7 +12,7 @@ import com.datacollection.common.utils.Reflects;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.platform.hystrix.SyncCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -4,7 +4,7 @@ import com.datacollection.common.config.Configuration;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.util.concurrent.ExecutorService;
 

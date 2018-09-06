@@ -5,7 +5,7 @@ import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.Extractor;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.platform.elastic.ElasticClientProvider;
 import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.search.SearchResponse;

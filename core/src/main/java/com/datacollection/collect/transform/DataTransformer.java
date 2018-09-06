@@ -2,7 +2,7 @@ package com.datacollection.collect.transform;
 
 import com.datacollection.collect.model.GraphModel;
 import com.datacollection.extract.EventType;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 public interface DataTransformer {
 

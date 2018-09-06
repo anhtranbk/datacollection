@@ -1,7 +1,5 @@
-package com.datacollection.extract.model;
+package com.datacollection.entity;
 
-import com.datacollection.entity.Item;
-import com.datacollection.entity.MetaData;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 

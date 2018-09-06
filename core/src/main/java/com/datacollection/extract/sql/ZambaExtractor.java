@@ -6,7 +6,7 @@ import com.datacollection.common.utils.JsonUtils;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.StreamExtractor;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.extract.model.ZambaPost;
 import com.datacollection.platform.jdbc.ConnectionProviders;
 import com.datacollection.platform.jdbc.JdbcConfig;

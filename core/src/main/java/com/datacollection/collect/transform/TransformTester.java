@@ -7,7 +7,7 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.broker.BrokerFactory;
 import com.datacollection.common.broker.BrokerReader;
 import com.datacollection.common.broker.BrokerWriter;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.util.concurrent.Future;
 

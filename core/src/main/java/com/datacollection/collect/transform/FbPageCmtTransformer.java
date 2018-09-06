@@ -13,7 +13,7 @@ import com.datacollection.common.ParserHelper;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.Maps;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.util.Map;
 import java.util.Set;

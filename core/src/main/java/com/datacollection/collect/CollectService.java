@@ -1,7 +1,7 @@
 package com.datacollection.collect;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.io.Closeable;
 

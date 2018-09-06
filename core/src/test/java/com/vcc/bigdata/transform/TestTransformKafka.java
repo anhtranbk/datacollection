@@ -6,7 +6,7 @@ import com.datacollection.collect.transform.ZambaTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.platform.elastic.ElasticBulkInsert;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;

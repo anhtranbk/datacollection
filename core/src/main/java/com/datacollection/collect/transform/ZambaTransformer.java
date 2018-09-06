@@ -11,7 +11,7 @@ import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.NullProtector;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.text.DateFormat;
 import java.text.ParseException;

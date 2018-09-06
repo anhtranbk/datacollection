@@ -9,7 +9,7 @@ import com.datacollection.collect.model.GraphModel;
 import com.datacollection.collect.transform.OrgTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.platform.elastic.ElasticBulkInsert;
 import com.datacollection.platform.mongo.MongoClientProvider;
 import com.datacollection.platform.mongo.MongoConfig;

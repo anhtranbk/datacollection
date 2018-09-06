@@ -23,7 +23,7 @@ import com.datacollection.common.types.IdGenerator;
 import com.datacollection.common.types.RandomIdGenerator;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.TimeKey;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;
 import com.datacollection.graphdb.GraphDatabase;

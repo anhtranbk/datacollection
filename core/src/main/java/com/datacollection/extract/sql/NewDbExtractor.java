@@ -4,7 +4,7 @@ import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.StreamExtractor;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 import com.datacollection.platform.jdbc.ConnectionProviders;
 import com.datacollection.platform.jdbc.JdbcConfig;
 

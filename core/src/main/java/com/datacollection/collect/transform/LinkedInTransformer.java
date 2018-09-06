@@ -9,7 +9,7 @@ import com.datacollection.collect.model.Organization;
 import com.datacollection.collect.model.Profile;
 import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.extract.model.GenericModel;
+import com.datacollection.entity.GenericModel;
 
 import java.util.List;
 import java.util.Map;

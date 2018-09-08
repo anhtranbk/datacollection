@@ -11,7 +11,7 @@ import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.NullProtector;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -33,7 +33,7 @@ public class ZambaTransformer implements DataTransformer {
     }
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         Map<String, Object> post = generic.getProperties();
 
         String domain = post.get("domain").toString();
@@ -130,7 +130,7 @@ public class ZambaTransformer implements DataTransformer {
         }
     }
 
-    private History getHistory(GenericModel generic) {
+    private History getHistory(Event generic) {
         Map<String, Object> post = generic.getProperties();
         if (post.get("url") == null) return null;
 

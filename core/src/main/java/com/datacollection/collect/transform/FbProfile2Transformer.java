@@ -15,7 +15,7 @@ import com.datacollection.collect.model.Profile;
 import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.NullProtector;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,7 +43,7 @@ public class FbProfile2Transformer implements DataTransformer {
     }
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         GraphModel graphModel = new GraphModel();
         try {
             Map<String, Object> post = generic.getProperties();

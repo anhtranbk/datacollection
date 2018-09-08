@@ -7,18 +7,19 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@SuppressWarnings("UnusedReturnValue")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class GenericModel extends Item {
+public class Event extends Item {
     private MetaData metadata = new MetaData();
     private Map<String, Object> properties;
 
-    public GenericModel() {
+    public Event() {
         super();
         this.properties = new LinkedHashMap<>();
     }
 
-    public GenericModel(String id, String type, Map<String, Object> properties) {
+    public Event(String id, String type, Map<String, Object> properties) {
         super(id, type);
         this.properties = properties;
     }
@@ -27,12 +28,12 @@ public class GenericModel extends Item {
         return Collections.unmodifiableMap(properties);
     }
 
-    public GenericModel setProperties(Map<String, Object> properties) {
+    public Event setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }
 
-    public GenericModel putProperties(Map<String, Object> properties) {
+    public Event putProperties(Map<String, Object> properties) {
         this.properties.putAll(properties);
         return this;
     }
@@ -41,7 +42,7 @@ public class GenericModel extends Item {
         return properties.get(name);
     }
 
-    public GenericModel setProperty(String key, Object value) {
+    public Event setProperty(String key, Object value) {
         this.properties.put(key, value);
         return this;
     }
@@ -50,7 +51,7 @@ public class GenericModel extends Item {
         return metadata;
     }
 
-    public GenericModel setMetadata(MetaData metadata) {
+    public Event setMetadata(MetaData metadata) {
         this.metadata = metadata;
         return this;
     }

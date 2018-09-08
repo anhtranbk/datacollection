@@ -4,15 +4,10 @@ import com.datacollection.common.config.Configuration;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.concurrent.ExecutorService;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public abstract class StreamExtractor<TSource> extends Extractor {
 
     static final String KEY_POOL_SIZE = "extract.threadpool.core.size";
@@ -57,7 +52,7 @@ public abstract class StreamExtractor<TSource> extends Extractor {
         Threads.stopThreadPool(workerExecutor);
     }
 
-    protected abstract GenericModel extractData(TSource document);
+    protected abstract Event extractData(TSource source);
 
     protected abstract DataStream<TSource> openDataStream();
 }

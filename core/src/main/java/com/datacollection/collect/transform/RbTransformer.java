@@ -6,7 +6,7 @@ import com.datacollection.collect.model.History;
 import com.datacollection.collect.model.Profile;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -18,7 +18,7 @@ public class RbTransformer implements DataTransformer {
     private final ProfileRegexHelper regexHelper = new ProfileRegexHelper();
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         GraphModel graphModel = new GraphModel();
         Map<String, Object> post = generic.getProperties();
         if (post != null) {

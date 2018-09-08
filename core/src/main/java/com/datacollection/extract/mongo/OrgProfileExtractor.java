@@ -8,7 +8,7 @@ import com.datacollection.common.config.Configuration;
 import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.Extractor;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import org.bson.Document;
 
 import java.text.DateFormat;
@@ -25,12 +25,12 @@ public class OrgProfileExtractor extends MongoExtractor {
     }
 
     @Override
-    protected GenericModel extractData(Document document) {
+    protected Event extractData(Document document) {
         String id = document.getString("_id");
         String type = EventType.TYPE_ORG;
 
         document.put("_id", id);
-        return new GenericModel(id, type, document);
+        return new Event(id, type, document);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class OrgProfileExtractor extends MongoExtractor {
     }
 
     @Override
-    protected void onRecordProcessed(GenericModel model, long queueOrder, Object attachment) {
+    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
         Document doc = (Document) attachment;
         storeIndex(df.format(doc.getDate("GetDate")), queueOrder);
     }

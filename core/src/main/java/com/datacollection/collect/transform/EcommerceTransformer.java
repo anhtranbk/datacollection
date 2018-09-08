@@ -11,7 +11,7 @@ import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,7 +26,7 @@ public class EcommerceTransformer implements DataTransformer {
     }
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         Map<String, Object> post = generic.getProperties();
         Preconditions.checkNotNull(post);
 

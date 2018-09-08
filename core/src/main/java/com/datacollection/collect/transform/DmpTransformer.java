@@ -6,7 +6,7 @@ import com.datacollection.collect.model.History;
 import com.datacollection.collect.model.Profile;
 import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.ProfileRegexHelper;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,7 +26,7 @@ public class DmpTransformer implements DataTransformer {
 
     @SuppressWarnings("unchecked")
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         if (generic.getId().equals("-1")) return null;
         Map<String, Object> post = generic.getProperties();
 

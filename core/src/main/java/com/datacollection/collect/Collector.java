@@ -8,7 +8,7 @@ import com.datacollection.common.broker.BrokerReader;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
 import com.datacollection.common.utils.Reflects;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.metric.Counter;
 import com.datacollection.metric.CounterMetrics;
 import com.datacollection.metric.MetricExporter;
@@ -29,7 +29,7 @@ public abstract class Collector extends AbstractLifeCycle implements BrokerRecor
     private CounterMetrics counterMetrics;
     private MetricExporter metricExporter;
 
-    private Deserializer<GenericModel> deserializer;
+    private Deserializer<Event> deserializer;
     private CollectService service;
     private BrokerReader brokerReader;
 
@@ -42,8 +42,7 @@ public abstract class Collector extends AbstractLifeCycle implements BrokerRecor
         // init message queue
         brokerReader = createMsgBrokerReader(props);
         brokerReader.addHandler(this);
-        deserializer = Serialization.create(props.getProperty("mb.deserializer"),
-                GenericModel.class).deserializer();
+        deserializer = Serialization.create(props.getProperty("mb.deserializer"), Event.class).deserializer();
 
         // init main services
         service = new GraphCollectService(props);
@@ -90,7 +89,7 @@ public abstract class Collector extends AbstractLifeCycle implements BrokerRecor
         return counterMetrics;
     }
 
-    public Deserializer<GenericModel> getDeserializer() {
+    public Deserializer<Event> getDeserializer() {
         return deserializer;
     }
 

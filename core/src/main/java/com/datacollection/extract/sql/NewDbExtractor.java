@@ -3,8 +3,9 @@ package com.datacollection.extract.sql;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.DataStream;
+import com.datacollection.extract.EventType;
 import com.datacollection.extract.StreamExtractor;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.platform.jdbc.ConnectionProviders;
 import com.datacollection.platform.jdbc.JdbcConfig;
 
@@ -20,9 +21,11 @@ import java.util.Optional;
 import java.util.Set;
 
 public class NewDbExtractor extends StreamExtractor<ResultSetAdapter> {
+
     private static final String KEY_BATCH_SIZE = "jdbc.batch.size";
-    private Connection sqlConnect;
-    private ProfileRegexHelper regexHelper;
+    private final Connection sqlConnect;
+    private final ProfileRegexHelper regexHelper;
+
     public NewDbExtractor(Configuration config) {
         super("newdb", config);
         this.sqlConnect = ConnectionProviders.getOrCreate(group, new JdbcConfig(this.props));
@@ -63,7 +66,7 @@ public class NewDbExtractor extends StreamExtractor<ResultSetAdapter> {
     }
 
     @Override
-    protected GenericModel extractData(ResultSetAdapter rs) {
+    protected Event extractData(ResultSetAdapter rs) {
         try {
             Collection<String> phones = this.extractPhones(parseContent(rs));
             Collection<String> emails = this.extractEmails(parseContent(rs));
@@ -77,9 +80,7 @@ public class NewDbExtractor extends StreamExtractor<ResultSetAdapter> {
             post.put("emails", emails);
 
             String id = String.valueOf(rs.getInt("id"));
-//            String type = GenericModel.TYPE_NEWSDB;
-
-            return new GenericModel(id, null, post);
+            return new Event(id, EventType.TYPE_NEWSDB, post);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

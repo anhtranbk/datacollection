@@ -9,7 +9,7 @@ import com.datacollection.collect.model.GraphModel;
 import com.datacollection.collect.transform.OrgTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.platform.elastic.ElasticBulkInsert;
 import com.datacollection.platform.mongo.MongoClientProvider;
 import com.datacollection.platform.mongo.MongoConfig;
@@ -37,8 +37,8 @@ public class TestTransfomerMongo {
         FindIterable<Document> docs = collection.find();
         int count = 0;
         for (Document doc : docs) {
-            GenericModel genericModel = new GenericModel("", "", doc);
-            GraphModel gm = tf.transform(genericModel);
+            Event event = new Event("", "", doc);
+            GraphModel gm = tf.transform(event);
 //            count++;
 //            System.out.println("doc solved:"+count);
 //            collectService.collect(gm);

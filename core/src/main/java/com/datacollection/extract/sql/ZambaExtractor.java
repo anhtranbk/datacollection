@@ -6,7 +6,7 @@ import com.datacollection.common.utils.JsonUtils;
 import com.datacollection.extract.DataStream;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.StreamExtractor;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.extract.model.ZambaPost;
 import com.datacollection.platform.jdbc.ConnectionProviders;
 import com.datacollection.platform.jdbc.JdbcConfig;
@@ -70,7 +70,7 @@ public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
     }
 
     @Override
-    protected GenericModel extractData(ResultSetAdapter rs) {
+    protected Event extractData(ResultSetAdapter rs) {
         ZambaPost zamba = new ZambaPost();
         try {
             zamba.userId = String.valueOf(rs.getInt("userId"));
@@ -99,7 +99,7 @@ public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
             String id = String.valueOf(rs.getInt("id"));
             String type = EventType.TYPE_ZAMBA;
 
-            return new GenericModel(id, type, post);
+            return new Event(id, type, post);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

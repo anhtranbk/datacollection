@@ -3,7 +3,7 @@ package com.datacollection.extract.mongo;
 import com.datacollection.extract.EventType;
 import com.mongodb.BasicDBObject;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -14,7 +14,7 @@ public class FbPageCommentExtractor extends MongoExtractor {
     }
 
     @Override
-    protected GenericModel extractData(Document document) {
+    protected Event extractData(Document document) {
         String id = document.getObjectId("_id").toHexString();
         String type = EventType.TYPE_FB_FANPAGE_COMMENT;
 
@@ -42,6 +42,6 @@ public class FbPageCommentExtractor extends MongoExtractor {
 
         document.remove("Message");
 
-        return new GenericModel(id, type, document);
+        return new Event(id, type, document);
     }
 }

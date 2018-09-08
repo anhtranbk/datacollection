@@ -5,16 +5,11 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.broker.Record;
 import com.datacollection.common.broker.Records;
 import com.datacollection.common.utils.Threads;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class SimpleCollector extends Collector {
 
     public SimpleCollector(Properties props) {
@@ -26,8 +21,8 @@ public class SimpleCollector extends Collector {
         for (Record record : records) {
             while (isNotCanceled()) {
                 try {
-                    GenericModel generic = getDeserializer().deserialize(record.data());
-                    if (generic != null) getService().collect(generic).get(60, TimeUnit.SECONDS);
+                    Event event = getDeserializer().deserialize(record.data());
+                    if (event != null) getService().collect(event).get(60, TimeUnit.SECONDS);
                     break;
                 } catch (IOException e) {
                     logger.warn("Deserialize record error", e);

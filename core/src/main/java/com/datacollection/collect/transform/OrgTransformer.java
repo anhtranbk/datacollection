@@ -7,7 +7,7 @@ import com.datacollection.collect.model.Profile;
 import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,7 +26,7 @@ public class OrgTransformer implements DataTransformer {
     }
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         Map<String, Object> post = generic.getProperties();
         GraphModel graphModel = new GraphModel();
         String title = post.get("Title").toString().toLowerCase();

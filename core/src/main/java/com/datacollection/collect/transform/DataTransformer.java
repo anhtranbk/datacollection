@@ -2,7 +2,7 @@ package com.datacollection.collect.transform;
 
 import com.datacollection.collect.model.GraphModel;
 import com.datacollection.extract.EventType;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 public interface DataTransformer {
 
@@ -46,5 +46,5 @@ public interface DataTransformer {
         }
     }
 
-    GraphModel transform(GenericModel generic);
+    GraphModel transform(Event generic);
 }

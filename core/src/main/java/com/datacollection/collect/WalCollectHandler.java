@@ -1,5 +1,6 @@
 package com.datacollection.collect;
 
+import com.datacollection.common.utils.Strings;
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.Futures;
 import com.datacollection.collect.wal.WalException;
@@ -11,7 +12,7 @@ import com.datacollection.common.io.FileHelper;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.metric.Counter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import rx.schedulers.Schedulers;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -35,7 +37,7 @@ class WalCollectHandler implements Runnable {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final WalFile walFile;
     private final CollectService service;
-    private final Deserializer<GenericModel> deserializer;
+    private final Deserializer<Event> deserializer;
     private final Counter counter;
 
     private int total;
@@ -54,7 +56,7 @@ class WalCollectHandler implements Runnable {
     public WalCollectHandler(Properties props,
                              WalFile walFile,
                              CollectService service,
-                             Deserializer<GenericModel> deserializer,
+                             Deserializer<Event> deserializer,
                              Counter counter) {
         Preconditions.checkArgument(walFile.exists(), walFile.absolutePath() + " did not exists");
 
@@ -136,11 +138,11 @@ class WalCollectHandler implements Runnable {
     }
 
     private Future<?> handleRecord(byte[] data) {
-        GenericModel generic = deserialize(data);
-        return generic != null ? service.collect(generic) : Futures.immediateFuture(0);
+        Event event = deserialize(data);
+        return event != null ? service.collect(event) : Futures.immediateFuture(0);
     }
 
-    private GenericModel deserialize(byte[] data) {
+    private Event deserialize(byte[] data) {
         try {
             return deserializer.deserialize(data);
         } catch (IOException | NullPointerException e) {
@@ -150,10 +152,6 @@ class WalCollectHandler implements Runnable {
     }
 
     private static String rawDataToString(byte[] bytes) {
-        try {
-            return new String(bytes, "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            return "";
-        }
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 }

@@ -12,7 +12,7 @@ import com.datacollection.common.utils.Reflects;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.platform.hystrix.SyncCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,11 +23,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
     static final String KEY_SERIALIZER = "mb.serializer";
@@ -41,7 +36,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     private ExecutorService eventLoopExecutor;
     private IndexKeeper indexKeeper;
     private BrokerWriter brokerWriter;
-    private Serializer<GenericModel> serializer;
+    private Serializer<Event> serializer;
 
     public Extractor(String group, Configuration config) {
         this.group = group;
@@ -57,8 +52,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
                 .setQueueSize(4)
                 .setNamePrefix("extract-event-loop")
                 .build();
-        this.serializer = Serialization.create(props.getProperty(KEY_SERIALIZER),
-                GenericModel.class).serializer();
+        this.serializer = Serialization.create(props.getProperty(KEY_SERIALIZER), Event.class).serializer();
 
         long indexDelay = props.getLongProperty("logging.lazy.delay.ms", 500);
         int minLines = props.getIntProperty("index.min.lines", 5);
@@ -92,28 +86,28 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         this.brokerWriter.configure(this.props);
     }
 
-    protected final void store(GenericModel model) {
-        store(model, null);
+    protected final void store(Event event) {
+        store(event, null);
     }
 
-    protected final void store(GenericModel model, Object attachment) {
+    protected final void store(Event event, Object attachment) {
         new SyncCommand<>(group, this.getClass().getSimpleName(), () -> {
-            doStore(model, attachment);
+            doStore(event, attachment);
             return null;
         }).execute();
     }
 
-    private void doStore(GenericModel model, Object attachment) {
+    private void doStore(Event event, Object attachment) {
         try {
-            Preconditions.checkNotNull(model);
-            byte[] b = serializer.serialize(model);
+            Preconditions.checkNotNull(event);
+            byte[] b = serializer.serialize(event);
             Future<Long> fut = brokerWriter.write(b);
             eventLoopExecutor.submit(() -> {
                 try {
                     long queueOrder = fut.get();
-                    onRecordProcessed(model, queueOrder, attachment);
+                    onRecordProcessed(event, queueOrder, attachment);
                 } catch (Exception exc) {
-                    logger.error("Write to message queue error for: " + model.getId(), exc);
+                    logger.error("Write to message queue error for: " + event.getId(), exc);
                     Utils.systemError(exc);
                 }
             });
@@ -125,11 +119,11 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
      * Default store model's id and queue order, sub-class should implement to add more works
      *
      * @param queueOrder order of record in message queue
-     * @param model      GenericModel object contains extracted data
-     * @param attachment object attached before send record to MQ to retrieve info
+     * @param event      Event object contains extracted data
+     * @param attachment object attached before send record to Message Broker to retrieve info
      */
-    protected void onRecordProcessed(GenericModel model, long queueOrder, Object attachment) {
-        storeIndex(model.getId(), queueOrder);
+    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
+        storeIndex(event.getId(), queueOrder);
     }
 
     protected final void storeIndex(String docIndex, long docOrder) {

@@ -23,7 +23,7 @@ import com.datacollection.common.types.IdGenerator;
 import com.datacollection.common.types.RandomIdGenerator;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.TimeKey;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;
 import com.datacollection.graphdb.GraphDatabase;
@@ -84,7 +84,7 @@ public class GraphCollectService implements CollectService {
     }
 
     @Override
-    public ListenableFuture<?> collect(GenericModel generic) {
+    public ListenableFuture<?> collect(Event generic) {
         GraphModel gm = transform(generic);
         return gm != null && isValid(gm)
                 ? collect(gm)
@@ -270,14 +270,14 @@ public class GraphCollectService implements CollectService {
         return Vertex.create(entity.id(), entity.label(), entity.properties());
     }
 
-    private GraphModel transform(GenericModel generic) {
+    private GraphModel transform(Event event) {
         try {
-            DataTransformer transformer = DataTransformer.create(generic.getType());
-            return transformer.transform(generic);
+            DataTransformer transformer = DataTransformer.create(event.getType());
+            return transformer.transform(event);
         } catch (TransformException e) {
-            logger.debug("Record ignored, message [" + e.getMessage() + "] " + generic);
+            logger.debug("Record ignored, message [" + e.getMessage() + "] " + event);
         } catch (RuntimeException e) {
-            logger.warn("Transform failed: " + JsonUtils.toJson(generic), e);
+            logger.warn("Transform failed: " + JsonUtils.toJson(event), e);
         }
         return null;
     }

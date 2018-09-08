@@ -5,7 +5,7 @@ import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.Extractor;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.platform.elastic.ElasticClientProvider;
 import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.search.SearchResponse;
@@ -60,7 +60,7 @@ public class EcommerceExtractor extends Extractor {
                 final int c = count;
 
                 // send current count value as attachment to keep in index
-                store(convertToGenericModel(hit), c);
+                store(createEvent(hit), c);
             }
 
             scrollResp = client.prepareSearchScroll(scrollResp.getScrollId())
@@ -82,20 +82,20 @@ public class EcommerceExtractor extends Extractor {
     }
 
     @Override
-    protected void onRecordProcessed(GenericModel model, long queueOrder, Object attachment) {
+    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
         storeIndex(attachment.toString(), queueOrder);
     }
 
-    private GenericModel convertToGenericModel(SearchHit hit) {
+    private Event createEvent(SearchHit hit) {
         Map<String, Object> source = hit.getSource();
         String id = hit.getId();
 
-        GenericModel model = new GenericModel();
-        model.setType(EventType.TYPE_ECOMMERCE);
-        model.getProperties().put("url", "es://ecommerce/profile/" + id);
-        model.getProperties().putAll(source);
+        Event event = new Event();
+        event.setType(EventType.TYPE_ECOMMERCE);
+        event.setProperty("url", "es://ecommerce/profile/" + id);
+        event.putProperties(source);
 
-        return model;
+        return event;
     }
 
     public static void main(String[] args) {

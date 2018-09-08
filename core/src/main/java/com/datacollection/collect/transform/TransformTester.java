@@ -7,7 +7,7 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.broker.BrokerFactory;
 import com.datacollection.common.broker.BrokerReader;
 import com.datacollection.common.broker.BrokerWriter;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.concurrent.Future;
 
@@ -31,7 +31,7 @@ public class TransformTester implements BrokerFactory {
             @Override
             public Future<Long> write(byte[] b) {
                 try {
-                    GenericModel model = JsonUtils.fromJson(new String(b), GenericModel.class);
+                    Event model = JsonUtils.fromJson(new String(b), Event.class);
                     System.out.println(gson.toJson(transformer.transform(model)));
                 } catch (Exception e) {
                     e.printStackTrace();

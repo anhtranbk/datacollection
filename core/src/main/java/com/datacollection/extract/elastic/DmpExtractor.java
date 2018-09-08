@@ -3,7 +3,7 @@ package com.datacollection.extract.elastic;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.Extractor;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.platform.elastic.ElasticClientProvider;
 import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.search.SearchResponse;
@@ -47,7 +47,7 @@ public class DmpExtractor extends Extractor {
         while (isNotCanceled()) {
 
             for (SearchHit hit : scroll.getHits()) {
-                store(buildGenericModel(hit));
+                store(createEvent(hit));
             }
             scroll = client.prepareSearchScroll(scroll.getScrollId()).setScroll(new TimeValue(6000000))
                     .execute().actionGet();
@@ -56,7 +56,7 @@ public class DmpExtractor extends Extractor {
         }
     }
 
-    private GenericModel buildGenericModel(SearchHit hit) {
+    private Event createEvent(SearchHit hit) {
         Map<String, Object> source = hit.getSource();
         Map<String, Object> post = new LinkedHashMap<>();
         post.put("domain", "dmp");
@@ -86,7 +86,7 @@ public class DmpExtractor extends Extractor {
                 post.put("age", this.getAge(Integer.parseInt(dgHit.getSource().get("age").toString())));
             }
         }
-        return new GenericModel(guid, EventType.TYPE_DMP, post);
+        return new Event(guid, EventType.TYPE_DMP, post);
     }
 
 

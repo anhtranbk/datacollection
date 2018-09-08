@@ -9,7 +9,7 @@ import com.datacollection.collect.model.Organization;
 import com.datacollection.collect.model.Profile;
 import com.datacollection.collect.model.Relationship;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +22,7 @@ public class LinkedInTransformer implements DataTransformer {
     }
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         GraphModel graphModel = new GraphModel();
         Map<String, Object> post = generic.getProperties();
 

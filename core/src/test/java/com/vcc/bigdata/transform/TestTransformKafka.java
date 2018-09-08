@@ -6,7 +6,7 @@ import com.datacollection.collect.transform.ZambaTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.serialize.Deserializer;
 import com.datacollection.common.serialize.Serialization;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import com.datacollection.platform.elastic.ElasticBulkInsert;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -48,12 +48,12 @@ public class TestTransformKafka {
         consumer.subscribe(Arrays.asList(topic));
         System.out.println("Subscribed to topic " + topic);
         Gson gson = new Gson();
-        Deserializer<GenericModel> serializer = Serialization.create("json", GenericModel.class).deserializer();
+        Deserializer<Event> serializer = Serialization.create("json", Event.class).deserializer();
         while (true) {
             ConsumerRecords<String, byte[]> records = consumer.poll(0);
             for (ConsumerRecord<String, byte[]> record : records) {
                 try {
-                    GenericModel generic = serializer.deserialize(record.value());
+                    Event generic = serializer.deserialize(record.value());
                     GraphModel graphModel = dmpTransformer.transform(generic);
 //                    System.out.println(gson.toJson(graphModel));
 //                    System.out.println(graphModel.profiles().get(0).type());

@@ -6,7 +6,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.DataStream;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 import org.bson.Document;
 
 import java.text.DateFormat;
@@ -23,11 +23,11 @@ public class ForumArticleExtractor extends MongoExtractor {
     }
 
     @Override
-    protected GenericModel extractData(Document document) {
+    protected Event extractData(Document document) {
         String id = document.getString("_id");
         String type = EventType.TYPE_FORUM_ARTICLE;
 
-        return new GenericModel(id, type, document);
+        return new Event(id, type, document);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ForumArticleExtractor extends MongoExtractor {
     }
 
     @Override
-    protected void onRecordProcessed(GenericModel model, long queueOrder, Object attachment) {
+    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
         Document doc = (Document) attachment;
         storeIndex(df.format(doc.getDate("GetDate")), queueOrder);
     }

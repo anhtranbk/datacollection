@@ -13,7 +13,7 @@ import com.datacollection.common.ParserHelper;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.Maps;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.entity.GenericModel;
+import com.datacollection.entity.Event;
 
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +28,7 @@ public class FbPageCmtTransformer implements DataTransformer {
     private static final ProfileRegexHelper regexHelper = ProfileRegexHelper.getDefault();
 
     @Override
-    public GraphModel transform(GenericModel generic) {
+    public GraphModel transform(Event generic) {
         Map<String, Object> post = generic.getProperties();
         String content = post.get("Content").toString();
 

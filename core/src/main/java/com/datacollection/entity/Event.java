@@ -11,9 +11,10 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Event extends Item {
-    
+
     private Metadata metadata = new Metadata();
     private Map<String, Object> properties;
+    private String source;
 
     public Event() {
         super();
@@ -40,6 +41,15 @@ public class Event extends Item {
     @Override
     public Event setScope(String scope) {
         super.setScope(scope);
+        return this;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public Event setSource(String source) {
+        this.source = source;
         return this;
     }
 

@@ -1,8 +1,10 @@
 package com.datacollection.entity;
 
+import java.util.Collections;
 import java.util.List;
 
-public class MetaData extends Item {
+@SuppressWarnings("UnusedReturnValue")
+public class Metadata extends Item {
 
     private String name;
     private String description;
@@ -12,11 +14,19 @@ public class MetaData extends Item {
     private boolean hidden;
     private boolean readOnly;
 
+    public Metadata() {
+        this.tags = Collections.emptyList();
+        this.systemTags = Collections.emptyList();
+        this.enabled = true;
+        this.hidden = false;
+        this.readOnly = true;
+    }
+
     public String getName() {
         return name;
     }
 
-    public MetaData setName(String name) {
+    public Metadata setName(String name) {
         this.name = name;
         return this;
     }
@@ -25,7 +35,7 @@ public class MetaData extends Item {
         return description;
     }
 
-    public MetaData setDescription(String description) {
+    public Metadata setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -34,7 +44,7 @@ public class MetaData extends Item {
         return tags;
     }
 
-    public MetaData setTags(List<String> tags) {
+    public Metadata setTags(List<String> tags) {
         this.tags = tags;
         return this;
     }
@@ -43,7 +53,7 @@ public class MetaData extends Item {
         return systemTags;
     }
 
-    public MetaData setSystemTags(List<String> systemTags) {
+    public Metadata setSystemTags(List<String> systemTags) {
         this.systemTags = systemTags;
         return this;
     }
@@ -52,7 +62,7 @@ public class MetaData extends Item {
         return enabled;
     }
 
-    public MetaData setEnabled(boolean enabled) {
+    public Metadata setEnabled(boolean enabled) {
         this.enabled = enabled;
         return this;
     }
@@ -61,7 +71,7 @@ public class MetaData extends Item {
         return hidden;
     }
 
-    public MetaData setHidden(boolean hidden) {
+    public Metadata setHidden(boolean hidden) {
         this.hidden = hidden;
         return this;
     }
@@ -70,7 +80,7 @@ public class MetaData extends Item {
         return readOnly;
     }
 
-    public MetaData setReadOnly(boolean readOnly) {
+    public Metadata setReadOnly(boolean readOnly) {
         this.readOnly = readOnly;
         return this;
     }

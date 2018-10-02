@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +36,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     private final String group;
     private final String name;
 
-    private ExecutorService executorService;
+    private ExecutorService workerExecutor;
     private IndexKeeper indexKeeper;
     private BrokerWriter brokerWriter;
     private Serializer<Event> serializer;
@@ -52,7 +51,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
     @Override
     protected void onInitialize() {
-        this.executorService = ThreadPool.builder()
+        this.workerExecutor = ThreadPool.builder()
                 .setCoreSize(1)
                 .setQueueSize(4)
                 .setNamePrefix("extractor-" + name)
@@ -67,12 +66,12 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
     @Override
     protected void onStop() {
-        logger.info("Stopping event loop executors...");
-        boolean stopOk = Threads.stopThreadPool(executorService, 5, TimeUnit.MINUTES);
+        logger.info("Stopping worker executor...");
+        boolean stopOk = Threads.stopThreadPool(workerExecutor, 5, TimeUnit.MINUTES);
         if (stopOk) {
-            logger.info("Worker event loop stopped");
+            logger.info("Worker executor stopped");
         } else {
-            logger.error("Could not stop thread pool...");
+            logger.error("Could not stop worker executor...");
         }
 
         brokerWriter.flush();
@@ -118,7 +117,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         try {
             Preconditions.checkNotNull(event);
             byte[] b = serializer.serialize(event);
-            executorService.submit(() -> {
+            workerExecutor.submit(() -> {
                 try {
                     Future<Long> fut = brokerWriter.write(b);
                     long queueOrder = fut.get();

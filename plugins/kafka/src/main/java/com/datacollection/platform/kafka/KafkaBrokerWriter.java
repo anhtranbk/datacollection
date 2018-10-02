@@ -37,6 +37,11 @@ public class KafkaBrokerWriter implements BrokerWriter {
     }
 
     @Override
+    public void flush() {
+        this.producer.flush();
+    }
+
+    @Override
     public void close() {
         this.producer.close();
     }

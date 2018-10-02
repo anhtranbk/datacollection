@@ -15,11 +15,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Save/restore document index that processed by extractors
+ * Save/restore data source indices that will be used by extractors
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
-@SuppressWarnings("unchecked")
 public class IndexKeeper implements Flushable {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
@@ -35,7 +34,7 @@ public class IndexKeeper implements Flushable {
      * @param delay           time in ms properties will be kept in buffer before
      *                        write to file on disk
      * @param lastLinesToLoad when load properties from file, read at least
-     *                        lastLinesToLoad and load earliest value
+     *                        lastLinesToLoad and load the earliest value
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public IndexKeeper(String path, long delay, int lastLinesToLoad) {

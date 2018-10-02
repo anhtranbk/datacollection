@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +37,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     private final String group;
     private final String name;
 
-    private ExecutorService eventLoopExecutor;
+    private ExecutorService executorService;
     private IndexKeeper indexKeeper;
     private BrokerWriter brokerWriter;
     private Serializer<Event> serializer;
@@ -51,7 +52,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
     @Override
     protected void onInitialize() {
-        this.eventLoopExecutor = ThreadPool.builder()
+        this.executorService = ThreadPool.builder()
                 .setCoreSize(1)
                 .setQueueSize(4)
                 .setNamePrefix("extractor-" + name)
@@ -67,7 +68,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     @Override
     protected void onStop() {
         logger.info("Stopping event loop executors...");
-        boolean stopOk = Threads.stopThreadPool(eventLoopExecutor, 5, TimeUnit.MINUTES);
+        boolean stopOk = Threads.stopThreadPool(executorService, 5, TimeUnit.MINUTES);
         if (stopOk) {
             logger.info("Worker event loop stopped");
         } else {
@@ -107,7 +108,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     }
 
     protected final void sendEvent(Event event, Object attachment) {
-        new SyncCommand<>(group, this.getClass().getSimpleName(), () -> {
+        new SyncCommand<>(group, name, () -> {
             doSendEvent(event, attachment);
             return null;
         }).execute();
@@ -117,7 +118,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         try {
             Preconditions.checkNotNull(event);
             byte[] b = serializer.serialize(event);
-            eventLoopExecutor.submit(() -> {
+            executorService.submit(() -> {
                 try {
                     Future<Long> fut = brokerWriter.write(b);
                     long queueOrder = fut.get();

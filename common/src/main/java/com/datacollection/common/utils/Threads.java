@@ -62,12 +62,12 @@ public class Threads {
         executor.shutdown();
     }
 
-    public static void stopThreadPool(ExecutorService executor, long timeout, TimeUnit unit) {
+    public static boolean stopThreadPool(ExecutorService executor, long timeout, TimeUnit unit) {
         try {
             executor.shutdown();
-            executor.awaitTermination(timeout, unit);
+            return executor.awaitTermination(timeout, unit);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            return false;
         }
     }
 

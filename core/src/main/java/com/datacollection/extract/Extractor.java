@@ -22,16 +22,19 @@ import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
-    static final String KEY_SERIALIZER = "mb.serializer";
-    static final String DOC_INDEX = "index";
-    static final String DOC_ORDER = "order";
+    private static final String KEY_SERIALIZER = "mb.serializer";
+    private static final String DOC_INDEX = "index";
+    private static final String DOC_ORDER = "order";
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected final Properties props;
-    protected final String group;
+
+    private final String group;
+    private final String name;
 
     private ExecutorService eventLoopExecutor;
     private IndexKeeper indexKeeper;
@@ -40,6 +43,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
 
     public Extractor(String group, Configuration config) {
         this.group = group;
+        this.name = this.getClass().getName();
         this.props = config.toSubProperties(group, getClass().getSimpleName());
         this.setSleepTime(this.props);
         this.initMessageBroker();
@@ -50,21 +54,25 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         this.eventLoopExecutor = ThreadPool.builder()
                 .setCoreSize(1)
                 .setQueueSize(4)
-                .setNamePrefix("extract-event-loop")
+                .setNamePrefix("extractor-" + name)
                 .build();
         this.serializer = Serialization.create(props.getProperty(KEY_SERIALIZER), Event.class).serializer();
 
         long indexDelay = props.getLongProperty("logging.lazy.delay.ms", 500);
         int minLines = props.getIntProperty("index.min.lines", 5);
-        String indexPath = props.getProperty("data.path") + "/extract/" + getClass().getSimpleName() + ".log";
+        String indexPath = props.getProperty("data.path") + "/extract/" + name + ".log";
         this.indexKeeper = new IndexKeeper(indexPath, indexDelay, minLines);
     }
 
     @Override
     protected void onStop() {
         logger.info("Stopping event loop executors...");
-        Threads.stopThreadPool(eventLoopExecutor);
-        logger.info("Worker event loop stopped");
+        boolean stopOk = Threads.stopThreadPool(eventLoopExecutor, 5, TimeUnit.MINUTES);
+        if (stopOk) {
+            logger.info("Worker event loop stopped");
+        } else {
+            logger.error("Could not stop thread pool...");
+        }
 
         brokerWriter.flush();
         brokerWriter.close();
@@ -75,54 +83,65 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
         this.start();
     }
 
-    private void initMessageBroker() {
-        BrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
-        logger.info("MessageBrokerFactory class: " + factory.getClass().getName());
-        this.setMsgBrokerFactory(factory);
+    public String getGroup() {
+        return group;
     }
 
-    public final void setMsgBrokerFactory(BrokerFactory factory) {
+    public String getName() {
+        return name;
+    }
+
+    private void initMessageBroker() {
+        BrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
+        logger.info("BrokerFactory class: " + factory.getClass().getName());
+        this.setBrokerFactory(factory);
+    }
+
+    public final void setBrokerFactory(BrokerFactory factory) {
         this.brokerWriter = factory.getWriter();
         this.brokerWriter.configure(this.props);
     }
 
-    protected final void store(Event event) {
-        store(event, null);
+    protected final void sendEvent(Event event) {
+        sendEvent(event, null);
     }
 
-    protected final void store(Event event, Object attachment) {
+    protected final void sendEvent(Event event, Object attachment) {
         new SyncCommand<>(group, this.getClass().getSimpleName(), () -> {
-            doStore(event, attachment);
+            doSendEvent(event, attachment);
             return null;
         }).execute();
     }
 
-    private void doStore(Event event, Object attachment) {
+    private void doSendEvent(Event event, Object attachment) {
         try {
             Preconditions.checkNotNull(event);
             byte[] b = serializer.serialize(event);
-            Future<Long> fut = brokerWriter.write(b);
             eventLoopExecutor.submit(() -> {
                 try {
+                    Future<Long> fut = brokerWriter.write(b);
                     long queueOrder = fut.get();
-                    onRecordProcessed(event, queueOrder, attachment);
+                    onEventProcessed(event, queueOrder, attachment);
                 } catch (Exception exc) {
-                    logger.error("Write to message queue error for: " + event.getId(), exc);
+                    logger.error("Send event error: " + event, exc);
                     Utils.systemError(exc);
                 }
             });
-        } catch (NullPointerException | RejectedExecutionException | IOException ignored) {
+        } catch (RejectedExecutionException ignored) {
+        } catch (NullPointerException | IOException ex) {
+            logger.warn("Event ignored due to serialization error: " + event);
         }
     }
 
     /**
-     * Default store model's id and queue order, sub-class should implement to add more works
+     * Default only store event's ID and queue order, subclasses should implement to add more works
      *
-     * @param queueOrder order of record in message queue
+     * @param queueOrder order of event record in message queue
      * @param event      Event object contains extracted data
-     * @param attachment object attached before send record to Message Broker to retrieve info
+     * @param attachment attached object that contains extra info to be process by extractors
+     *                   before sending Event to Message Broker to retrieve info
      */
-    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
+    protected void onEventProcessed(Event event, long queueOrder, Object attachment) {
         storeIndex(event.getId(), queueOrder);
     }
 

@@ -30,7 +30,7 @@ public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
 
     public ZambaExtractor(Configuration config) {
         super("zamba", config);
-        this.sqlConnect = ConnectionProviders.getOrCreate(group, new JdbcConfig(this.props));
+        this.sqlConnect = ConnectionProviders.getOrCreate("zamba", new JdbcConfig(this.props));
     }
 
     @Override

@@ -62,14 +62,14 @@ public class OrgProfileExtractor extends MongoExtractor {
     }
 
     @Override
-    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
+    protected void onEventProcessed(Event event, long queueOrder, Object attachment) {
         Document doc = (Document) attachment;
         storeIndex(df.format(doc.getDate("GetDate")), queueOrder);
     }
 
     public static void main(String[] args) {
         Extractor extractor = new OrgProfileExtractor(new Configuration());
-        extractor.setMsgBrokerFactory(new MockBrokerFactory());
+        extractor.setBrokerFactory(new MockBrokerFactory());
         extractor.start();
     }
 }

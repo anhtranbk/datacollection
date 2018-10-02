@@ -59,7 +59,7 @@ public class ForumArticleExtractor extends MongoExtractor {
     }
 
     @Override
-    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
+    protected void onEventProcessed(Event event, long queueOrder, Object attachment) {
         Document doc = (Document) attachment;
         storeIndex(df.format(doc.getDate("GetDate")), queueOrder);
     }

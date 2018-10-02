@@ -47,7 +47,7 @@ public class DmpExtractor extends Extractor {
         while (isNotCanceled()) {
 
             for (SearchHit hit : scroll.getHits()) {
-                store(createEvent(hit));
+                sendEvent(createEvent(hit));
             }
             scroll = client.prepareSearchScroll(scroll.getScrollId()).setScroll(new TimeValue(6000000))
                     .execute().actionGet();

@@ -28,7 +28,7 @@ public class NewDbExtractor extends StreamExtractor<ResultSetAdapter> {
 
     public NewDbExtractor(Configuration config) {
         super("newdb", config);
-        this.sqlConnect = ConnectionProviders.getOrCreate(group, new JdbcConfig(this.props));
+        this.sqlConnect = ConnectionProviders.getOrCreate("newdb", new JdbcConfig(this.props));
         regexHelper = new ProfileRegexHelper();
     }
 

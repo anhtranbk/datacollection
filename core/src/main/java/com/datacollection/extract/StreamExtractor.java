@@ -36,7 +36,7 @@ public abstract class StreamExtractor<TSource> extends Extractor {
             while (stream.hasNext() && isNotCanceled()) {
                 TSource tSource = stream.next();
                 try {
-                    store(extractData(tSource), tSource);
+                    sendEvent(extractData(tSource), tSource);
                 } catch (Throwable t) {
                     String s = Strings.firstCharacters(tSource.toString(), 500);
                     logger.warn("Extract data failed " + s, t);

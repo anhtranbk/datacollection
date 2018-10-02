@@ -58,14 +58,14 @@ public class LinkedInExtractor extends MongoExtractor {
     }
 
     @Override
-    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
+    protected void onEventProcessed(Event event, long queueOrder, Object attachment) {
         Document doc = (Document) attachment;
         storeIndex(df.format(doc.getDate("PostDate")), queueOrder);
     }
 
     public static void main (String [] args){
         LinkedInExtractor linkedInExtractor = new LinkedInExtractor(new Configuration());
-        linkedInExtractor.setMsgBrokerFactory(new MockBrokerFactory());
+        linkedInExtractor.setBrokerFactory(new MockBrokerFactory());
         linkedInExtractor.start();
     }
 

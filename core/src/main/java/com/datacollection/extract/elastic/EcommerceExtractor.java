@@ -60,7 +60,7 @@ public class EcommerceExtractor extends Extractor {
                 final int c = count;
 
                 // send current count value as attachment to keep in index
-                store(createEvent(hit), c);
+                sendEvent(createEvent(hit), c);
             }
 
             scrollResp = client.prepareSearchScroll(scrollResp.getScrollId())
@@ -82,7 +82,7 @@ public class EcommerceExtractor extends Extractor {
     }
 
     @Override
-    protected void onRecordProcessed(Event event, long queueOrder, Object attachment) {
+    protected void onEventProcessed(Event event, long queueOrder, Object attachment) {
         storeIndex(attachment.toString(), queueOrder);
     }
 
@@ -101,7 +101,7 @@ public class EcommerceExtractor extends Extractor {
     public static void main(String[] args) {
         Configuration conf = new Configuration();
         Extractor extractor = new EcommerceExtractor(conf);
-        extractor.setMsgBrokerFactory(new MockBrokerFactory());
+        extractor.setBrokerFactory(new MockBrokerFactory());
         extractor.start();
     }
 }

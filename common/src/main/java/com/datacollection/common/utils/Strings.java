@@ -1,12 +1,12 @@
 package com.datacollection.common.utils;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 
 /**
- * TODO: Class description here.
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
@@ -14,6 +14,50 @@ public class Strings {
 
     public static String format(String format, Object... params) {
         return String.format(Locale.US, format, params);
+    }
+
+    public static String formatV2(String format, Object... params) {
+        Map<String, Object> mapParams = Maps.initFromKeyValues(params);
+        return formatV2(format, mapParams);
+    }
+
+    public static String formatV2(String template, Map<String, Object> parameters) {
+        char[] chars = template.toCharArray();
+        StringBuilder finalBuilder = new StringBuilder();
+        StringBuilder keyBuilder = new StringBuilder();
+
+        boolean isKey = false;
+        for (char aChar : chars) {
+            if (aChar == '{') {
+                if (isKey) {
+                    finalBuilder.append('{');
+                    finalBuilder.append(keyBuilder);
+                }
+                keyBuilder.setLength(0);
+                isKey = true;
+            } else if (aChar == '}') {
+                String key = keyBuilder.toString();
+                if (!parameters.containsKey(key)) {
+                    throw new IllegalArgumentException("Missing key: " + key);
+                }
+                finalBuilder.append(parameters.get(key));
+                isKey = false;
+                keyBuilder.setLength(0);
+            } else {
+                if (isKey) {
+                    keyBuilder.append(aChar);
+                } else {
+                    finalBuilder.append(aChar);
+                }
+            }
+        }
+
+        if (isKey) {
+            finalBuilder.append('{');
+            finalBuilder.append(keyBuilder);
+        }
+
+        return finalBuilder.toString();
     }
 
     public static String join(String separator, String... strs) {
@@ -39,16 +83,15 @@ public class Strings {
     public static String join(Iterator<?> iterator, String separator, String prefix, String suffix) {
         if (!iterator.hasNext()) return "";
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(prefix);
         while (iterator.hasNext()) {
             sb.append(iterator.next());
             if (iterator.hasNext()) {
                 sb.append(separator);
             }
         }
-
-        String s = sb.toString();
-        return s.isEmpty() ? s : prefix + sb.toString() + suffix;
+        sb.append(suffix);
+        return sb.toString();
     }
 
     public static boolean isNonEmpty(CharSequence source) {
@@ -82,17 +125,17 @@ public class Strings {
     }
 
     public static String firstCharacters(String source, int numChars, boolean withThreeDot, int skip) {
-        try {
-            return source.substring(skip, numChars) + (withThreeDot ? "..." : "");
-        } catch (IndexOutOfBoundsException ignored) {
-            return source;
+        if (skip + numChars < source.length()) {
+            return source.substring(skip, skip + numChars) + (withThreeDot ? "..." : "");
+        } else {
+            return source.substring(skip);
         }
     }
     public static String firstCharacters(String source, int numChars) {
         return firstCharacters(source, numChars, true, 0);
     }
     public static String firstCharacters(String source, int numChars, int skip) {
-        return firstCharacters(source, numChars, false, skip);
+        return firstCharacters(source, numChars, true, skip);
     }
 
     public static String remove4bytesUnicodeSymbols(String source) {
@@ -101,7 +144,7 @@ public class Strings {
 
     public static String lastCharacters(String source, int numChars) {
         try {
-            return source.substring(source.length() - numChars, source.length());
+            return source.substring(source.length() - numChars);
         } catch (IndexOutOfBoundsException e) {
             return source;
         }
@@ -110,18 +153,20 @@ public class Strings {
     public static String simplify(String source) {
         return source.toLowerCase().replaceAll("[.,:;?!\n\t]", "");
     }
-    public static String utf8(byte[] bytes) {
-        try {
-            return new String(bytes, "UTF8");
-        } catch (UnsupportedEncodingException var2) {
-            throw new RuntimeException("This shouldn't happen.", var2);
-        }
+
+    public static byte[] toBytes(String value) {
+        return toBytes(value, false);
     }
-    public static byte[] utf8(String string) {
-        try {
-            return string.getBytes("UTF8");
-        } catch (UnsupportedEncodingException var2) {
-            throw new RuntimeException("This shouldn't happen.", var2);
-        }
+
+    public static byte[] toBytes(String value, boolean ascii) {
+        return value.getBytes(ascii ? StandardCharsets.US_ASCII : StandardCharsets.UTF_8);
+    }
+
+    public static String fromBytes(byte[] bytes) {
+        return fromBytes(bytes, false);
+    }
+
+    public static String fromBytes(byte[] bytes, boolean ascii) {
+        return new String(bytes, ascii ? StandardCharsets.US_ASCII : StandardCharsets.UTF_8);
     }
 }

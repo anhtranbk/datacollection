@@ -1,4 +1,4 @@
-package com.datacollection.common.utils;
+package com.datacollection.common.cli;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -11,11 +11,6 @@ import org.apache.commons.cli.ParseException;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class CLIArgumentParser {
 
     private final Options options;

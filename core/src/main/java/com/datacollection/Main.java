@@ -1,7 +1,7 @@
 package com.datacollection;
 
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.utils.CLIArgumentParser;
+import com.datacollection.common.cli.CLIArgumentParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

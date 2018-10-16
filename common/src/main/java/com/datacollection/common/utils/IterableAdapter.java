@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 
 /**
- * Convert an iterable object to new an iterable object with different item type
+ * Convert an iterable object to an iterable object with different element type
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */

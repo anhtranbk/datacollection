@@ -10,12 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class DateTimes {
+
+    public static final String ISO_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     public static Date safeParse(String source, String format) {
         try {
@@ -36,8 +33,12 @@ public class DateTimes {
         }
     }
 
+    public static Date parseFromIsoFormat(String source) {
+        return parse(source, ISO_FORMAT);
+    }
+
     public static String toIsoFormat(Date date) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        DateFormat df = new SimpleDateFormat(ISO_FORMAT);
         return df.format(date);
     }
 
@@ -69,5 +70,9 @@ public class DateTimes {
      */
     public static byte[] currentDateAsBytes() {
         return DateTimes.format(new Date(), "yyyy-MM-dd").getBytes();
+    }
+
+    public static String currentDateTimeAsIsoString() {
+        return toIsoFormat(new Date());
     }
 }

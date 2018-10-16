@@ -5,11 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 @SuppressWarnings("unchecked")
 public class NullProtector {
 

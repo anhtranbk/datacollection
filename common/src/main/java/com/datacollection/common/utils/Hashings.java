@@ -2,17 +2,13 @@ package com.datacollection.common.utils;
 
 import com.google.common.hash.Hashing;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
+@SuppressWarnings("UnstableApiUsage")
 public class Hashings {
 
     public static byte[] sha1(String input) {
-        return Hashing.sha1().hashString(input, Charset.forName("utf-8")).asBytes();
+        return Hashing.sha1().hashString(input, StandardCharsets.UTF_8).asBytes();
     }
 
     public static byte[] sha1(byte[] input) {
@@ -20,7 +16,7 @@ public class Hashings {
     }
 
     public static String sha1AsHex(String input) {
-        return Hashing.sha1().hashString(input, Charset.forName("utf-8")).toString();
+        return Hashing.sha1().hashString(input, StandardCharsets.UTF_8).toString();
     }
 
     public static String sha1AsHex(byte[] input) {

@@ -1,16 +1,13 @@
 package com.datacollection.common.utils;
 
+import com.datacollection.exc.ReflectionException;
+
 import java.lang.reflect.InvocationTargetException;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 @SuppressWarnings("unchecked")
 public class Reflects {
 
-    static final ClassLoader mainCl = Reflects.class.getClassLoader();
+    private static final ClassLoader mainCl = Reflects.class.getClassLoader();
 
     @SuppressWarnings("unchecked")
     public static <T> Class<T> getClassInstance(T object) {
@@ -29,16 +26,19 @@ public class Reflects {
         try {
             return (T) mainCl.loadClass(className).newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ReflectionException(e);
         }
     }
 
     public static <T> T newInstance(String className, Class<?>[] parameterTypes, Object... parameters) {
         try {
             return (T) mainCl.loadClass(className).getConstructor(parameterTypes).newInstance(parameters);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException
-                | NoSuchMethodException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (InstantiationException
+                | IllegalAccessException
+                | InvocationTargetException
+                | NoSuchMethodException
+                | ClassNotFoundException e) {
+            throw new ReflectionException(e);
         }
     }
 }

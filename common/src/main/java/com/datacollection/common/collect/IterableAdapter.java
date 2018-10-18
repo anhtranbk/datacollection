@@ -1,4 +1,4 @@
-package com.datacollection.common.utils;
+package com.datacollection.common.collect;
 
 import org.jetbrains.annotations.NotNull;
 

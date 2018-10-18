@@ -3,6 +3,7 @@ package com.datacollection.common.utils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
+import java.util.function.Function;
 
 /**
  * Convert an iterable object to an iterable object with different element type
@@ -40,11 +41,11 @@ public abstract class IterableAdapter<S, R> implements Iterable<R> {
 
     protected abstract R convert(S source);
 
-    public static <S, R> IterableAdapter<S, R> from(Iterable<S> source, Converter<S, R> converter) {
+    public static <S, R> IterableAdapter<S, R> from(Iterable<S> source, Function<S, R> converter) {
         return new IterableAdapter<S, R>(source) {
             @Override
             protected R convert(S source) {
-                return converter.convert(source);
+                return converter.apply(source);
             }
         };
     }

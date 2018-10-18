@@ -1,4 +1,4 @@
-package com.datacollection.common.serialize;
+package com.datacollection.serialize;
 
 import java.io.IOException;
 import java.io.OutputStream;

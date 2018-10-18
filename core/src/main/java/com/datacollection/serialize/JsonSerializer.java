@@ -1,4 +1,4 @@
-package com.datacollection.common.serialize;
+package com.datacollection.serialize;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

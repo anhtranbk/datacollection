@@ -8,7 +8,7 @@ import com.datacollection.collect.wal.WalReader;
 import com.datacollection.common.concurrenct.AllInOneFuture;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;
-import com.datacollection.common.serialize.Deserializer;
+import com.datacollection.serialize.Deserializer;
 import com.datacollection.common.utils.Threads;
 import com.datacollection.common.utils.Utils;
 import com.datacollection.entity.Event;

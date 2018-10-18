@@ -1,4 +1,4 @@
-package com.datacollection.common.serialize;
+package com.datacollection.serialize;
 
 /**
  * TODO: Class description here.

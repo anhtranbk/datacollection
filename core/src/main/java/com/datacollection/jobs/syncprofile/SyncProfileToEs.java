@@ -1,6 +1,6 @@
 package com.datacollection.jobs.syncprofile;
 
-import com.datacollection.common.concurrency.AllInOneFuture;
+import com.datacollection.common.concurrenct.AllInOneFuture;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;

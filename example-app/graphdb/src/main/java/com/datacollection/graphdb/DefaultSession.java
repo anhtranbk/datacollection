@@ -6,7 +6,7 @@ import com.datacollection.graphdb.repository.VertexRepository;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.collect.IterableAdapter;
 import com.datacollection.common.utils.Utils;
 

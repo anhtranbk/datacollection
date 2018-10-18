@@ -3,7 +3,7 @@ package com.datacollection.collect.history;
 import com.google.common.collect.Iterables;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.datacollection.collect.model.History;
-import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.collect.IterableAdapter;
 import com.datacollection.platform.hbase.AbstractRepository;

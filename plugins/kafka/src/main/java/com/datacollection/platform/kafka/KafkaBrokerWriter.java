@@ -1,6 +1,6 @@
 package com.datacollection.platform.kafka;
 
-import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.broker.BrokerWriter;
 import org.apache.kafka.clients.producer.KafkaProducer;

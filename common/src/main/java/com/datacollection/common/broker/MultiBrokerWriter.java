@@ -1,9 +1,9 @@
 package com.datacollection.common.broker;
 
-import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.Reflects;
-import com.datacollection.common.concurrency.AllInOneFuture;
+import com.datacollection.common.concurrenct.AllInOneFuture;
 
 import java.util.ArrayList;
 import java.util.Arrays;

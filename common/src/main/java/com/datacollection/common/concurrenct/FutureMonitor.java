@@ -1,4 +1,4 @@
-package com.datacollection.common.concurrency;
+package com.datacollection.common.concurrenct;
 
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.AbstractLifeCycle;

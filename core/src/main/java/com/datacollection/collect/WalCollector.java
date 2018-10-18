@@ -3,7 +3,7 @@ package com.datacollection.collect;
 import com.datacollection.collect.wal.DefaultWalFile;
 import com.datacollection.collect.wal.WalFile;
 import com.datacollection.collect.wal.WalWriter;
-import com.datacollection.common.concurrency.AllInOneFuture;
+import com.datacollection.common.concurrenct.AllInOneFuture;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;

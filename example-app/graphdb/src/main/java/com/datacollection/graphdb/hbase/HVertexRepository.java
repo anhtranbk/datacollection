@@ -3,7 +3,7 @@ package com.datacollection.graphdb.hbase;
 import com.datacollection.graphdb.repository.VertexRepository;
 import com.google.common.collect.Iterables;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.common.concurrency.FutureAdapter;
+import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.DateTimes;
 import com.datacollection.common.collect.IterableAdapter;

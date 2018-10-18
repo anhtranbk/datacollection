@@ -1,4 +1,4 @@
-package com.datacollection.common.concurrency;
+package com.datacollection.common.concurrenct;
 
 import org.jetbrains.annotations.NotNull;
 

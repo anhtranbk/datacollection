@@ -1,12 +1,11 @@
 package com.datacollection.collect;
 
-import com.datacollection.common.utils.Strings;
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.Futures;
 import com.datacollection.collect.wal.WalException;
 import com.datacollection.collect.wal.WalFile;
 import com.datacollection.collect.wal.WalReader;
-import com.datacollection.common.concurrency.AllInOneFuture;
+import com.datacollection.common.concurrenct.AllInOneFuture;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;
 import com.datacollection.common.serialize.Deserializer;
@@ -19,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import rx.schedulers.Schedulers;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;

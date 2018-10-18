@@ -1,4 +1,4 @@
-package com.datacollection.common.concurrency;
+package com.datacollection.common.concurrenct;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import org.jetbrains.annotations.NotNull;

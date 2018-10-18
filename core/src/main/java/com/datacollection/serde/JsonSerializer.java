@@ -8,11 +8,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class JsonSerializer<T> implements Serializer<T> {
 
     private final ObjectMapper om = new ObjectMapper();

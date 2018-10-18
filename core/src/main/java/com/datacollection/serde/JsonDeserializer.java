@@ -8,11 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class JsonDeserializer<T> implements Deserializer<T> {
 
     private final ObjectMapper om = new ObjectMapper();

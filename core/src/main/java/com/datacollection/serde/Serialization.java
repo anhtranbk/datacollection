@@ -1,4 +1,4 @@
-package com.datacollection.serialize;
+package com.datacollection.serde;
 
 /**
  * TODO: Class description here.

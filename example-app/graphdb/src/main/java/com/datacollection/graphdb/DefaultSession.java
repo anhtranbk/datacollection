@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.datacollection.common.concurrency.FutureAdapter;
-import com.datacollection.common.utils.IterableAdapter;
+import com.datacollection.common.collect.IterableAdapter;
 import com.datacollection.common.utils.Utils;
 
 import java.util.ArrayList;

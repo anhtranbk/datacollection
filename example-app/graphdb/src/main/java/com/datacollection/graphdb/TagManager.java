@@ -1,7 +1,7 @@
 package com.datacollection.graphdb;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.common.utils.IterableAdapter;
+import com.datacollection.common.collect.IterableAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

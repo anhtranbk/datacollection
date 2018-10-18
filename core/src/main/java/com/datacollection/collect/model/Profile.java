@@ -1,7 +1,7 @@
 package com.datacollection.collect.model;
 
 import com.datacollection.collect.Constants;
-import com.datacollection.common.utils.Maps;
+import com.datacollection.common.collect.Maps;
 import com.datacollection.common.utils.Strings;
 
 import java.util.ArrayList;

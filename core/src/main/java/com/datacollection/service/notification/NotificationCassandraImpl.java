@@ -7,7 +7,7 @@ import com.datastax.driver.core.Row;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.datacollection.common.concurrency.FutureAdapter;
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.utils.IterableAdapter;
+import com.datacollection.common.collect.IterableAdapter;
 import com.datacollection.platform.cassandra.AbstractRepository;
 
 import java.util.Collection;

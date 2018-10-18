@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.datacollection.collect.model.History;
 import com.datacollection.common.concurrency.FutureAdapter;
 import com.datacollection.common.config.Properties;
-import com.datacollection.common.utils.IterableAdapter;
+import com.datacollection.common.collect.IterableAdapter;
 import com.datacollection.platform.hbase.AbstractRepository;
 import com.datacollection.platform.hbase.HBaseRuntimeException;
 import com.datacollection.platform.hbase.HBaseUtils;

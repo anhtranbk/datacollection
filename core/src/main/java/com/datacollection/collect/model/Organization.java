@@ -1,6 +1,6 @@
 package com.datacollection.collect.model;
 
-import com.datacollection.common.utils.Maps;
+import com.datacollection.common.collect.Maps;
 
 import java.util.Collections;
 import java.util.Map;

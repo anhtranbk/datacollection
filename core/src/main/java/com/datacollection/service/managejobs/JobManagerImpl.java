@@ -3,7 +3,7 @@ package com.datacollection.service.managejobs;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.DateTimes;
-import com.datacollection.common.utils.Maps;
+import com.datacollection.common.collect.Maps;
 import com.datacollection.platform.elastic.ElasticClientProvider;
 import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.get.GetResponse;

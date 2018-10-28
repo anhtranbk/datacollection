@@ -1,4 +1,6 @@
-package com.datacollection.common.utils;
+package com.datacollection.service;
+
+import com.datacollection.common.utils.DateTimes;
 
 import java.text.DateFormat;
 import java.text.ParseException;

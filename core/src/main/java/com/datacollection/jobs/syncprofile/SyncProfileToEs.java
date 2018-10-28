@@ -8,7 +8,7 @@ import com.datacollection.common.lifecycle.LoopableLifeCycle;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;
-import com.datacollection.common.utils.TimeKey;
+import com.datacollection.service.TimeKey;
 import com.datacollection.common.utils.Utils;
 import com.datacollection.graphdb.GraphDatabase;
 import com.datacollection.metric.MetricExporter;

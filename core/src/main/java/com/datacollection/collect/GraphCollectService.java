@@ -22,7 +22,7 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.types.IdGenerator;
 import com.datacollection.common.types.RandomIdGenerator;
 import com.datacollection.common.utils.Strings;
-import com.datacollection.common.utils.TimeKey;
+import com.datacollection.service.TimeKey;
 import com.datacollection.entity.Event;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;

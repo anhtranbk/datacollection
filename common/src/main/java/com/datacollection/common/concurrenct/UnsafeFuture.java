@@ -7,8 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * A future can be invoke get() without checked exception
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
 public interface UnsafeFuture<V> extends ListenableFuture<V> {
 

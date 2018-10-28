@@ -1,7 +1,6 @@
 package com.datacollection.common.concurrenct;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.common.utils.Converter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.ExecutionException;
@@ -10,19 +9,15 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class FutureAdapter<S, R> implements ListenableFuture<R> {
 
     private final Future<S> src;
-    private final Converter<S, R> converter;
+    private final Function<S, R> converter;
     private final AtomicReference<R> result = new AtomicReference<>();
 
-    public FutureAdapter(Future<S> src, Converter<S, R> converter) {
+    public FutureAdapter(Future<S> src, Function<S, R> converter) {
         this.src = src;
         this.converter = converter;
     }
@@ -45,7 +40,7 @@ public class FutureAdapter<S, R> implements ListenableFuture<R> {
     @Override
     public R get() throws InterruptedException, ExecutionException {
         if (result.get() == null) {
-            result.compareAndSet(null, converter.convert(src.get()));
+            result.compareAndSet(null, converter.apply(src.get()));
         }
         return result.get();
     }
@@ -53,13 +48,13 @@ public class FutureAdapter<S, R> implements ListenableFuture<R> {
     @Override
     public R get(long timeout, @NotNull TimeUnit unit)
             throws InterruptedException, ExecutionException, TimeoutException {
-        return converter.convert(src.get(timeout, unit));
+        return converter.apply(src.get(timeout, unit));
     }
 
     @Override
     public void addListener(@NotNull Runnable runnable, @NotNull Executor executor) {
         if (src instanceof ListenableFuture) {
-            ((ListenableFuture) src).addListener(runnable, executor);
+            ((ListenableFuture<?>) src).addListener(runnable, executor);
         } else {
             executor.execute(() -> {
                 try {
@@ -71,7 +66,7 @@ public class FutureAdapter<S, R> implements ListenableFuture<R> {
         }
     }
 
-    public static <S, R> FutureAdapter<S, R> from(Future<S> src, Converter<S, R> converter) {
+    public static <S, R> FutureAdapter<S, R> from(Future<S> src, Function<S, R> converter) {
         return new FutureAdapter<>(src, converter);
     }
 }

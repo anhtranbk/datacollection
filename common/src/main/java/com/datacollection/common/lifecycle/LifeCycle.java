@@ -1,10 +1,5 @@
 package com.datacollection.common.lifecycle;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public interface LifeCycle {
 
     int STARTING = 1;

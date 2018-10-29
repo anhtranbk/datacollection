@@ -6,11 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
+@SuppressWarnings("UnusedReturnValue")
 public abstract class AbstractLifeCycle implements LifeCycle {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -46,13 +42,13 @@ public abstract class AbstractLifeCycle implements LifeCycle {
     public final void start() {
         if (!this.setStarting()) return;
 
-        logger.info("Life cycle initializing...");
+        logger.info("[lifecycle] initializing...");
         this.onInitialize();
 
-        logger.info("Life cycle starting...");
+        logger.info("[lifecycle] starting...");
         this.onStart();
 
-        logger.info("Life cycle started...");
+        logger.info("[lifecycle] started...");
         this.setStarted();
         this.onProcess();
     }
@@ -61,11 +57,11 @@ public abstract class AbstractLifeCycle implements LifeCycle {
     public final void stop() {
         if (!this.setStopping()) return;
 
-        logger.info("Life cycle stopping...");
+        logger.info("[lifecycle] stopping...");
         this.flagStop.set(true);
         this.onStop();
 
-        logger.info("Life cycle stopped...");
+        logger.info("[lifecycle] stopped...");
         this.setStopped();
     }
 

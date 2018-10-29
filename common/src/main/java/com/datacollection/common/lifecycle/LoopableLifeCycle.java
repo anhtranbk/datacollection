@@ -5,11 +5,6 @@ import com.datacollection.common.utils.Threads;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public abstract class LoopableLifeCycle extends AbstractLifeCycle {
 
     private long sleepAfterDone;

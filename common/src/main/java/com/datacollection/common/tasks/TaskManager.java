@@ -2,6 +2,7 @@ package com.datacollection.common.tasks;
 
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.Threads;
+import com.datacollection.exc.TaskErrorExceedLimitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,11 +12,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class TaskManager {
 
     private final int errorThreshold;

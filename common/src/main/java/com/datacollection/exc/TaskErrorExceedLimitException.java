@@ -1,10 +1,5 @@
-package com.datacollection.common.tasks;
+package com.datacollection.exc;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class TaskErrorExceedLimitException extends RuntimeException {
 
     public TaskErrorExceedLimitException() {

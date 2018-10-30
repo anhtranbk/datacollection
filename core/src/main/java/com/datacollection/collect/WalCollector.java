@@ -9,7 +9,7 @@ import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;
 import com.datacollection.common.broker.Record;
 import com.datacollection.common.broker.Records;
-import com.datacollection.common.tasks.TaskErrorExceedLimitException;
+import com.datacollection.exc.TaskErrorExceedLimitException;
 import com.datacollection.common.tasks.TaskManager;
 import com.datacollection.common.utils.ThreadPool;
 import com.datacollection.common.utils.Threads;

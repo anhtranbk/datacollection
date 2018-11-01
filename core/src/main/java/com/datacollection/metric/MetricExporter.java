@@ -20,7 +20,7 @@ public class MetricExporter {
     private final int port;
 
     public MetricExporter(Properties props) {
-        this.port = props.getIntProperty("metric.exporter.server.port", 5000);
+        this.port = props.getInt("metric.exporter.server.port", 5000);
     }
 
     public MetricExporter(int port) {

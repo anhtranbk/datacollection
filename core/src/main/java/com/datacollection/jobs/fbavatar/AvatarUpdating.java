@@ -58,12 +58,12 @@ public class AvatarUpdating extends AbstractLifeCycle {
         counterMetrics = new CounterMetrics(new Sl4jPublisher(), "default-metric-group",
                 "update avatar", counter, 1000);
         RemoteConfiguration remoteConfig = RemoteConfiguration.create(props);
-        version = remoteConfig.getIntProperty(VERSION_KEY, 1);
+        version = remoteConfig.getInt(VERSION_KEY, 1);
 
         ElasticConfig elasticConfig = new ElasticConfig(props);
         elasticClient = ElasticClientProvider.getDefault(elasticConfig);
         elasticIndex = elasticConfig.getElasticIndex();
-        int nThread = props.getIntProperty("nthread", Runtime.getRuntime().availableProcessors());
+        int nThread = props.getInt("nthread", Runtime.getRuntime().availableProcessors());
         ExecutorService executor = ThreadPool.builder()
                 .setCoreSize(nThread)
                 .setQueueSize(10)

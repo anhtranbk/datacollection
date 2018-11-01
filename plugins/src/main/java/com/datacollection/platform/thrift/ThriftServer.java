@@ -35,7 +35,7 @@ public class ThriftServer {
 
     public void start() {
         final HostAndPort hostAndPort = HostAndPort.fromString(props.getProperty("thrift.client.host"));
-        final boolean nonBlocking = props.getBoolProperty("thrift.mode.nonBlocking", false);
+        final boolean nonBlocking = props.getBool("thrift.mode.nonBlocking", false);
 
         final InetSocketAddress socketAddress = new InetSocketAddress(
                 hostAndPort.getHostText(), hostAndPort.getPort());

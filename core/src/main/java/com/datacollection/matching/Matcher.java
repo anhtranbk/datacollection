@@ -55,20 +55,20 @@ public class Matcher extends LoopableLifeCycle {
         this.p = p;
         this.type = type;
         this.algorithm = algorithm;
-        this.timeMatchingInterval = p.getIntProperty("time_matching_interval", 7200);
-        this.circuitBreakerEnabled = p.getBoolProperty("circuit.breaker.enabled", false);
+        this.timeMatchingInterval = p.getInt("time_matching_interval", 7200);
+        this.circuitBreakerEnabled = p.getBool("circuit.breaker.enabled", false);
 
-        SPAM_THRESHOLD_LEVEL1 = p.getIntProperty("spam.threshold.level1", 1000);
-        SPAM_THRESHOLD_LEVEL2 = p.getIntProperty("spam.threshold.level2", 2000);
+        SPAM_THRESHOLD_LEVEL1 = p.getInt("spam.threshold.level1", 1000);
+        SPAM_THRESHOLD_LEVEL2 = p.getInt("spam.threshold.level2", 2000);
 
-        SPAM_THRESHOLD_UNIQUE_UID = p.getIntProperty("spam.threshold.unique.uid", 3);
-        SLOW_THRESHOLD = p.getIntProperty("slow.threshold", 500);
+        SPAM_THRESHOLD_UNIQUE_UID = p.getInt("spam.threshold.unique.uid", 3);
+        SLOW_THRESHOLD = p.getInt("slow.threshold", 500);
     }
 
     @Override
     protected void onInitialize() {
-        int totalThread = p.getIntProperty("total.thread", Runtime.getRuntime().availableProcessors());
-        double ratioThread = p.getDoubleProperty("ratio.thread", 0.5);
+        int totalThread = p.getInt("total.thread", Runtime.getRuntime().availableProcessors());
+        double ratioThread = p.getDouble("ratio.thread", 0.5);
 
         int fastThread = (int) Math.round(totalThread * ratioThread);
         ExecutorService fastExecutor = ThreadPool.builder()

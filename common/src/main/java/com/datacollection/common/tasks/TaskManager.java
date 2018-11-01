@@ -20,7 +20,7 @@ public class TaskManager {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public TaskManager(Properties p, ExecutorService executor) {
-        this(p.getIntProperty("task_manager.error.threshold", 100), executor);
+        this(p.getInt("task_manager.error.threshold", 100), executor);
     }
 
     public TaskManager(int errorThreshold) {

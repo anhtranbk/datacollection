@@ -21,8 +21,8 @@ public class FutureMonitor extends AbstractLifeCycle {
 
     public FutureMonitor(Properties p) {
         scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-        initialDelay = p.getLongProperty("future_monitor.initial.delay.ms", 100);
-        delay = p.getLongProperty("future_monitor.delay.ms",  500);
+        initialDelay = p.getLong("future_monitor.initial.delay.ms", 100);
+        delay = p.getLong("future_monitor.delay.ms",  500);
     }
 
     @Override

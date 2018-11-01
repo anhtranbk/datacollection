@@ -19,8 +19,8 @@ public abstract class LoopableLifeCycle extends AbstractLifeCycle {
     }
 
     public LoopableLifeCycle(Properties p) {
-        this(p.getLongProperty("lifecycle.loop.done.sleep.s", 60),
-                p.getLongProperty("lifecycle.loop.fail.sleep.s", 30));
+        this(p.getLong("lifecycle.loop.done.sleep.s", 60),
+                p.getLong("lifecycle.loop.fail.sleep.s", 30));
     }
 
     @Override
@@ -45,8 +45,8 @@ public abstract class LoopableLifeCycle extends AbstractLifeCycle {
     }
 
     protected void setSleepTime(Properties p) {
-        this.sleepAfterDone = p.getLongProperty("lifecycle.loop.done.sleep.s", 60);
-        this.sleepAfterFail = p.getLongProperty("lifecycle.loop.fail.sleep.s", 30);
+        this.sleepAfterDone = p.getLong("lifecycle.loop.done.sleep.s", 60);
+        this.sleepAfterFail = p.getLong("lifecycle.loop.fail.sleep.s", 30);
     }
 
     protected abstract void onLoop() throws Exception;

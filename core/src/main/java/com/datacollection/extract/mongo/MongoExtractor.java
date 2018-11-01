@@ -34,7 +34,7 @@ public abstract class MongoExtractor extends StreamExtractor<Document> {
         this.database = MongoClientProvider.getOrCreate(group, mongoConfig)
                 .getDatabase(mongoConfig.getDatabaseName());
         this.collection = props.getProperty(KEY_COLLECTION);
-        this.batchSize = props.getIntProperty(KEY_BATCH_SIZE, 500);
+        this.batchSize = props.getInt(KEY_BATCH_SIZE, 500);
     }
 
     @Override

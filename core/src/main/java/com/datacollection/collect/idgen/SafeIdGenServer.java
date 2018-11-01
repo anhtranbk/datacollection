@@ -32,7 +32,7 @@ public class SafeIdGenServer {
     }
 
     static TProcessor initThriftProcessor(Properties props) {
-        int maxCacheSize = props.getIntProperty("idgen.max.cache.size", DEFAULT_MAX_CACHE_SIZE);
+        int maxCacheSize = props.getInt("idgen.max.cache.size", DEFAULT_MAX_CACHE_SIZE);
         TMultiplexedProcessor processor = new TMultiplexedProcessor();
         processor.registerProcessor("IdGenerator", new IdGenerator.Processor<>(
                 new IdGeneratorHandler(maxCacheSize)));

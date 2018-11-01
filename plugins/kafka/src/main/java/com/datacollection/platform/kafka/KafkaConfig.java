@@ -1,6 +1,6 @@
 package com.datacollection.platform.kafka;
 
-import com.datacollection.common.config.ConfigurationException;
+import com.datacollection.exc.ConfigurationException;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.Utils;
 

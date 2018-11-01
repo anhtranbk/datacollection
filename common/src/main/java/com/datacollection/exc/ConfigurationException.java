@@ -1,10 +1,5 @@
-package com.datacollection.common.config;
+package com.datacollection.exc;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class ConfigurationException extends RuntimeException {
 
     public ConfigurationException() {

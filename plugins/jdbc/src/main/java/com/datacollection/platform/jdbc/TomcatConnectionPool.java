@@ -36,18 +36,18 @@ public class TomcatConnectionPool implements ConnectionProvider {
 
         @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
         public MyPoolProperties(JdbcConfig jdbcConfig, Properties p) {
-            this.setTestOnBorrow(p.getBoolProperty("pool.testOnBorrow", true));
-            this.setTestOnReturn(p.getBoolProperty("pool.testOnReturn", true));
-            this.setValidationInterval(p.getLongProperty("pool.validationInterval", 30000));
-            this.setTimeBetweenEvictionRunsMillis(p.getIntProperty("pool.timeBetweenEvictionRunsMillis", 30000));
-            this.setMinEvictableIdleTimeMillis(p.getIntProperty("pool.minEvictableIdleTimeMillis", 30000));
-            this.setMaxIdle(p.getIntProperty("pool.maxIdle", 2));
-            this.setMaxActive(p.getIntProperty("pool.maxActive", 5));
-            this.setInitialSize(p.getIntProperty("pool.initialSize", 2));
-            this.setMaxWait(p.getIntProperty("pool.maxWait", 5));
-            this.setMinIdle(p.getIntProperty("pool.minIdle", 2));
-            this.setRemoveAbandoned(p.getBoolProperty("pool.removeAbandoned", true));
-            this.setRemoveAbandonedTimeout(p.getIntProperty("pool.removeAbandonedTimeout", 300));
+            this.setTestOnBorrow(p.getBool("pool.testOnBorrow", true));
+            this.setTestOnReturn(p.getBool("pool.testOnReturn", true));
+            this.setValidationInterval(p.getLong("pool.validationInterval", 30000));
+            this.setTimeBetweenEvictionRunsMillis(p.getInt("pool.timeBetweenEvictionRunsMillis", 30000));
+            this.setMinEvictableIdleTimeMillis(p.getInt("pool.minEvictableIdleTimeMillis", 30000));
+            this.setMaxIdle(p.getInt("pool.maxIdle", 2));
+            this.setMaxActive(p.getInt("pool.maxActive", 5));
+            this.setInitialSize(p.getInt("pool.initialSize", 2));
+            this.setMaxWait(p.getInt("pool.maxWait", 5));
+            this.setMinIdle(p.getInt("pool.minIdle", 2));
+            this.setRemoveAbandoned(p.getBool("pool.removeAbandoned", true));
+            this.setRemoveAbandonedTimeout(p.getInt("pool.removeAbandonedTimeout", 300));
             this.setDriverClassName("com.mysql.jdbc.Driver");
             this.setValidationQuery("SELECT 1");
             this.setLogAbandoned(false);

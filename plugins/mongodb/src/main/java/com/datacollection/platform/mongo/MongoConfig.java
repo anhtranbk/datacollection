@@ -113,13 +113,13 @@ public class MongoConfig {
             builder.readPreference(ReadPreference.secondary());
         }
 
-        builder.connectionsPerHost(p.getIntProperty("maxConnectionsPerHost", 100));
-        builder.serverSelectionTimeout(p.getIntProperty("serverSelectionTimeout", 30000));
-        builder.maxWaitTime(p.getIntProperty("maxWaitTime", 120000));
-        builder.connectTimeout(p.getIntProperty("connectTimeout", 10000));
-        builder.socketTimeout(p.getIntProperty("socketTimeout", 0));
-        builder.socketKeepAlive(p.getBoolProperty("socketKeepAlive", false));
-        builder.localThreshold(p.getIntProperty("localThreshold", 15));
+        builder.connectionsPerHost(p.getInt("maxConnectionsPerHost", 100));
+        builder.serverSelectionTimeout(p.getInt("serverSelectionTimeout", 30000));
+        builder.maxWaitTime(p.getInt("maxWaitTime", 120000));
+        builder.connectTimeout(p.getInt("connectTimeout", 10000));
+        builder.socketTimeout(p.getInt("socketTimeout", 0));
+        builder.socketKeepAlive(p.getBool("socketKeepAlive", false));
+        builder.localThreshold(p.getInt("localThreshold", 15));
 
         return builder;
     }

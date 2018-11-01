@@ -55,7 +55,7 @@ public class SyncProfileToEs extends LoopableLifeCycle {
 
     @Override
     protected void onInitialize() {
-        esBulkSize = props.getIntProperty("elastic.bulk.size", DEFAULT_BULK_SIZE);
+        esBulkSize = props.getInt("elastic.bulk.size", DEFAULT_BULK_SIZE);
         ebi = new ElasticBulkInsert(props);
 
         jobManager = JobManager.create(props);
@@ -64,9 +64,9 @@ public class SyncProfileToEs extends LoopableLifeCycle {
         metricExporter = new MetricExporter(props);
 
         executor = ThreadPool.builder()
-                .setCoreSize(props.getIntProperty("threadpool.core.size",
+                .setCoreSize(props.getInt("threadpool.core.size",
                         Runtime.getRuntime().availableProcessors()))
-                .setQueueSize(props.getIntProperty("threadpool.queue.size", DEFAULT_QUEUE_SIZE))
+                .setQueueSize(props.getInt("threadpool.queue.size", DEFAULT_QUEUE_SIZE))
                 .setDaemon(true)
                 .setNamePrefix("sync-es-worker")
                 .build();

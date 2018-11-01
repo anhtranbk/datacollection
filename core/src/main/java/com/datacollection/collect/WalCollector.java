@@ -46,9 +46,9 @@ public class WalCollector extends Collector {
 
         // init collect executors
         ExecutorService executor = ThreadPool.builder()
-                .setCoreSize(props.getIntProperty("threadpool.core.size",
+                .setCoreSize(props.getInt("threadpool.core.size",
                         Runtime.getRuntime().availableProcessors()))
-                .setQueueSize(props.getIntProperty("threadpool.queue.size", 4))
+                .setQueueSize(props.getInt("threadpool.queue.size", 4))
                 .setNamePrefix("collector-worker")
                 .setDaemon(true)
                 .build();
@@ -56,7 +56,7 @@ public class WalCollector extends Collector {
 
         // init wal properties
         walCodec = props.getProperty("wal.codec", WAL_CODEC_SIMPLE);
-        walSizeLimit = props.getLongProperty("wal.size.limit", WAL_SIZE_LIMIT_IN_BYTES);
+        walSizeLimit = props.getLong("wal.size.limit", WAL_SIZE_LIMIT_IN_BYTES);
         walDataDir = props.getProperty("data.path") + "/wal/";
         FileHelper.checkCreateDir(walDataDir);
     }

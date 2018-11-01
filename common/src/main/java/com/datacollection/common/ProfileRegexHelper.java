@@ -1,7 +1,7 @@
 package com.datacollection.common;
 
 import com.datacollection.common.io.FileHelper;
-import com.datacollection.common.config.ConfigurationException;
+import com.datacollection.exc.ConfigurationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -63,7 +63,7 @@ public class CassandraToAerospike extends AbstractLifeCycle {
         aerospikeClient = AerospikeClientProvider.getDefault(aerospikeConf);
         aerospikeNamespace = aerospikeConf.getNamespace();
 
-        this.numThread = props.getIntProperty("number.of.threads", Runtime.getRuntime().availableProcessors());
+        this.numThread = props.getInt("number.of.threads", Runtime.getRuntime().availableProcessors());
 
     }
 

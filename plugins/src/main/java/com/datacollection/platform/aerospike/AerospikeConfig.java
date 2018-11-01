@@ -30,7 +30,7 @@ public class AerospikeConfig {
         }
         this.namespace = p.getProperty("aerospike.namespace");
 
-        int eventLoopSize = p.getIntProperty("aerospike.eventloop.size",
+        int eventLoopSize = p.getInt("aerospike.eventloop.size",
                 Runtime.getRuntime().availableProcessors());
         EventPolicy eventPolicy = new EventPolicy();
         eventPolicy.minTimeout = 5000;

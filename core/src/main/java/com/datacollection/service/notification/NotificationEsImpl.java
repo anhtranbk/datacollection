@@ -40,8 +40,8 @@ public class NotificationEsImpl implements NotificationService {
 
         this.client = ElasticClientProvider.getDefault(esConfig);
         this.esIndex = esConfig.getElasticIndex();
-        this.esScrollTimeoutInMinutes = sub.getIntProperty("es.scroll.timeout.minutes", 5);
-        this.esScrollSize = sub.getIntProperty("es.scroll.size", 500);
+        this.esScrollTimeoutInMinutes = sub.getInt("es.scroll.timeout.minutes", 5);
+        this.esScrollSize = sub.getInt("es.scroll.size", 500);
     }
 
     @Override

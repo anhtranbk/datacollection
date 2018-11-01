@@ -53,9 +53,9 @@ public class KafkaBrokerReader extends AbstractBrokerReader {
         super.configure(props);
         this.consumerProps = KafkaConfig.consumerProperties();
         this.topics = props.getCollection(KEY_TOPICS);
-        this.minRecords = props.getIntProperty(KEY_MIN_RECORDS, 100);
+        this.minRecords = props.getInt(KEY_MIN_RECORDS, 100);
 
-        this.numConsumers = props.getIntProperty(KEY_NUM_CONSUMERS, Runtime.getRuntime().availableProcessors());
+        this.numConsumers = props.getInt(KEY_NUM_CONSUMERS, Runtime.getRuntime().availableProcessors());
         // number executor threads same as number consumers
         this.executor = Executors.newFixedThreadPool(numConsumers);
     }

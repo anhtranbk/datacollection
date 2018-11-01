@@ -27,8 +27,8 @@ public class EcommerceExtractor extends Extractor {
     public EcommerceExtractor(Configuration config) {
         super("ecommerce", config);
         esIndex = props.getProperty("es.index.name", "ecommerce");
-        esScrollSize = props.getIntProperty("es.scroll.size", 1000);
-        esScrollTimeout = props.getIntProperty("es.scroll.timeout.minutes", 5);
+        esScrollSize = props.getInt("es.scroll.size", 1000);
+        esScrollTimeout = props.getInt("es.scroll.timeout.minutes", 5);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class EcommerceExtractor extends Extractor {
 
     @Override
     protected void onLoop() {
-        int defSkip = props.getIntProperty("es.skip", 0);
+        int defSkip = props.getInt("es.skip", 0);
         int skip = Integer.parseInt(loadIndex(String.valueOf(defSkip)));
         logger.info("Skip " + skip + " documents");
         Threads.sleep(1000);

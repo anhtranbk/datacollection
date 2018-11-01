@@ -28,7 +28,7 @@ public class ThriftClient implements Closeable {
 
     public ThriftClient(Properties props) {
         final HostAndPort hostAndPort = HostAndPort.fromString(props.getProperty("thrift.client.host"));
-        final boolean nonBlocking = props.getBoolProperty("thrift.mode.nonBlocking", false);
+        final boolean nonBlocking = props.getBool("thrift.mode.nonBlocking", false);
 
         transport = new TSocket(hostAndPort.getHostText(), hostAndPort.getPort());
         if (nonBlocking) {

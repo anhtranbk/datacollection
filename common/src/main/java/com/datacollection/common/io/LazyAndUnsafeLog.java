@@ -23,7 +23,7 @@ public class LazyAndUnsafeLog {
 
     public LazyAndUnsafeLog(Properties p, String fileName) {
         this(p.getProperty("logging.path") + "/" + fileName,
-                p.getLongProperty("logging.lazy.delay.ms", 500));
+                p.getLong("logging.lazy.delay.ms", 500));
     }
 
     public LazyAndUnsafeLog(Properties p, String fileName, long delay) {

@@ -11,11 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 @SuppressWarnings("unchecked")
 public class Properties extends java.util.Properties {
 
@@ -39,7 +34,7 @@ public class Properties extends java.util.Properties {
         }
     }
 
-    public int getIntProperty(String key, int defVal) {
+    public int getInt(String key, int defVal) {
         try {
             return Integer.parseInt(getProperty(key));
         } catch (Exception ignored) {
@@ -47,7 +42,7 @@ public class Properties extends java.util.Properties {
         }
     }
 
-    public long getLongProperty(String key, long defVal) {
+    public long getLong(String key, long defVal) {
         try {
             return Long.parseLong(getProperty(key));
         } catch (Exception ignored) {
@@ -55,7 +50,7 @@ public class Properties extends java.util.Properties {
         }
     }
 
-    public double getDoubleProperty(String key, double defVal) {
+    public double getDouble(String key, double defVal) {
         try {
             return Double.parseDouble(getProperty(key));
         } catch (Exception ignored) {
@@ -63,7 +58,7 @@ public class Properties extends java.util.Properties {
         }
     }
 
-    public boolean getBoolProperty(String key, boolean defVal) {
+    public boolean getBool(String key, boolean defVal) {
         try {
             return Boolean.parseBoolean(getProperty(key));
         } catch (Exception ignored) {

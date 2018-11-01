@@ -55,9 +55,9 @@ public class CassandraToES extends AbstractLifeCycle {
         session = CassandraClusterProvider.getDefault(new CassandraConfig(props)).connect("datacollection");
 
         bulkInsert = new ElasticBulkInsert(this.props);
-        this.bulkSize = props.getIntProperty("bulk.size", 500);
+        this.bulkSize = props.getInt("bulk.size", 500);
 
-        this.numThread = props.getIntProperty("number.of.threads", Runtime.getRuntime().availableProcessors());
+        this.numThread = props.getInt("number.of.threads", Runtime.getRuntime().availableProcessors());
     }
 
     @Override

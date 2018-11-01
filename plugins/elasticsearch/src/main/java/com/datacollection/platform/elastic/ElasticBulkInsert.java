@@ -34,7 +34,7 @@ public class ElasticBulkInsert implements Closeable, Flushable {
         final ElasticConfig esConfig = new ElasticConfig(props);
         this.client = ElasticClientProvider.getDefault(esConfig);
         this.index = esConfig.getElasticIndex();
-        this.retries = props.getIntProperty("elastic.index.retries", 0);
+        this.retries = props.getInt("elastic.index.retries", 0);
     }
 
     /**

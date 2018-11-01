@@ -65,8 +65,8 @@ class WalCollectHandler implements Runnable {
 
         this.shortName = FileHelper.getFileName(walFile.absolutePath());
         this.total = 0;
-        this.asyncMode = props.getBoolProperty("wal.handler.async.mode", false);
-        this.retries = props.getIntProperty("wal.handler.retries", 3);
+        this.asyncMode = props.getBool("wal.handler.async.mode", false);
+        this.retries = props.getInt("wal.handler.retries", 3);
     }
 
     @Override

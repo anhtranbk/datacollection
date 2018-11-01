@@ -58,8 +58,8 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
                 .build();
         this.serializer = Serialization.create(props.getProperty(KEY_SERIALIZER), Event.class).serializer();
 
-        long indexDelay = props.getLongProperty("logging.lazy.delay.ms", 500);
-        int minLines = props.getIntProperty("index.min.lines", 5);
+        long indexDelay = props.getLong("logging.lazy.delay.ms", 500);
+        int minLines = props.getInt("index.min.lines", 5);
         String indexPath = props.getProperty("data.path") + "/extract/" + name + ".log";
         this.indexKeeper = new IndexKeeper(indexPath, indexDelay, minLines);
     }

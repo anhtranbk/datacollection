@@ -36,7 +36,7 @@ public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
     @Override
     protected DataStream<ResultSetAdapter> openDataStream() {
         int lastId = Integer.parseInt(loadIndex("-1"));
-        int batchSize = props.getIntProperty(KEY_BATCH_SIZE, 1000);
+        int batchSize = props.getInt(KEY_BATCH_SIZE, 1000);
 
         return new SqlDataStream(new SQLFetcher() {
             @Override

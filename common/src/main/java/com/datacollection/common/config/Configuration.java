@@ -1,5 +1,7 @@
 package com.datacollection.common.config;
 
+import com.datacollection.exc.ConfigurationException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,11 +13,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class Configuration extends Properties {
 
     private static final String CONF_ENV = "app.conf";

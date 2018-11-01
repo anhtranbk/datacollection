@@ -30,7 +30,7 @@ public abstract class AbstractRepository implements Closeable {
 
     public AbstractRepository(Properties props) {
         this.connection = HBaseConnectionProvider.getDefault(HBaseConfig.loadConfig());
-        this.asyncMode = props.getBoolProperty("hbase.client.async.mode", false);
+        this.asyncMode = props.getBool("hbase.client.async.mode", false);
     }
 
     protected void createTablesIfNotExists(byte[] family, TableName... names) {
@@ -77,9 +77,9 @@ public abstract class AbstractRepository implements Closeable {
 
     protected static ExecutorService initInternalThreadPool(Properties p) {
         return ThreadPool.builder()
-                .setCoreSize(p.getIntProperty("hbase.client.threadpool.core.size",
+                .setCoreSize(p.getInt("hbase.client.threadpool.core.size",
                         Runtime.getRuntime().availableProcessors()))
-                .setQueueSize(p.getIntProperty("hbase.client.threadpool.queue.size", 512))
+                .setQueueSize(p.getInt("hbase.client.threadpool.queue.size", 512))
                 .setNamePrefix("HBaseClient-pool-worker")
                 .setDaemon(true)
                 .build();

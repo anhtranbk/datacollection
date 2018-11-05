@@ -36,7 +36,7 @@ public class ExtractorLauncher {
             startExtractors(extractors);
         }
 
-        MetricExporter metricExporter = new MetricExporter(config.toSubProperties("extract"));
+        MetricExporter metricExporter = new MetricExporter(config.getSubConfiguration("extract"));
         metricExporter.start();
 
         Utils.addShutdownHook(() -> {

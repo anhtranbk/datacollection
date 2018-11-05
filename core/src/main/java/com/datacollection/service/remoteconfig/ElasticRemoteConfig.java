@@ -2,7 +2,6 @@ package com.datacollection.service.remoteconfig;
 
 import com.google.common.collect.ImmutableMap;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.platform.elastic.ElasticClientProvider;
 import com.datacollection.platform.elastic.ElasticConfig;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
@@ -21,14 +20,14 @@ import java.util.Map;
 
 public class ElasticRemoteConfig extends RemoteConfiguration {
 
-    private static Logger logger = LoggerFactory.getLogger(ElasticRemoteConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(ElasticRemoteConfig.class);
     private static final String INDEX_TYPE = "config";
 
     private final Client client;
     private final String index;
 
-    public ElasticRemoteConfig(Properties props) {
-        ElasticConfig elasticConfig = new ElasticConfig(props.toSubProperties("remote_config"));
+    public ElasticRemoteConfig(Configuration conf) {
+        ElasticConfig elasticConfig = new ElasticConfig(conf.getSubConfiguration("remote_config"));
         client = ElasticClientProvider.getDefault(elasticConfig);
         index = elasticConfig.getElasticIndex();
     }

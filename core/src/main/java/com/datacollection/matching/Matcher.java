@@ -289,7 +289,7 @@ public class Matcher extends LoopableLifeCycle {
 
 //        String type = "phone";
         String type = args[0];
-        Properties p = new Configuration().toSubProperties("matching", type + "_matching");
+        Properties p = new Configuration().getSubConfiguration("matching", type + "_matching");
 
         MatchingAlgorithm algorithm = new PhoneEmailMatching();
         Matcher matcher = new Matcher(p, type, algorithm);

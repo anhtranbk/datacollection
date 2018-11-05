@@ -1,6 +1,7 @@
 package com.datacollection.collect;
 
 import com.datacollection.common.broker.BrokerFactory;
+import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.AbstractLifeCycle;
 import com.datacollection.common.broker.BrokerRecordHandler;
@@ -16,16 +17,13 @@ import com.datacollection.metric.Sl4jPublisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public abstract class Collector extends AbstractLifeCycle implements BrokerRecordHandler {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-    protected final Properties props;
+
+    protected final Configuration conf;
     protected final Counter counter = new Counter();
+
     private CounterMetrics counterMetrics;
     private MetricExporter metricExporter;
 
@@ -33,24 +31,24 @@ public abstract class Collector extends AbstractLifeCycle implements BrokerRecor
     private CollectService service;
     private BrokerReader brokerReader;
 
-    public Collector(Properties props) {
-        this.props = props;
+    public Collector(Configuration conf) {
+        this.conf = conf;
     }
 
     @Override
     protected void onInitialize() {
         // init message queue
-        brokerReader = createMsgBrokerReader(props);
+        brokerReader = createMsgBrokerReader(conf);
         brokerReader.addHandler(this);
-        deserializer = Serialization.create(props.getProperty("mb.deserializer"), Event.class).deserializer();
+        deserializer = Serialization.create(conf.getProperty("mb.deserializer"), Event.class).deserializer();
 
         // init main services
-        service = new GraphCollectService(props);
+        service = new GraphCollectService(conf);
 
         // init monitoring
         counterMetrics = new CounterMetrics(new Sl4jPublisher(), "default-metric-group",
                 "collector", counter, 1000);
-        metricExporter = new MetricExporter(props);
+        metricExporter = new MetricExporter(conf);
     }
 
     @Override
@@ -77,8 +75,8 @@ public abstract class Collector extends AbstractLifeCycle implements BrokerRecor
         return reader;
     }
 
-    public Properties getProps() {
-        return props;
+    public Properties getConf() {
+        return conf;
     }
 
     public Counter getCounter() {

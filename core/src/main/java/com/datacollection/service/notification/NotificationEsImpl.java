@@ -3,7 +3,6 @@ package com.datacollection.service.notification;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.collect.IterableAdapter;
 import com.datacollection.common.collect.Maps;
 import com.datacollection.platform.elastic.ElasticClientProvider;
@@ -22,11 +21,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class NotificationEsImpl implements NotificationService {
 
     private final Client client;
@@ -34,14 +28,14 @@ public class NotificationEsImpl implements NotificationService {
     private final int esScrollTimeoutInMinutes;
     private final int esScrollSize;
 
-    public NotificationEsImpl(Properties p) {
-        Properties sub = p.toSubProperties("notification");
-        ElasticConfig esConfig = new ElasticConfig(sub);
+    public NotificationEsImpl(Configuration conf) {
+        conf = conf.getSubConfiguration("notification");
+        ElasticConfig esConfig = new ElasticConfig(conf);
 
         this.client = ElasticClientProvider.getDefault(esConfig);
         this.esIndex = esConfig.getElasticIndex();
-        this.esScrollTimeoutInMinutes = sub.getInt("es.scroll.timeout.minutes", 5);
-        this.esScrollSize = sub.getInt("es.scroll.size", 500);
+        this.esScrollTimeoutInMinutes = conf.getInt("es.scroll.timeout.minutes", 5);
+        this.esScrollSize = conf.getInt("es.scroll.size", 500);
     }
 
     @Override

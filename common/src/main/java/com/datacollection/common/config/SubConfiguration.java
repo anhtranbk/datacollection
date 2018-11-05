@@ -1,22 +1,22 @@
 package com.datacollection.common.config;
 
-public class SubProperties extends Properties {
+public class SubConfiguration extends Configuration {
 
-    private final Properties impl;
+    private final Properties parent;
     private final String name;
     private final String group;
 
-    public SubProperties(String group, String name, Properties p) {
+    public SubConfiguration(String group, String name, Properties p) {
         this.group = group;
         this.name = name;
-        this.impl = p;
+        this.parent = p;
     }
 
-    public SubProperties(Class<?> clazz, Properties p) {
+    public SubConfiguration(Class<?> clazz, Properties p) {
         this(clazz.getSimpleName(), p);
     }
 
-    public SubProperties(String name, Properties p) {
+    public SubConfiguration(String name, Properties p) {
         this(null, name, p);
     }
 
@@ -24,17 +24,17 @@ public class SubProperties extends Properties {
     public String getProperty(String key) {
         for (String prefix : new String[]{name, group}) {
             if (prefix == null) continue;
-            String value = impl.getProperty(keyWithPrefix(prefix, key));
+            String value = parent.getProperty(keyWithPrefix(prefix, key));
             if (value != null) return value;
         }
-        return impl.getProperty(key);
+        return parent.getProperty(key);
     }
 
     @Override
     public synchronized boolean containsKey(Object key) {
-        return impl.containsKey(keyWithPrefix(name, key))
-                || (group != null && impl.containsKey(keyWithPrefix(group, key)))
-                || impl.containsKey(key);
+        return parent.containsKey(keyWithPrefix(name, key))
+                || (group != null && parent.containsKey(keyWithPrefix(group, key)))
+                || parent.containsKey(key);
     }
 
     private String keyWithPrefix(String prefix, Object key) {

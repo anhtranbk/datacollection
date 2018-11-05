@@ -2,7 +2,6 @@ package com.datacollection.jobs.fbavatar;
 
 import com.datacollection.collect.fbavt.FbAvatarService;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.AbstractLifeCycle;
 import com.datacollection.common.tasks.TaskManager;
 import com.datacollection.common.utils.ThreadPool;
@@ -44,33 +43,33 @@ public class AvatarUpdating extends AbstractLifeCycle {
 
     private TaskManager taskManager;
 
-    private Properties props;
+    private final Configuration conf;
 
-    public AvatarUpdating(Properties props) {
-        this.props = props;
+    public AvatarUpdating(Configuration conf) {
+        this.conf = conf;
     }
 
     @Override
     protected void onInitialize() {
-        session = GraphDatabase.open(props);
-        fbAvatarService = new FbAvatarService(props);
+        session = GraphDatabase.open(conf);
+        fbAvatarService = new FbAvatarService(conf);
         counter = new Counter();
         counterMetrics = new CounterMetrics(new Sl4jPublisher(), "default-metric-group",
                 "update avatar", counter, 1000);
-        RemoteConfiguration remoteConfig = RemoteConfiguration.create(props);
+        RemoteConfiguration remoteConfig = RemoteConfiguration.create(conf);
         version = remoteConfig.getInt(VERSION_KEY, 1);
 
-        ElasticConfig elasticConfig = new ElasticConfig(props);
+        ElasticConfig elasticConfig = new ElasticConfig(conf);
         elasticClient = ElasticClientProvider.getDefault(elasticConfig);
         elasticIndex = elasticConfig.getElasticIndex();
-        int nThread = props.getInt("nthread", Runtime.getRuntime().availableProcessors());
+        int nThread = conf.getInt("nthread", Runtime.getRuntime().availableProcessors());
         ExecutorService executor = ThreadPool.builder()
                 .setCoreSize(nThread)
                 .setQueueSize(10)
                 .setDaemon(true)
                 .setNamePrefix("hdfs-saver")
                 .build();
-        taskManager = new TaskManager(props, executor);
+        taskManager = new TaskManager(conf, executor);
     }
 
     @Override
@@ -154,7 +153,7 @@ public class AvatarUpdating extends AbstractLifeCycle {
 
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
-        AvatarUpdating au = new AvatarUpdating(configuration.toSubProperties("update_avatar"));
+        AvatarUpdating au = new AvatarUpdating(configuration.getSubConfiguration("update_avatar"));
         au.start();
     }
 }

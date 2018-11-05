@@ -1,5 +1,6 @@
 package com.datacollection.service.remoteconfig;
 
+import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 
 import java.util.Map;
@@ -14,7 +15,7 @@ public abstract class RemoteConfiguration extends Properties {
 
     public abstract void setProperties(Map<String, String> props);
 
-    public static RemoteConfiguration create(Properties p) {
-        return new ElasticRemoteConfig(p);
+    public static RemoteConfiguration create(Configuration conf) {
+        return new ElasticRemoteConfig(conf);
     }
 }

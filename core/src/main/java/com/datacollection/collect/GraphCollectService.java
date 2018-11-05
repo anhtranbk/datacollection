@@ -1,5 +1,6 @@
 package com.datacollection.collect;
 
+import com.datacollection.common.config.Configuration;
 import com.datacollection.common.utils.JsonUtils;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -61,22 +62,22 @@ public class GraphCollectService implements CollectService {
     private final IdGenerator idGenerator;
     private final RemoteIdGenerator remoteIdGenerator;
 
-    public GraphCollectService(Properties props) {
-        this(props, Arrays.asList(new DetectLanguageFilter(), new DetectSpamFilter()));
+    public GraphCollectService(Configuration conf) {
+        this(conf, Arrays.asList(new DetectLanguageFilter(), new DetectSpamFilter()));
     }
 
-    public GraphCollectService(Properties props, Collection<CollectFilter> filters) {
+    public GraphCollectService(Configuration conf, Collection<CollectFilter> filters) {
         this.filters.addAll(filters);
 
-        this.session = GraphDatabase.open(props);
-        this.historyStorage = HistoryStorage.create(props);
-        this.fbAvatarService = new FbAvatarService(props);
-        this.notificationService = NotificationService.create(props);
+        this.session = GraphDatabase.open(conf);
+        this.historyStorage = HistoryStorage.create(conf);
+        this.fbAvatarService = new FbAvatarService(conf);
+        this.notificationService = NotificationService.create(conf);
 
         this.idGenerator = new RandomIdGenerator();
-        this.remoteIdGenerator = RemoteIdGenerator.create(props);
+        this.remoteIdGenerator = RemoteIdGenerator.create(conf);
 
-        RemoteConfiguration remoteConfig = RemoteConfiguration.create(props);
+        RemoteConfiguration remoteConfig = RemoteConfiguration.create(conf);
         for (Map.Entry<String, String> e : remoteConfig.getPropertiesByPrefix("_v").entrySet()) {
             String type = e.getKey().split(Versions.DELIMITER)[1];
             dataVersionMapping.put(type, Integer.parseInt(e.getValue()));

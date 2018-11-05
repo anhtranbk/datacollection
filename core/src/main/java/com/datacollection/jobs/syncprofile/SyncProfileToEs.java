@@ -2,7 +2,6 @@ package com.datacollection.jobs.syncprofile;
 
 import com.datacollection.common.concurrenct.AllInOneFuture;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;
 import com.datacollection.common.lifecycle.LoopableLifeCycle;
 import com.datacollection.common.utils.Strings;
@@ -28,18 +27,13 @@ import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class SyncProfileToEs extends LoopableLifeCycle {
 
     private static final int DEFAULT_BULK_SIZE = 100;
     private static final int DEFAULT_QUEUE_SIZE = 256;
     private static final long MIN_VALID_EPOCH = 1511488473000L;
 
-    private Properties props;
+    private final Configuration conf;
     private int esBulkSize;
     private ElasticBulkInsert ebi;
     private ExecutorService executor;
@@ -48,25 +42,25 @@ public class SyncProfileToEs extends LoopableLifeCycle {
     private MetricExporter metricExporter;
     private JobManager jobManager;
 
-    public SyncProfileToEs(Properties p) {
-        super(p);
-        this.props = p;
+    public SyncProfileToEs(Configuration conf) {
+        super(conf);
+        this.conf = conf;
     }
 
     @Override
     protected void onInitialize() {
-        esBulkSize = props.getInt("elastic.bulk.size", DEFAULT_BULK_SIZE);
-        ebi = new ElasticBulkInsert(props);
+        esBulkSize = conf.getInt("elastic.bulk.size", DEFAULT_BULK_SIZE);
+        ebi = new ElasticBulkInsert(conf);
 
-        jobManager = JobManager.create(props);
-        syncService = new GraphService(GraphDatabase.open(props));
-        notificationService = NotificationService.create(props);
-        metricExporter = new MetricExporter(props);
+        jobManager = JobManager.create(conf);
+        syncService = new GraphService(GraphDatabase.open(conf));
+        notificationService = NotificationService.create(conf);
+        metricExporter = new MetricExporter(conf);
 
         executor = ThreadPool.builder()
-                .setCoreSize(props.getInt("threadpool.core.size",
+                .setCoreSize(conf.getInt("threadpool.core.size",
                         Runtime.getRuntime().availableProcessors()))
-                .setQueueSize(props.getInt("threadpool.queue.size", DEFAULT_QUEUE_SIZE))
+                .setQueueSize(conf.getInt("threadpool.queue.size", DEFAULT_QUEUE_SIZE))
                 .setDaemon(true)
                 .setNamePrefix("sync-es-worker")
                 .build();
@@ -80,7 +74,7 @@ public class SyncProfileToEs extends LoopableLifeCycle {
 
     @Override
     protected void onLoop() throws Exception {
-        String indexPath = props.getProperty("data.path") + "/syncprofile.index";
+        String indexPath = conf.getProperty("data.path") + "/syncprofile.index";
         String timeIndex = loadLastTimeIndex(indexPath);
 
         // go to next time index from last time index
@@ -199,8 +193,8 @@ public class SyncProfileToEs extends LoopableLifeCycle {
     }
 
     public static void main(String[] args) {
-        Properties p = new Configuration().toSubProperties("sync_profile");
-        SyncProfileToEs processor = new SyncProfileToEs(p);
+        Configuration conf = new Configuration().getSubConfiguration("sync_profile");
+        SyncProfileToEs processor = new SyncProfileToEs(conf);
         processor.start();
     }
 }

@@ -25,7 +25,7 @@ public class ReadExcelAuto {
 
     public ReadExcelAuto() {
         profileRegexHelper = new ProfileRegexHelper();
-         bulkInsert1 = new ElasticBulkInsert(new Configuration().toSubProperties(index_Es));
+         bulkInsert1 = new ElasticBulkInsert(new Configuration().getSubConfiguration(index_Es));
     }
 
     public void readFileExcel(String fileName){

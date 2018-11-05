@@ -97,6 +97,18 @@ public class Configuration extends Properties {
         return (value != null) ? value : defaultProps.getProperty(key);
     }
 
+    public Configuration getSubConfiguration(String group, String name) {
+        return new SubConfiguration(group, name, this);
+    }
+
+    public Configuration getSubConfiguration(String name) {
+        return new SubConfiguration(name, this);
+    }
+
+    public Configuration getSubConfiguration(Class<?> clazz) {
+        return new SubConfiguration(clazz, this);
+    }
+
     @Override
     public synchronized String toString() {
         Set<Object> keySet = new LinkedHashSet<>();

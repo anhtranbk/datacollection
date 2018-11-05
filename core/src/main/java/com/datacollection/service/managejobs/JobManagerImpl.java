@@ -1,7 +1,6 @@
 package com.datacollection.service.managejobs;
 
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.DateTimes;
 import com.datacollection.common.collect.Maps;
 import com.datacollection.platform.elastic.ElasticClientProvider;
@@ -25,13 +24,12 @@ class JobManagerImpl implements JobManager {
     private final Client client;
     private final String esIndex;
 
-    JobManagerImpl(Properties p) {
-        ElasticConfig esConfig = new ElasticConfig(p.toSubProperties("job_manager"));
+    JobManagerImpl(Configuration conf) {
+        ElasticConfig esConfig = new ElasticConfig(conf.getSubConfiguration("job_manager"));
         this.client = ElasticClientProvider.getDefault(esConfig);
         this.esIndex = esConfig.getElasticIndex();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public JobDetail getJob(String name) {
         GetResponse resp = client.prepareGet(esIndex, INDEX_TYPE, name)

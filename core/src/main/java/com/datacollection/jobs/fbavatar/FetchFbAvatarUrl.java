@@ -47,7 +47,7 @@ public class FetchFbAvatarUrl {
     static AtomicBoolean flagStop = new AtomicBoolean(false);
 
     public static void main(String[] args) {
-        props = new Configuration().toSubProperties("fbavatar");
+        props = new Configuration().getSubConfiguration("fbavatar");
         session = CassandraClusterProvider.getDefault(new CassandraConfig(props)).connect();
         ps = session.prepare("INSERT INTO datacollection.fbavatar (id, url) VALUES (?, ?)");
 

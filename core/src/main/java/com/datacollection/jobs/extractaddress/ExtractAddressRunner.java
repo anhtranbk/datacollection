@@ -36,7 +36,7 @@ public class ExtractAddressRunner implements BrokerRecordHandler {
     private final AtomicBoolean flagStop = new AtomicBoolean(false);
 
     public ExtractAddressRunner() {
-        Properties props = new Configuration().toSubProperties("extract_address");
+        Properties props = new Configuration().getSubConfiguration("extract_address");
 
         this.brokerReader = this.createBrokerReader(props);
         this.brokerReader.addHandler(this);

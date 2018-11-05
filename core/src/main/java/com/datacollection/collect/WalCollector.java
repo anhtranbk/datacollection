@@ -5,7 +5,6 @@ import com.datacollection.collect.wal.WalFile;
 import com.datacollection.collect.wal.WalWriter;
 import com.datacollection.common.concurrenct.AllInOneFuture;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.io.FileHelper;
 import com.datacollection.common.broker.Record;
 import com.datacollection.common.broker.Records;
@@ -20,11 +19,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class WalCollector extends Collector {
 
     public static final long WAL_SIZE_LIMIT_IN_BYTES = 1024 * 1024; // 1 MB
@@ -36,8 +30,8 @@ public class WalCollector extends Collector {
     private String walDataDir;
     private TaskManager taskManager;
 
-    public WalCollector(Properties props) {
-        super(props);
+    public WalCollector(Configuration conf) {
+        super(conf);
     }
 
     @Override
@@ -46,18 +40,18 @@ public class WalCollector extends Collector {
 
         // init collect executors
         ExecutorService executor = ThreadPool.builder()
-                .setCoreSize(props.getInt("threadpool.core.size",
+                .setCoreSize(conf.getInt("threadpool.core.size",
                         Runtime.getRuntime().availableProcessors()))
-                .setQueueSize(props.getInt("threadpool.queue.size", 4))
+                .setQueueSize(conf.getInt("threadpool.queue.size", 4))
                 .setNamePrefix("collector-worker")
                 .setDaemon(true)
                 .build();
-        taskManager = new TaskManager(props, executor);
+        taskManager = new TaskManager(conf, executor);
 
         // init wal properties
-        walCodec = props.getProperty("wal.codec", WAL_CODEC_SIMPLE);
-        walSizeLimit = props.getLong("wal.size.limit", WAL_SIZE_LIMIT_IN_BYTES);
-        walDataDir = props.getProperty("data.path") + "/wal/";
+        walCodec = conf.getProperty("wal.codec", WAL_CODEC_SIMPLE);
+        walSizeLimit = conf.getLong("wal.size.limit", WAL_SIZE_LIMIT_IN_BYTES);
+        walDataDir = conf.getProperty("data.path") + "/wal/";
         FileHelper.checkCreateDir(walDataDir);
     }
 
@@ -143,11 +137,11 @@ public class WalCollector extends Collector {
     }
 
     private WalCollectHandler newWalExecutor(WalFile wal) {
-        return new WalCollectHandler(props, wal, getService(), getDeserializer(), counter);
+        return new WalCollectHandler(conf, wal, getService(), getDeserializer(), counter);
     }
 
     public static void main(String[] args) {
-        Properties p = new Configuration().toSubProperties("collect", "WalCollector");
-        new WalCollector(p).start();
+        Configuration conf = new Configuration().getSubConfiguration("collect", "WalCollector");
+        new WalCollector(conf).start();
     }
 }

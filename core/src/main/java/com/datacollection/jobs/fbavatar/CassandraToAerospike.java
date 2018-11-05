@@ -180,7 +180,7 @@ public class CassandraToAerospike extends AbstractLifeCycle {
     }
 
     public static void main(String[] args) {
-        Properties p = new Configuration().toSubProperties("sync_aerospike");
+        Properties p = new Configuration().getSubConfiguration("sync_aerospike");
         new CassandraToAerospike(p).start();
     }
 }

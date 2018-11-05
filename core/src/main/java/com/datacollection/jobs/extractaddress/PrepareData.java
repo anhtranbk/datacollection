@@ -58,7 +58,7 @@ public class PrepareData {
         ObjectMapper om = new ObjectMapper();
         System.out.println(om.writeValueAsString(provinces));
 
-        Properties props = new Configuration().toSubProperties("address_extract");
+        Properties props = new Configuration().getSubConfiguration("address_extract");
         ElasticBulkInsert elasticBulkInsert = new ElasticBulkInsert(props);
         int i = 0;
         for (Province p : provinces) {

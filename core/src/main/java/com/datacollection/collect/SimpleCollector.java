@@ -1,7 +1,6 @@
 package com.datacollection.collect;
 
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.broker.Record;
 import com.datacollection.common.broker.Records;
 import com.datacollection.common.utils.Threads;
@@ -12,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class SimpleCollector extends Collector {
 
-    public SimpleCollector(Properties props) {
-        super(props);
+    public SimpleCollector(Configuration conf) {
+        super(conf);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class SimpleCollector extends Collector {
     }
 
     public static void main(String[] args) {
-        Properties p = new Configuration().toSubProperties("collect", "SimpleCollector");
-        new SimpleCollector(p).start();
+        Configuration conf = new Configuration().getSubConfiguration("collect", "SimpleCollector");
+        new SimpleCollector(conf).start();
     }
 }

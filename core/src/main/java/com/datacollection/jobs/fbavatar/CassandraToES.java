@@ -170,7 +170,7 @@ public class CassandraToES extends AbstractLifeCycle {
     }
 
     public static void main(String[] args) {
-        Properties p = new Configuration().toSubProperties("sync_aerospike");
+        Properties p = new Configuration().getSubConfiguration("sync_aerospike");
         new CassandraToES(p).start();
     }
 }

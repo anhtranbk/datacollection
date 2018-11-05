@@ -34,7 +34,7 @@ public class ReadExcel {
     }
 
     public static void main(String[] args) throws IOException {
-        ElasticBulkInsert elasticBulkInsert = new ElasticBulkInsert(new Configuration().toSubProperties("raw"));
+        ElasticBulkInsert elasticBulkInsert = new ElasticBulkInsert(new Configuration().getSubConfiguration("raw"));
 
         String dirpath = "/home/duc/Desktop/Xu Ly Database";
         Scanner scanner = new Scanner(dirpath);

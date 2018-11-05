@@ -44,7 +44,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     public Extractor(String group, Configuration config) {
         this.group = group;
         this.name = this.getClass().getName();
-        this.props = config.toSubProperties(group, getClass().getSimpleName());
+        this.props = config.getSubConfiguration(group, getClass().getSimpleName());
         this.setSleepTime(this.props);
         this.initMessageBroker();
     }

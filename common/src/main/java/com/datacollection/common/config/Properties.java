@@ -14,18 +14,6 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
 public class Properties extends java.util.Properties {
 
-    public Properties toSubProperties(String group, String name) {
-        return new SubProperties(group, name, this);
-    }
-
-    public Properties toSubProperties(String name) {
-        return new SubProperties(name, this);
-    }
-
-    public Properties toSubProperties(Class<?> clazz) {
-        return new SubProperties(clazz, this);
-    }
-
     public <T> T getProperty(String key, T defVal) {
         try {
             return (T) get(key);

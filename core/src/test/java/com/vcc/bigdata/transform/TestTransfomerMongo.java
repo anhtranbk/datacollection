@@ -8,7 +8,6 @@ import com.datacollection.collect.GraphCollectService;
 import com.datacollection.collect.model.GraphModel;
 import com.datacollection.collect.transform.OrgTransformer;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.entity.Event;
 import com.datacollection.platform.elastic.ElasticBulkInsert;
 import com.datacollection.platform.mongo.MongoClientProvider;
@@ -24,12 +23,12 @@ public class TestTransfomerMongo {
         String dbName = "datacollection";
         String collectionName = "orgs";
         Gson gson = new Gson();
-        Properties props = new Configuration().toSubProperties("org");
-        ElasticBulkInsert bulkInsert = new ElasticBulkInsert(props);
+        Configuration conf = new Configuration().getSubConfiguration("org");
+        ElasticBulkInsert bulkInsert = new ElasticBulkInsert(conf);
         int bulkSize = 500;
-        GraphCollectService collectService = new GraphCollectService(props);
+        GraphCollectService collectService = new GraphCollectService(conf);
 
-        MongoConfig mgConfig = new MongoConfig(props);
+        MongoConfig mgConfig = new MongoConfig(conf);
         MongoClient client = MongoClientProvider.getOrCreate("test", mgConfig);
 
         MongoCollection<Document> collection = client.getDatabase(dbName)

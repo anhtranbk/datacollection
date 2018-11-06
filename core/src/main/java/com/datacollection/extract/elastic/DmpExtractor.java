@@ -31,7 +31,7 @@ public class DmpExtractor extends Extractor {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        ElasticConfig elasticConfig = new ElasticConfig(props);
+        ElasticConfig elasticConfig = new ElasticConfig(conf);
         eIndex = elasticConfig.getElasticIndex();
         client = ElasticClientProvider.getOrCreate("dmp", elasticConfig);
     }

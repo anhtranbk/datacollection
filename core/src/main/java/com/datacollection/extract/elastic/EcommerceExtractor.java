@@ -26,20 +26,20 @@ public class EcommerceExtractor extends Extractor {
 
     public EcommerceExtractor(Configuration config) {
         super("ecommerce", config);
-        esIndex = props.getProperty("es.index.name", "ecommerce");
-        esScrollSize = props.getInt("es.scroll.size", 1000);
-        esScrollTimeout = props.getInt("es.scroll.timeout.minutes", 5);
+        esIndex = conf.getProperty("es.index.name", "ecommerce");
+        esScrollSize = conf.getInt("es.scroll.size", 1000);
+        esScrollTimeout = conf.getInt("es.scroll.timeout.minutes", 5);
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        client = ElasticClientProvider.getDefault(new ElasticConfig(props));
+        client = ElasticClientProvider.getDefault(new ElasticConfig(conf));
     }
 
     @Override
     protected void onLoop() {
-        int defSkip = props.getInt("es.skip", 0);
+        int defSkip = conf.getInt("es.skip", 0);
         int skip = Integer.parseInt(loadIndex(String.valueOf(defSkip)));
         logger.info("Skip " + skip + " documents");
         Threads.sleep(1000);

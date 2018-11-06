@@ -2,7 +2,6 @@ package com.datacollection.extract;
 
 import com.google.common.base.Preconditions;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.LoopableLifeCycle;
 import com.datacollection.common.broker.BrokerFactory;
 import com.datacollection.common.broker.BrokerWriter;
@@ -31,7 +30,7 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     private static final String DOC_ORDER = "order";
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-    protected final Properties props;
+    protected final Configuration conf;
 
     private final String group;
     private final String name;
@@ -41,11 +40,12 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     private BrokerWriter brokerWriter;
     private Serializer<Event> serializer;
 
-    public Extractor(String group, Configuration config) {
+    public Extractor(String group, Configuration conf) {
         this.group = group;
         this.name = this.getClass().getName();
-        this.props = config.getSubConfiguration(group, getClass().getSimpleName());
-        this.setSleepTime(this.props);
+        this.conf = conf.getSubConfiguration(group, getClass().getSimpleName());
+
+        this.setSleepTime(this.conf);
         this.initMessageBroker();
     }
 
@@ -56,11 +56,11 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
                 .setQueueSize(4)
                 .setNamePrefix("extractor-" + name)
                 .build();
-        this.serializer = Serialization.create(props.getProperty(KEY_SERIALIZER), Event.class).serializer();
+        this.serializer = Serialization.create(conf.getProperty(KEY_SERIALIZER), Event.class).serializer();
 
-        long indexDelay = props.getLong("logging.lazy.delay.ms", 500);
-        int minLines = props.getInt("index.min.lines", 5);
-        String indexPath = props.getProperty("data.path") + "/extract/" + name + ".log";
+        long indexDelay = conf.getLong("logging.lazy.delay.ms", 500);
+        int minLines = conf.getInt("index.min.lines", 5);
+        String indexPath = conf.getProperty("data.path") + "/extract/" + name + ".log";
         this.indexKeeper = new IndexKeeper(indexPath, indexDelay, minLines);
     }
 
@@ -92,14 +92,14 @@ public abstract class Extractor extends LoopableLifeCycle implements Runnable {
     }
 
     private void initMessageBroker() {
-        BrokerFactory factory = Reflects.newInstance(props.getProperty("mb.factory.class"));
+        BrokerFactory factory = Reflects.newInstance(conf.getProperty("mb.factory.class"));
         logger.info("BrokerFactory class: " + factory.getClass().getName());
         this.setBrokerFactory(factory);
     }
 
     public final void setBrokerFactory(BrokerFactory factory) {
         this.brokerWriter = factory.getWriter();
-        this.brokerWriter.configure(this.props);
+        this.brokerWriter.configure(this.conf);
     }
 
     protected final void sendEvent(Event event) {

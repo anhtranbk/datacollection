@@ -28,14 +28,14 @@ public class NewDbExtractor extends StreamExtractor<ResultSetAdapter> {
 
     public NewDbExtractor(Configuration config) {
         super("newdb", config);
-        this.sqlConnect = ConnectionProviders.getOrCreate("newdb", new JdbcConfig(this.props));
+        this.sqlConnect = ConnectionProviders.getOrCreate("newdb", new JdbcConfig(this.conf));
         regexHelper = new ProfileRegexHelper();
     }
 
     @Override
     protected DataStream<ResultSetAdapter> openDataStream() {
         int lastId = Integer.parseInt(loadIndex("-1"));
-        int batchSize = props.getInt(KEY_BATCH_SIZE, 1000);
+        int batchSize = conf.getInt(KEY_BATCH_SIZE, 1000);
 
         return new SqlDataStream(new SQLFetcher() {
             @Override

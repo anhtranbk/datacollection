@@ -26,17 +26,17 @@ import java.util.Optional;
 public class ZambaExtractor extends StreamExtractor<ResultSetAdapter> {
     static final String KEY_BATCH_SIZE = "jdbc.batch.size";
 
-    private Connection sqlConnect;
+    private final Connection sqlConnect;
 
     public ZambaExtractor(Configuration config) {
         super("zamba", config);
-        this.sqlConnect = ConnectionProviders.getOrCreate("zamba", new JdbcConfig(this.props));
+        this.sqlConnect = ConnectionProviders.getOrCreate("zamba", new JdbcConfig(this.conf));
     }
 
     @Override
     protected DataStream<ResultSetAdapter> openDataStream() {
         int lastId = Integer.parseInt(loadIndex("-1"));
-        int batchSize = props.getInt(KEY_BATCH_SIZE, 1000);
+        int batchSize = conf.getInt(KEY_BATCH_SIZE, 1000);
 
         return new SqlDataStream(new SQLFetcher() {
             @Override

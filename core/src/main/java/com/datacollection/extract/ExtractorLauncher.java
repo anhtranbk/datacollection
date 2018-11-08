@@ -4,18 +4,13 @@ import com.datacollection.common.config.Configuration;
 import com.datacollection.common.utils.Reflects;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.Utils;
-import com.datacollection.extract.mongo.FbGroupPostExtractor;
+import com.datacollection.app.extractor.mongodb.FbGroupPostExtractor;
 import com.datacollection.metric.MetricExporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-/**
- * TODO: Class description here.
- *
- * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
- */
 public class ExtractorLauncher {
 
     public static void main(String[] args) throws Exception {

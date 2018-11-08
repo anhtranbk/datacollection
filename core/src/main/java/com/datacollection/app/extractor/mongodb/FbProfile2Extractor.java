@@ -1,26 +1,26 @@
-package com.datacollection.extract.mongo;
+package com.datacollection.app.extractor.mongodb;
 
 import com.datacollection.common.config.Configuration;
 import com.datacollection.extract.EventType;
 import com.datacollection.entity.Event;
+import com.datacollection.extract.mongo.MongoExtractor;
 import org.bson.Document;
 
-public class FbPagePostExtractor extends MongoExtractor {
+/**
+ * Created by kumin on 24/11/2017.
+ */
+public class FbProfile2Extractor extends MongoExtractor {
 
-    public FbPagePostExtractor(Configuration config) {
-        super("fbpage", config);
+    public FbProfile2Extractor(Configuration config) {
+        super("fbprofile", config);
     }
 
     @Override
     protected Event extractData(Document document) {
         String id = document.getObjectId("_id").toHexString();
-        String type = EventType.TYPE_FB_FANPAGE_POST;
+        String type = EventType.TYPE_FB_PROFILE_NEW;
 
-        document.put("Content", document.getString("Message"));
         document.put("_id", id);
-
-        document.remove("Message");
-
         return new Event(id, type, document);
     }
 }

@@ -1,4 +1,4 @@
-package com.datacollection.extract.sql;
+package com.datacollection.app.extractor.sql;
 
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.config.Configuration;
@@ -6,6 +6,9 @@ import com.datacollection.extract.DataStream;
 import com.datacollection.extract.EventType;
 import com.datacollection.extract.StreamExtractor;
 import com.datacollection.entity.Event;
+import com.datacollection.extract.sql.ResultSetAdapter;
+import com.datacollection.extract.sql.SQLFetcher;
+import com.datacollection.extract.sql.SqlDataStream;
 import com.datacollection.platform.jdbc.ConnectionProviders;
 import com.datacollection.platform.jdbc.JdbcConfig;
 

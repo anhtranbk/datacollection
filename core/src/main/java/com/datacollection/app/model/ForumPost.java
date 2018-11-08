@@ -1,4 +1,4 @@
-package com.datacollection.extract.model;
+package com.datacollection.app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class FacebookPost extends Post implements Serializable {
+public class ForumPost extends Post implements Serializable {
 
     @JsonProperty("user_name")
     @Nullable
@@ -23,24 +23,11 @@ public class FacebookPost extends Post implements Serializable {
     @JsonProperty("post_time")
     public long postTime;
 
-    @JsonProperty("page_id")
+    @JsonProperty("url")
     @Nullable
-    public String pageId;
-
-    @JsonProperty("page_name")
-    @Nullable
-    public String pageName;
-
-    @JsonProperty("post_type")
-    @Nullable
-    public String postType;
-
     public String url;
 
-    @JsonProperty("post_id")
-    public String postId;
-
-    @JsonProperty("comment_id")
+    @JsonProperty("domain")
     @Nullable
-    public String commentId;
+    public String domain;
 }

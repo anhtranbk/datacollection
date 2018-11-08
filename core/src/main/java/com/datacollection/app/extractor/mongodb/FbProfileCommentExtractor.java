@@ -1,6 +1,7 @@
-package com.datacollection.extract.mongo;
+package com.datacollection.app.extractor.mongodb;
 
 import com.datacollection.extract.EventType;
+import com.datacollection.extract.mongo.MongoExtractor;
 import com.mongodb.BasicDBObject;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.entity.Event;

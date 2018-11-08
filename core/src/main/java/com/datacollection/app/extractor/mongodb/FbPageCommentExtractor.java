@@ -1,22 +1,23 @@
-package com.datacollection.extract.mongo;
+package com.datacollection.app.extractor.mongodb;
 
 import com.datacollection.extract.EventType;
+import com.datacollection.extract.mongo.MongoExtractor;
 import com.mongodb.BasicDBObject;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.entity.Event;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-public class FbGroupCommentExtractor extends MongoExtractor {
+public class FbPageCommentExtractor extends MongoExtractor {
 
-    public FbGroupCommentExtractor(Configuration config) {
-        super("fbgroup", config);
+    public FbPageCommentExtractor(Configuration config) {
+        super("fbpage", config);
     }
 
     @Override
     protected Event extractData(Document document) {
         String id = document.getObjectId("_id").toHexString();
-        String type = EventType.TYPE_FB_GROUP_COMMENT;
+        String type = EventType.TYPE_FB_FANPAGE_COMMENT;
 
         String postFbId = document.getString("PostFbId");
         if (postFbId == null) {
@@ -32,6 +33,7 @@ public class FbGroupCommentExtractor extends MongoExtractor {
                     document.put("ToName", postDoc.getString("ToName"));
                     document.put("Type", postDoc.getString("Type"));
                     document.put("PostFbId", postDoc.getString("PostFbId"));
+                    document.put("PageFbId", postDoc.getString("PageFbId"));
                 }
             }
         }

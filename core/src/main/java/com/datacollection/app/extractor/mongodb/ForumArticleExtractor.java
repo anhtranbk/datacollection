@@ -1,11 +1,13 @@
-package com.datacollection.extract.mongo;
+package com.datacollection.app.extractor.mongodb;
 
 import com.datacollection.extract.EventType;
+import com.datacollection.extract.mongo.MongoDataStream;
+import com.datacollection.extract.mongo.MongoExtractor;
+import com.datacollection.extract.mongo.MongoFetcher;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.datacollection.common.config.Configuration;
-import com.datacollection.common.broker.MockBrokerFactory;
 import com.datacollection.extract.DataStream;
 import com.datacollection.entity.Event;
 import org.bson.Document;
@@ -14,18 +16,20 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LinkedInExtractor extends MongoExtractor {
+public class ForumArticleExtractor extends MongoExtractor {
+
     static final long MIN_EPOCH = 1262278800000L;
     static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public LinkedInExtractor(Configuration config) {
-        super("linkedin", config);
+    public ForumArticleExtractor(Configuration config) {
+        super("forum", config);
     }
 
     @Override
     protected Event extractData(Document document) {
         String id = document.getString("_id");
-        String type = EventType.TYPE_LINKEDIN;
+        String type = EventType.TYPE_FORUM_ARTICLE;
+
         return new Event(id, type, document);
     }
 
@@ -44,15 +48,15 @@ public class LinkedInExtractor extends MongoExtractor {
             @Override
             public MongoCursor<Document> fetchNextDocs(Object fromIndex) {
                 return database.getCollection(collection)
-                        .find(Filters.gt("PostDate", fromIndex))
-                        .sort(new BasicDBObject("PostDate", 1))
+                        .find(Filters.gt("GetDate", fromIndex))
+                        .sort(new BasicDBObject("GetDate", 1))
                         .limit(batchSize)
                         .iterator();
             }
 
             @Override
             public Object fetchIndex(Document doc) {
-                return doc.getDate("PostDate");
+                return doc.getDate("GetDate");
             }
         }, lastIndex);
     }
@@ -60,13 +64,6 @@ public class LinkedInExtractor extends MongoExtractor {
     @Override
     protected void onEventProcessed(Event event, long queueOrder, Object attachment) {
         Document doc = (Document) attachment;
-        storeIndex(df.format(doc.getDate("PostDate")), queueOrder);
+        storeIndex(df.format(doc.getDate("GetDate")), queueOrder);
     }
-
-    public static void main (String [] args){
-        LinkedInExtractor linkedInExtractor = new LinkedInExtractor(new Configuration());
-        linkedInExtractor.setBrokerFactory(new MockBrokerFactory());
-        linkedInExtractor.start();
-    }
-
 }

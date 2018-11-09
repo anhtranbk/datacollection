@@ -1,7 +1,7 @@
 package com.datacollection.app.extractor.mongodb;
 
 import com.datacollection.common.config.Configuration;
-import com.datacollection.extract.EventType;
+import com.datacollection.app.extractor.EventType;
 import com.datacollection.entity.Event;
 import com.datacollection.extract.mongo.MongoExtractor;
 import org.bson.Document;

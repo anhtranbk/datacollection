@@ -3,7 +3,7 @@ package com.datacollection.collect.model;
 import com.datacollection.collect.Constants;
 import com.datacollection.common.utils.Hashings;
 import com.datacollection.common.collect.Maps;
-import com.datacollection.service.FacebookClient;
+import com.datacollection.app.service.FacebookClient;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -1,7 +1,7 @@
 package com.datacollection.collect.fbavt;
 
 import com.datacollection.common.config.Properties;
-import com.datacollection.service.FacebookClient;
+import com.datacollection.app.service.FacebookClient;
 
 /**
  * TODO: Class description here.

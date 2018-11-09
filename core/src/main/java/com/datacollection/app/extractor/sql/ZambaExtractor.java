@@ -4,7 +4,7 @@ import com.datacollection.common.ParserHelper;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.utils.JsonUtils;
 import com.datacollection.extract.DataStream;
-import com.datacollection.extract.EventType;
+import com.datacollection.app.extractor.EventType;
 import com.datacollection.extract.StreamExtractor;
 import com.datacollection.entity.Event;
 import com.datacollection.app.model.ZambaPost;

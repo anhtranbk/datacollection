@@ -1,4 +1,4 @@
-package com.datacollection;
+package com.datacollection.app;
 
 import com.datacollection.common.config.Configuration;
 

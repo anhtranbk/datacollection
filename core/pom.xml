@@ -150,7 +150,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.datacollection.Main</mainClass>
+              <mainClass>com.datacollection.app.Main</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>

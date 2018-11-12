@@ -1,13 +1,13 @@
 package com.datacollection.collect.transform;
 
 import com.datacollection.collect.OrgSearcher;
-import com.datacollection.collect.Constants;
-import com.datacollection.collect.model.Entity;
-import com.datacollection.collect.model.GraphModel;
-import com.datacollection.collect.model.History;
-import com.datacollection.collect.model.Organization;
-import com.datacollection.collect.model.Profile;
-import com.datacollection.collect.model.Relationship;
+import com.datacollection.app.collector.Constants;
+import com.datacollection.app.collector.model.Entity;
+import com.datacollection.app.collector.model.GraphModel;
+import com.datacollection.app.collector.model.History;
+import com.datacollection.app.collector.model.Organization;
+import com.datacollection.app.collector.model.Profile;
+import com.datacollection.app.collector.model.Relationship;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.entity.Event;
 

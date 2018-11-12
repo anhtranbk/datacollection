@@ -1,4 +1,4 @@
-package com.datacollection.collect;
+package com.datacollection.app.collector;
 
 /**
  * TODO: Class description here.

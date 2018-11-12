@@ -1,6 +1,6 @@
-package com.datacollection.collect.model;
+package com.datacollection.app.collector.model;
 
-import com.datacollection.collect.Constants;
+import com.datacollection.app.collector.Constants;
 import com.datacollection.common.utils.Hashings;
 import com.datacollection.common.collect.Maps;
 import com.datacollection.app.service.FacebookClient;

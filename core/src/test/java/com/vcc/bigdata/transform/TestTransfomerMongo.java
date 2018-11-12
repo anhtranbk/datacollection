@@ -5,7 +5,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.datacollection.collect.GraphCollectService;
-import com.datacollection.collect.model.GraphModel;
+import com.datacollection.app.collector.model.GraphModel;
 import com.datacollection.collect.transform.OrgTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.entity.Event;

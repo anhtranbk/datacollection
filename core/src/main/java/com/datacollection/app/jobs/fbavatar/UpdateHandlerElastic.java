@@ -1,8 +1,8 @@
 package com.datacollection.app.jobs.fbavatar;
 
-import com.datacollection.collect.Constants;
-import com.datacollection.collect.fbavt.FbAvatarService;
-import com.datacollection.collect.model.Photo;
+import com.datacollection.app.collector.Constants;
+import com.datacollection.app.collector.fbavt.FbAvatarService;
+import com.datacollection.app.collector.model.Photo;
 import com.datacollection.graphdb.GraphSession;
 import com.datacollection.graphdb.Vertex;
 import org.elasticsearch.action.search.SearchResponse;

@@ -1,13 +1,13 @@
 package com.datacollection.collect.transform;
 
 import com.google.common.base.Preconditions;
-import com.datacollection.collect.Constants;
-import com.datacollection.collect.model.Entity;
-import com.datacollection.collect.model.FbPage;
-import com.datacollection.collect.model.GraphModel;
-import com.datacollection.collect.model.History;
-import com.datacollection.collect.model.Profile;
-import com.datacollection.collect.model.Relationship;
+import com.datacollection.app.collector.Constants;
+import com.datacollection.app.collector.model.Entity;
+import com.datacollection.app.collector.model.FbPage;
+import com.datacollection.app.collector.model.GraphModel;
+import com.datacollection.app.collector.model.History;
+import com.datacollection.app.collector.model.Profile;
+import com.datacollection.app.collector.model.Relationship;
 import com.datacollection.common.FacebookHelper;
 import com.datacollection.common.ParserHelper;
 import com.datacollection.common.ProfileRegexHelper;

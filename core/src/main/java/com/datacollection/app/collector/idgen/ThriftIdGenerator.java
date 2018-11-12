@@ -1,4 +1,4 @@
-package com.datacollection.collect.fbavt;
+package com.datacollection.app.collector.idgen;
 
 import com.datacollection.common.config.Properties;
 import com.datacollection.platform.thrift.ThriftClient;
@@ -6,17 +6,19 @@ import com.datacollection.platform.thrift.ThriftClientProvider;
 import com.datacollection.platform.thrift.ThriftRuntimeException;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
-import thriftgen.FbAvatarService;
+import thriftgen.IdGenerator;
+
+import java.util.List;
 
 /**
  * TODO: Class description here.
  *
  * @author <a href="https://github.com/tjeubaoit">tjeubaoit</a>
  */
-public class ThriftFetcher implements Fetcher {
+public class ThriftIdGenerator implements RemoteIdGenerator {
 
     private Properties props;
-    private ThreadLocal<FbAvatarService.Client> clientThreadLocal = new ThreadLocal<>();
+    private ThreadLocal<IdGenerator.Client> clientThreadLocal = new ThreadLocal<>();
 
     @Override
     public void configure(Properties p) {
@@ -24,22 +26,23 @@ public class ThriftFetcher implements Fetcher {
     }
 
     @Override
-    public String fetch(String id) {
+    public long generate(List<String> seeds, long defVal) {
         try {
-            FbAvatarService.Client client = clientThreadLocal.get();
+            if (seeds.isEmpty()) return defVal;
+            IdGenerator.Client client = clientThreadLocal.get();
             if (client == null) {
                 client = newClient(props);
                 clientThreadLocal.set(client);
             }
-            return client.fetchAvatarUrl(id);
+            return client.generate(seeds, defVal);
         } catch (TException e) {
             throw new ThriftRuntimeException(e);
         }
     }
 
-    private static FbAvatarService.Client newClient(Properties props) {
+    private static IdGenerator.Client newClient(Properties props) {
         ThriftClient thriftClient = ThriftClientProvider.getOrCreate(Thread.currentThread().getName(), props);
-        return new FbAvatarService.Client(
-                new TMultiplexedProtocol(thriftClient.getProtocol(), "FbAvatarService"));
+        return new IdGenerator.Client(
+                new TMultiplexedProtocol(thriftClient.getProtocol(), "IdGenerator"));
     }
 }

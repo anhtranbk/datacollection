@@ -1,8 +1,8 @@
-package com.datacollection.collect.history;
+package com.datacollection.app.collector.history;
 
 import com.google.common.collect.Iterables;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.collect.model.History;
+import com.datacollection.app.collector.model.History;
 import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.collect.IterableAdapter;

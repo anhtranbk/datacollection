@@ -1,4 +1,4 @@
-package com.datacollection.collect.fbavt;
+package com.datacollection.app.collector.fbavt;
 
 import com.datacollection.common.config.Configurable;
 import com.datacollection.common.config.Properties;

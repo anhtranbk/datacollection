@@ -1,6 +1,6 @@
 package com.datacollection.app.jobs.syncprofile;
 
-import com.datacollection.collect.Constants;
+import com.datacollection.app.collector.Constants;
 import com.datacollection.common.utils.Utils;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;

@@ -1,6 +1,6 @@
 package com.datacollection.app.jobs.fbavatar;
 
-import com.datacollection.collect.fbavt.FbAvatarService;
+import com.datacollection.app.collector.fbavt.FbAvatarService;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.lifecycle.AbstractLifeCycle;
 import com.datacollection.common.tasks.TaskManager;

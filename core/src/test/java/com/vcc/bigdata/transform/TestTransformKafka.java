@@ -1,7 +1,7 @@
 package com.vcc.bigdata.transform;
 
 import com.google.gson.Gson;
-import com.datacollection.collect.model.GraphModel;
+import com.datacollection.app.collector.model.GraphModel;
 import com.datacollection.collect.transform.ZambaTransformer;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.serde.Deserializer;

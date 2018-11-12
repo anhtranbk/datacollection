@@ -1,6 +1,6 @@
 package com.datacollection.app.matching;
 
-import com.datacollection.collect.Constants;
+import com.datacollection.app.collector.Constants;
 import com.datacollection.common.config.Properties;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;

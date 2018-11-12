@@ -2,7 +2,7 @@ package com.datacollection.app.service.notification;
 
 import com.google.common.collect.Iterables;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.collect.Constants;
+import com.datacollection.app.collector.Constants;
 import com.datacollection.common.concurrenct.FutureAdapter;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.collect.IterableAdapter;

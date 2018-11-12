@@ -1,9 +1,9 @@
 package com.datacollection.collect.transform;
 
-import com.datacollection.collect.model.Entity;
-import com.datacollection.collect.model.GraphModel;
-import com.datacollection.collect.model.History;
-import com.datacollection.collect.model.Profile;
+import com.datacollection.app.collector.model.Entity;
+import com.datacollection.app.collector.model.GraphModel;
+import com.datacollection.app.collector.model.History;
+import com.datacollection.app.collector.model.Profile;
 import com.datacollection.common.ProfileRegexHelper;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.entity.Event;

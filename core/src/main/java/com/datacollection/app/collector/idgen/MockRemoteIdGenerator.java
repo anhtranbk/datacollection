@@ -1,4 +1,4 @@
-package com.datacollection.collect.idgen;
+package com.datacollection.app.collector.idgen;
 
 import com.datacollection.common.config.Properties;
 

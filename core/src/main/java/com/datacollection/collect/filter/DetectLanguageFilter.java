@@ -9,8 +9,8 @@ import com.optimaize.langdetect.profiles.LanguageProfileReader;
 import com.optimaize.langdetect.text.CommonTextObjectFactories;
 import com.optimaize.langdetect.text.TextObject;
 import com.optimaize.langdetect.text.TextObjectFactory;
-import com.datacollection.collect.model.GraphModel;
-import com.datacollection.collect.model.Profile;
+import com.datacollection.app.collector.model.GraphModel;
+import com.datacollection.app.collector.model.Profile;
 import com.datacollection.common.utils.Strings;
 import com.datacollection.common.utils.Utils;
 

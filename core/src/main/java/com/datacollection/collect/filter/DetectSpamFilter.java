@@ -1,7 +1,7 @@
 package com.datacollection.collect.filter;
 
-import com.datacollection.collect.model.GraphModel;
-import com.datacollection.collect.model.Profile;
+import com.datacollection.app.collector.model.GraphModel;
+import com.datacollection.app.collector.model.Profile;
 import com.datacollection.common.utils.Strings;
 
 import java.util.LinkedList;

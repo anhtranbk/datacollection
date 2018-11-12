@@ -1,7 +1,7 @@
-package com.datacollection.collect.history;
+package com.datacollection.app.collector.history;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.datacollection.collect.model.History;
+import com.datacollection.app.collector.model.History;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.utils.Reflects;
 

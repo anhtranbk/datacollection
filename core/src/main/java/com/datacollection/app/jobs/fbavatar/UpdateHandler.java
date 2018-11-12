@@ -1,6 +1,6 @@
 package com.datacollection.app.jobs.fbavatar;
 
-import com.datacollection.collect.model.Photo;
+import com.datacollection.app.collector.model.Photo;
 import com.datacollection.graphdb.Direction;
 import com.datacollection.graphdb.Edge;
 import com.datacollection.graphdb.GraphSession;

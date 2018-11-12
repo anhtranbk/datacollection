@@ -1,6 +1,6 @@
 package com.datacollection.collect.transform;
 
-import com.datacollection.collect.model.GraphModel;
+import com.datacollection.app.collector.model.GraphModel;
 import com.datacollection.app.extractor.EventType;
 import com.datacollection.entity.Event;
 

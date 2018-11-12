@@ -1,4 +1,4 @@
-package com.datacollection.collect.fbavt;
+package com.datacollection.app.collector.fbavt;
 
 import com.aerospike.client.AerospikeClient;
 import com.aerospike.client.Key;

@@ -1,4 +1,4 @@
-package com.datacollection.collect.model;
+package com.datacollection.app.collector.model;
 
 import com.datacollection.common.collect.Maps;
 

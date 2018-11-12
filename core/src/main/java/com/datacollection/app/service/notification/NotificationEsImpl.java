@@ -89,7 +89,7 @@ public class NotificationEsImpl implements NotificationService {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        NotificationService notiService = create(conf);
+        NotificationService notificationService = NotificationService.create(conf);
 
         Message msg = new Message("phone", "fb.com", "0973328004", "235418957128571290");
         msg.setVersion(1);
@@ -98,11 +98,11 @@ public class NotificationEsImpl implements NotificationService {
 //        msg.putProperty("uid", "235418957128571290");
 //        notiService.addMessage(msg).get();
 
-        for (Message message : notiService.getMessages("phone")) {
+        for (Message message : notificationService.getMessages("phone")) {
             System.out.println(message.getProperties());
-            notiService.removeMessage(message).get();
+            notificationService.removeMessage(message).get();
         }
 
-        notiService.flush();
+        notificationService.flush();
     }
 }

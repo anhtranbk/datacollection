@@ -2,7 +2,7 @@ package com.datacollection.app.matching;
 
 import com.datacollection.app.matching.algorithms.MatchingAlgorithm;
 import com.datacollection.app.matching.algorithms.PhoneEmailMatching;
-import com.datacollection.collect.Constants;
+import com.datacollection.app.collector.Constants;
 import com.datacollection.common.config.Configuration;
 import com.datacollection.common.config.Properties;
 import com.datacollection.common.lifecycle.LoopableLifeCycle;

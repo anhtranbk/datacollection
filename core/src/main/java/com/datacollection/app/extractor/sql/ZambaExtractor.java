@@ -7,7 +7,7 @@ import com.datacollection.extract.DataStream;
 import com.datacollection.app.extractor.EventType;
 import com.datacollection.extract.StreamExtractor;
 import com.datacollection.entity.Event;
-import com.datacollection.app.model.ZambaPost;
+import com.datacollection.app.extractor.model.ZambaPost;
 import com.datacollection.extract.sql.ResultSetAdapter;
 import com.datacollection.extract.sql.SQLFetcher;
 import com.datacollection.extract.sql.SqlDataStream;

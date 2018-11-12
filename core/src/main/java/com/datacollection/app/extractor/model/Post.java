@@ -1,4 +1,4 @@
-package com.datacollection.app.model;
+package com.datacollection.app.extractor.model;
 
 import org.apache.avro.reflect.Nullable;
 

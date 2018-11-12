@@ -1,4 +1,4 @@
-package com.datacollection.app.model;
+package com.datacollection.app.extractor.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
